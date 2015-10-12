@@ -5,7 +5,7 @@ title: Generating compatible SHA512 Hash between Java and JavaScript using Crypt
 
 While working on the development of a secure way for authenticating a remote web application with the Ambient Dynamix Framework, I needed to generate a SHA512 of a salt and token which the web application could transmit to the framework via a dynamically generated QR Code. The Dynamix instance running on the android device can then use this hash to verify the authenticity of any further HTTP requests.
 
------
+---
 
 ### Generating SHA512 Hash in JavaScript :
 The [CryptoJS](https://code.google.com/p/crypto-js/) library provides a multitude of cryptography related features and what I needed to use was the SHA512 Hasher.

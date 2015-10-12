@@ -29,7 +29,8 @@ version:             2.0.0
 github:
   repo:              https://github.com/poole/poole
 
-pages_list:       
+pages_list:      
+  Portfolio : '/portfolio'
   About: '/about'
   Archive: '/archive'
   Feed: '/atom.xml'
