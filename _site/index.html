@@ -78,13 +78,16 @@
 
 <p>To be able to use the hasher, include:</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+<p><code>
+	<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js"></script>
+	<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
+</code>
+and then : </p>
 
-<p>and then : </p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//replace saltedToken with the relevant data.</span>
-<span class="kd">var</span> <span class="nx">hashWordArray</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">SHA512</span><span class="p">(</span><span class="s1">&#39;saltedToken&#39;</span><span class="p">);</span></code></pre></div>
+<p><code>
+//replace saltedToken with the relevant data.
+var hashWordArray = CryptoJS.SHA512('saltedToken');
+</code></p>
 
 <p>This returns the SHA512 Hash in a word array which is an array of 32-bit words. Now, to be able to transfer the hash, I encoded the array into a Base64 String so that I could use the same encoding in Java to generate the hash. There are other options too such as encoding into a Hex String.</p>
 
@@ -150,7 +153,7 @@
 
       <footer class="footer">
         <small>
-          &copy; <time datetime="2015-10-12T21:50:46+08:00">2015</time>. All rights reserved.
+          &copy; <time datetime="2015-10-12T23:10:48+08:00">2015</time>. All rights reserved.
         </small>
       </footer>
     </div>

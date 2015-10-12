@@ -12,17 +12,16 @@ The [CryptoJS](https://code.google.com/p/crypto-js/) library provides a multitud
 
 To be able to use the hasher, include:
 
-{% highlight html %}
-<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js"></script>
-<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
-{% endhighlight %}
-
+<code>
+	<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js"></script>
+	<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
+</code>
 and then : 
 
-{% highlight javascript %}
+<code>
 //replace saltedToken with the relevant data.
 var hashWordArray = CryptoJS.SHA512('saltedToken');
-{% endhighlight %}
+</code>
 
 This returns the SHA512 Hash in a word array which is an array of 32-bit words. Now, to be able to transfer the hash, I encoded the array into a Base64 String so that I could use the same encoding in Java to generate the hash. There are other options too such as encoding into a Hex String.
 

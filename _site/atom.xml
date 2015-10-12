@@ -4,7 +4,7 @@
  <title>Shivam Verma</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2015-10-12T21:50:46+08:00</updated>
+ <updated>2015-10-12T23:10:48+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
@@ -26,13 +26,16 @@
 
 &lt;p&gt;To be able to use the hasher, include:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js&quot;&gt;&lt;/script&gt;
+&lt;/code&gt;
+and then : &lt;/p&gt;
 
-&lt;p&gt;and then : &lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//replace saltedToken with the relevant data.&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hashWordArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CryptoJS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;SHA512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;saltedToken&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;
+//replace saltedToken with the relevant data.
+var hashWordArray = CryptoJS.SHA512(&#39;saltedToken&#39;);
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;This returns the SHA512 Hash in a word array which is an array of 32-bit words. Now, to be able to transfer the hash, I encoded the array into a Base64 String so that I could use the same encoding in Java to generate the hash. There are other options too such as encoding into a Hex String.&lt;/p&gt;
 
