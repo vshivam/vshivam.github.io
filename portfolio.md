@@ -3,7 +3,6 @@ layout: page
 title: Portfolio
 ---
 
-## Felicitous Computing Institute, National University of Singapore
 ---
 [Ambient Flow](http://ambientdynamix.org/news/ambient-flow-paper-2015)
 ---
@@ -19,16 +18,19 @@ Publications :
 
 * D. Carlson, M. Mogerle, M. Pagel, <strong>S. Verma</strong>, and D. S. Rosenblum, “Ambient flow: A
 visual approach for remixing the internet of things” in <strong>5th International
-Conference on the Internet of Things (IOT 2015) </strong>
+Conference on the Internet of Things (IoT 2015) </strong> <br/> [[Full Paper]]({{site.url}}/assets/portfolio/papers/Ambient_Flow.pdf)
 
-* D. Carlson, M. Mogerle, M. Pagel, <strong>S. Verma</strong>, and D. S. Rosenblum, "A Visual Design Toolset for Drag-and-drop Smart Space Configuration" in <strong>5th International Conference on the Internet of Things (IOT 2015) </strong>
+* D. Carlson, M. Mogerle, M. Pagel, <strong>S. Verma</strong>, and D. S. Rosenblum, "A Visual Design Toolset for Drag-and-drop Smart Space Configuration" 
+in <strong>5th International Conference on the Internet of Things (IoT 2015) </strong> <br/> [[Demo Paper]]({{site.url}}/assets/portfolio/papers/Demo_Ambient_Flow.pdf)
+
 
 
 ---
 [Dengue Mapper](https://play.google.com/store/apps/details?id=sg.nus.comp.fci.denguemapper&hl=en)
 ---
 An application on the Android platform for optimized location tracking
-of a hundred dengue patients in Singapore. The application aims to be highly non-intrusive, using a set of sensible defaults and only requiring user interaction after the completion of the study with an uninstall message.
+of a hundred dengue patients along with a hundred control users in Singapore. The application aims to be highly non-intrusive, 
+using a set of sensible defaults and only requiring user interaction after the completion of the study, prompting the user with an uninstall message.
 
 <!--
 

@@ -49,9 +49,6 @@
             <small><a href="/about">About</a></small>
           
             &nbsp;&nbsp;&nbsp;
-            <small><a href="/archive">Archive</a></small>
-          
-            &nbsp;&nbsp;&nbsp;
             <small><a href="/atom.xml">Feed</a></small>
           
         </h3>
@@ -70,16 +67,13 @@
 
 <p>To be able to use the hasher, include:</p>
 
-<p><code>
-	<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js"></script>
-	<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
-</code>
-and then : </p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
-<p><code>
-//replace saltedToken with the relevant data.
-var hashWordArray = CryptoJS.SHA512('saltedToken');
-</code></p>
+<p>and then : </p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">//replace saltedToken with the relevant data.</span>
+<span class="kd">var</span> <span class="nx">hashWordArray</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">SHA512</span><span class="p">(</span><span class="s1">&#39;saltedToken&#39;</span><span class="p">);</span></code></pre></div>
 
 <p>This returns the SHA512 Hash in a word array which is an array of 32-bit words. Now, to be able to transfer the hash, I encoded the array into a Base64 String so that I could use the same encoding in Java to generate the hash. There are other options too such as encoding into a Hex String.</p>
 
@@ -89,7 +83,7 @@ var hashWordArray = CryptoJS.SHA512('saltedToken');
 
 <p>and then :</p>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">base64HashString</span> <span class="o">=</span> <span class="nx">hashWordArray</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Base64</span><span class="p">);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">base64HashString</span> <span class="o">=</span> <span class="nx">hashWordArray</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Base64</span><span class="p">);</span></code></pre></div>
 
 <h3 id="generating-sha512-hash-in-java-">Generating SHA512 Hash in Java :</h3>
 <p>Now, to be able to verify the authenticity in Java, for a given String, I should be able to generate the same SHA512 Hash and this can be done using the following code :</p>
@@ -120,18 +114,27 @@ var hashWordArray = CryptoJS.SHA512('saltedToken');
     
       <li>
         <h3>
-          <a href="/2014/01/01/example-content/">
-            Example content
-            <small><time datetime="2014-01-01T00:00:00+08:00">01 Jan 2014</time></small>
+          <a href="/2015/06/09/compatible-rsa-encryption/">
+            Android, JavaScript and Python compatible RSA Encryption.
+            <small><time datetime="2015-06-09T00:00:00+08:00">09 Jun 2015</time></small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/2013/12/31/whats-jekyll/">
-            What's Jekyll?
-            <small><time datetime="2013-12-31T00:00:00+08:00">31 Dec 2013</time></small>
+          <a href="/2015/06/07/dynamic-jquery-swatch/">
+            Dynamically change jQuery Mobile colour swatch.
+            <small><time datetime="2015-06-07T00:00:00+08:00">07 Jun 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/02/17/dnssd-python/">
+            Multicast DNS Service discovery in python.
+            <small><time datetime="2015-02-17T00:00:00+08:00">17 Feb 2015</time></small>
           </a>
         </h3>
       </li>
@@ -141,11 +144,27 @@ var hashWordArray = CryptoJS.SHA512('saltedToken');
 
 
         
+<!-- Add Disqus comments. -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'vshivam';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
       </main>
 
       <footer class="footer">
         <small>
-          &copy; <time datetime="2015-10-12T23:10:48+08:00">2015</time>. All rights reserved.
+          &copy; <time datetime="2015-10-13T16:37:47+08:00">2015</time>. All rights reserved.
         </small>
       </footer>
     </div>

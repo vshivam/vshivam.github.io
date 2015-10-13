@@ -10,7 +10,7 @@
 
   <title>
     
-      Shivam Verma &middot; The Learning Curve
+      Blog Posts &middot; Shivam Verma
     
   </title>
 
@@ -49,111 +49,47 @@
             <small><a href="/about">About</a></small>
           
             &nbsp;&nbsp;&nbsp;
-            <small><a href="/archive">Archive</a></small>
-          
-            &nbsp;&nbsp;&nbsp;
             <small><a href="/atom.xml">Feed</a></small>
           
         </h3>
       </header>
 
       <main>
-        <div class="posts">
+        <article class="page">
+  <h1 class="page-title">Blog Posts</h1>
   
-  <article class="post">
-    <h1 class="post-title">
-      <a href="/2014/12/10/compatible-hash/">
-        Generating compatible SHA512 Hash between Java and JavaScript using CryptoJS
-      </a>
-    </h1>
+<ul>
+  <li>
+    <p>09 Jun 2015 <a href="/2015/06/09/compatible-rsa-encryption/"> Android, JavaScript and Python compatible RSA Encryption. </a></p>
+  </li>
+  <li>
+    <p>07 Jun 2015 <a href="/2015/06/07/dynamic-jquery-swatch/"> Dynamically change jQuery Mobile colour swatch. </a></p>
+  </li>
+  <li>
+    <p>17 Feb 2015 <a href="/2015/02/17/dnssd-python/"> Multicast DNS Service discovery in python. </a></p>
+  </li>
+  <li>
+    <p>15 Feb 2015 <a href="/2015/02/15/jmdns-service-discovery/"> Using JmDNS for service advertisement and discovery on android. </a></p>
+  </li>
+  <li>
+    <p>14 Jan 2015 <a href="/2015/01/14/inflate-diff-layout/"> Inflating different xml layouts in an Android ListView for different Objects. </a></p>
+  </li>
+  <li>
+    <p>07 Jan 2015 <a href="/2015/01/07/hide-listitem-android/"> Hiding a list item from an Android ListView without removing it from the data source. </a></p>
+  </li>
+  <li>
+    <p>10 Dec 2014 <a href="/2014/12/10/compatible-hash/"> Generating compatible SHA512 Hash between Java and JavaScript using CryptoJS </a></p>
+  </li>
+</ul>
 
-    <time datetime="2014-12-10T00:00:00+08:00" class="post-date">10 Dec 2014</time>
-
-    <p>While working on the development of a secure way for authenticating a remote web application with the Ambient Dynamix Framework, I needed to generate a SHA512 of a salt and token which the web application could transmit to the framework via a dynamically generated QR Code. The Dynamix instance running on the android device can then use this hash to verify the authenticity of any further HTTP requests.</p>
-
-<hr />
-
-<h3 id="generating-sha512-hash-in-javascript-">Generating SHA512 Hash in JavaScript :</h3>
-<p>The <a href="https://code.google.com/p/crypto-js/">CryptoJS</a> library provides a multitude of cryptography related features and what I needed to use was the SHA512 Hasher.</p>
-
-<p>To be able to use the hasher, include:</p>
-
-<p><code>
-	<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js"></script>
-	<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
-</code>
-and then : </p>
-
-<p><code>
-//replace saltedToken with the relevant data.
-var hashWordArray = CryptoJS.SHA512('saltedToken');
-</code></p>
-
-<p>This returns the SHA512 Hash in a word array which is an array of 32-bit words. Now, to be able to transfer the hash, I encoded the array into a Base64 String so that I could use the same encoding in Java to generate the hash. There are other options too such as encoding into a Hex String.</p>
-
-<p>CryptoJS also provides the encoding feature. To use the encoding methods, include :</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span></code></pre></div>
-
-<p>and then :</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">base64HashString</span> <span class="o">=</span> <span class="nx">hashWordArray</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Base64</span><span class="p">);</span></code></pre></div>
-
-<h3 id="generating-sha512-hash-in-java-">Generating SHA512 Hash in Java :</h3>
-<p>Now, to be able to verify the authenticity in Java, for a given String, I should be able to generate the same SHA512 Hash and this can be done using the following code :</p>
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">MessageDigest</span> <span class="n">md</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-<span class="n">String</span> <span class="n">saltedToken</span> <span class="o">=</span> <span class="s">&quot;saltedToken&quot;</span><span class="o">;</span>
-<span class="k">try</span> <span class="o">{</span>
-    <span class="n">md</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">&quot;SHA-512&quot;</span><span class="o">);</span>
-    <span class="n">md</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">saltedToken</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
-    <span class="kt">byte</span> <span class="n">byteData</span><span class="o">[]</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="na">digest</span><span class="o">();</span>
-    <span class="n">String</span> <span class="n">base64</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">byteData</span><span class="o">,</span> <span class="n">Base64</span><span class="o">.</span><span class="na">NO_WRAP</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">Log</span><span class="o">.</span><span class="na">w</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Could not load MessageDigest: SHA-512&quot;</span><span class="o">);</span>
-    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-<span class="o">}</span></code></pre></div>
-
-<p>The important thing to note here is the Base64.NO_WRAP flag which ensures that while encoding, the encoder should omit all line terminators which is exactly what the JS encoder does.</p>
-
-<p>Cheers! :D</p>
-
-
-  </article>
-  
-</div>
-
-<div class="pagination">
-  
-    <a class="pagination-item older" href="/page2">Older</a>
-  
-  
-    <span class="pagination-item newer">Newer</span>
-  
-</div>
+</article>
 
         
-<!-- Add Disqus comments. -->
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'vshivam';
-    
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
       </main>
 
       <footer class="footer">
         <small>
-          &copy; <time datetime="2015-10-12T23:10:48+08:00">2015</time>. All rights reserved.
+          &copy; <time datetime="2015-10-13T16:37:47+08:00">2015</time>. All rights reserved.
         </small>
       </footer>
     </div>

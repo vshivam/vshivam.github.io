@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Generating compatible SHA512 Hash between Java and JavaScript using CryptoJS
+comments: True
 ---
 
 While working on the development of a secure way for authenticating a remote web application with the Ambient Dynamix Framework, I needed to generate a SHA512 of a salt and token which the web application could transmit to the framework via a dynamically generated QR Code. The Dynamix instance running on the android device can then use this hash to verify the authenticity of any further HTTP requests.
@@ -13,12 +14,12 @@ The [CryptoJS](https://code.google.com/p/crypto-js/) library provides a multitud
 To be able to use the hasher, include:
 
 {% highlight html %}
-	<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js"></script>
-	<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
+<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js"></script>
+<script type="text/javascript" src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
 {% endhighlight %}
 and then : 
 
-{% highlight html %}
+{% highlight js %}
 //replace saltedToken with the relevant data.
 var hashWordArray = CryptoJS.SHA512('saltedToken');
 {% endhighlight %}
@@ -31,7 +32,7 @@ CryptoJS also provides the encoding feature. To use the encoding methods, includ
 {% endhighlight %}
 
 and then :
-{% highlight javascript %}
+{% highlight js %}
 var base64HashString = hashWordArray.toString(CryptoJS.enc.Base64);
 {% endhighlight %}
 

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Dynamically change jQuery Mobile colour swatch. &middot; Shivam Verma
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Shivam Verma" href="/atom.xml">
+</head>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68715317-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Shivam Verma</a>
+          
+            &nbsp;&nbsp;&nbsp;
+            <small><a href="/portfolio">Portfolio</a></small>
+          
+            &nbsp;&nbsp;&nbsp;
+            <small><a href="/about">About</a></small>
+          
+            &nbsp;&nbsp;&nbsp;
+            <small><a href="/atom.xml">Feed</a></small>
+          
+        </h3>
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Dynamically change jQuery Mobile colour swatch.</h1>
+  <time datetime="2015-06-07T00:00:00+08:00" class="post-date">07 Jun 2015</time>
+  <p>There’s no easy way to be able to switch the jQuery Mobile colour swatch dynamically for the whole page. A quick google search suggests <a href="http://stackoverflow.com/questions/7347664/change-jquery-mobile-color-swatch-dynamically" target="_blank">this</a> stackoverflow question where the accepted answer suggests removing and adding relevant classes for the required colour swatch.</p>
+
+<p>For instance :</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.ui-body-&#39;</span> <span class="o">+</span> <span class="nx">currentTheme</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;ui-body-&#39;</span> <span class="o">+</span> <span class="nx">currentTheme</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;ui-body-&#39;</span> <span class="o">+</span> <span class="nx">selectedTheme</span><span class="p">);</span>    
+<span class="p">});</span></code></pre></div>
+
+<p>There are a bunch of other elements that you’ll need to update as mentioned in the answer. It seems to work! But I am not too sure if this approach will cover all jQM supported elements. </p>
+
+<p>I found another (hacky?) way which works and should cover each and every jQM supported element.</p>
+
+<p>The straightforward way to apply a particular colour swatch is to use the data-theme attribute. So, to apply the colour swatch ‘a’ to a page :</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;page&quot;</span> <span class="na">data-theme=</span><span class="s">&quot;a&quot;</span><span class="nt">&gt;</span>
+...
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<p>Now, to be able to switch themes, another approach would be to have two css stylesheets for the same colour swatch ‘a’ and we could just switch the stylesheet using js whenever we needed to change the theme. This’ll ensure that we do not need to update the class values for each element as mentioned in the stackoverflow answer since all properties for the theme ‘a’ are already applied to elements.</p>
+
+<p>To generate these stylesheets we use the <a href="https://themeroller.jquerymobile.com/">themeroller</a>. In general, the themeroller is used to generate a stylesheet for different swatches (a, b, ..z) which could then be applied by setting the data-theme attribute. But in our case, we’ll use it generate two different stylesheets by the name ‘a’.</p>
+
+<p>As an example, we’ll use the default stylesheet provided by jQM to generate a light and a dark theme. Here’s a short video tutorial about downloading the two stylesheets :</p>
+
+<p align="center">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/f-aAeVrxc1I" frameborder="0" allowfullscreen=""></iframe>
+</p>
+<p>Now, let’s assume that we want to start with the light theme. So, we include the following in the head of the html page. </p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">id=</span><span class="s">&quot;ui-stylesheet&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/light/themes/light.min.css&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">id=</span><span class="s">&quot;icon-stylesheet&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/light/themes/jquery.mobile.icons.min.css&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
+
+<p>with the data-theme attribute set to ‘a’ for the page element.</p>
+
+<p>Now, whenever you need to update the colour swatch : </p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html">$(&#39;#ui-stylesheet&#39;).attr(href:&quot;css/dark/themes/dark.min.css&quot;);
+$(&#39;#icon-stylesheet&#39;).attr(href:&quot;css/dark/themes/jquery.mobile.icons.min.css&quot;);</code></pre></div>
+
+<p>Updating based on radio button selection : </p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;theme-switch&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;fieldset</span> <span class="na">data-role=</span><span class="s">&quot;controlgroup&quot;</span> <span class="na">data-type=</span><span class="s">&quot;horizontal&quot;</span> <span class="na">data-mini=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;legend&gt;</span>Select a Theme:<span class="nt">&lt;/legend&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;theme-radio-btn&quot;</span> <span class="na">id=</span><span class="s">&quot;radio-choice-h-2a&quot;</span> <span class="na">value=</span><span class="s">&quot;light&quot;</span> <span class="na">checked=</span><span class="s">&quot;checked&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;radio-choice-h-2a&quot;</span><span class="nt">&gt;</span>Light<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;theme-radio-btn&quot;</span> <span class="na">id=</span><span class="s">&quot;radio-choice-h-2b&quot;</span> <span class="na">value=</span><span class="s">&quot;dark&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;radio-choice-h-2b&quot;</span><span class="nt">&gt;</span>Dark<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;/fieldset&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input:radio[name=theme-radio-btn]&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">theme_value</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">theme_value</span><span class="p">){</span>
+        <span class="k">case</span> <span class="s2">&quot;dark&quot;</span><span class="o">:</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Setting dark theme&quot;</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#ui-stylesheet&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="nx">href</span><span class="o">:</span><span class="s2">&quot;css/dark/themes/dark.min.css&quot;</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#icon-stylesheet&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="nx">href</span><span class="o">:</span><span class="s2">&quot;css/dark/themes/jquery.mobile.icons.min.css&quot;</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s2">&quot;light&quot;</span><span class="o">:</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Setting light theme&quot;</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#ui-stylesheet&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="nx">href</span><span class="o">:</span><span class="s2">&quot;css/light/themes/light.min.css&quot;</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#icon-stylesheet&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="nx">href</span><span class="o">:</span><span class="s2">&quot;css/light/themes/jquery.mobile.icons.min.css&quot;</span><span class="p">);</span>   
+            <span class="k">break</span><span class="p">;</span>            
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
+
+<p>Hope this helps!</p>
+
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2015/06/09/compatible-rsa-encryption/">
+            Android, JavaScript and Python compatible RSA Encryption.
+            <small><time datetime="2015-06-09T00:00:00+08:00">09 Jun 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/02/17/dnssd-python/">
+            Multicast DNS Service discovery in python.
+            <small><time datetime="2015-02-17T00:00:00+08:00">17 Feb 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/02/15/jmdns-service-discovery/">
+            Using JmDNS for service advertisement and discovery on android.
+            <small><time datetime="2015-02-15T00:00:00+08:00">15 Feb 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+        
+<!-- Add Disqus comments. -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'vshivam';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; <time datetime="2015-10-13T16:37:47+08:00">2015</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+
+
+  </body>
+</html>
