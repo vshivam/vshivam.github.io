@@ -28,7 +28,16 @@ version:             2.0.0
 github:
   repo:              https://github.com/poole/poole
 
-pages_list:      
+collections:
+  open_source:
+    output: true
+    permalink: /projects/:path/
+  research:
+    output: true
+    permalink: /projects/:path/
+
+pages_list:    
+  Blog: '/index.html'  
   Portfolio : '/portfolio'
   About: '/about'
   Feed: '/atom.xml'
