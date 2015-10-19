@@ -14,3 +14,12 @@ While the api could be used without the need of any physical interaction between
 
 * NFC to Interact - We tested out the _NFC to interact_ pairing mechanism on Raspberry Pi 2 with an NFC chip. 
 * Scan to Interact - The _scan to interact_ mechanism is based on a simple QR code mechanism and is currently used by DynamixJS to enable legacy websites to be contextually aware. 
+
+<p align="center">
+	<iframe src="https://player.vimeo.com/video/142874730?color=ff9933" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</p>
+
+<strong>More about DynamixPy</strong>
+
+* [Gesture Recognition Plugin](https://bitbucket.org/dynamixdevelopers/gesture-recognition-samsung)
+* [NFC to Interact Plugin](https://bitbucket.org/dynamixdevelopers/nfc-to-interact/src)

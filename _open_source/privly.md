@@ -19,6 +19,10 @@ In the [latest commit](https://github.com/privly/privly-android/tree/21351ed05eb
 	Sharing protected content using Privly - Android
 </p>
 
+<strong>Invited Talk : </strong>
+
+* [Fossasia 2015](http://2015.fossasia.org/#speakers)
+
 <strong>More about Privly : </strong>
 
 * [Privly featured on the Google Open Source Blog !!](http://google-opensource.blogspot.sg/2014/12/google-summer-of-code-wrap-up-privly.html)

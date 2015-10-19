@@ -23,7 +23,7 @@ It could then guide vector control measures which could be carried out to reduce
 
 <strong> More about Dengue Mapper </strong>
 
-* [Play Store URL](https://play.google.com/store/apps/details?id=sg.nus.comp.fci.denguemapper&hl=en)
+* [Play Store](https://play.google.com/store/apps/details?id=sg.nus.comp.fci.denguemapper&hl=en)
 * [Featured on Ambient Dynamix Webpage !](http://ambientdynamix.org/news/dynamix-joins-the-fight-against-dengue-fever)
 
 ---
