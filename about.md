@@ -18,9 +18,9 @@ I'm 24 and currently work as a Research Assistant at the [Felicitous Computing I
 
 I graduated from [BITS Pilani](https://en.wikipedia.org/wiki/Birla_Institute_of_Technology_and_Science,_Pilani_%E2%80%93_Goa_Campus) with a Bachelors in Information Systems and prior to joining NUS, I worked as a Software Developer at [Teewe](http://teewe.in/) in Bangalore, India. 
 
-On the open source front, I started the android version of [Privly](https://github.com/privly/privly-android) as a Google Summer of Code student in 2013 and have since been maintaining the project. 
+On the open source front, I started the android version of [Privly](https://github.com/privly/privly-android) as a Google Summer of Code student in 2013 and have since been maintaining the project. I also contribute to the [Ambient Dynamix](http://ambientdynamix.org/) Project. 
 
-I've traveled extensively in India. I've also been to Japan, where I hiked the Mount Fuji overnight, The United States of America to attend the Google Summer of Code Reunion and I'm visiting Seoul next week to attend the IoT 2015 Conference.  
+I've traveled extensively in India. I've also been to Japan, where I summited the Mount Fuji overnight, The United States of America to attend the Google Summer of Code Reunion and I'm also visiting Seoul next week to attend the IoT 2015 Conference.  
 
 ###Contact
 You can drop me an email at first-name[dot]bitsgoa[at]gmail.com or tweet to me @vshivam. 

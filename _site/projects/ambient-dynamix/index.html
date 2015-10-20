@@ -65,12 +65,29 @@
       <main>
         <article class="page">
   <h2 class="page-title">Ambient Dynamix</h1>
-  <ul>
-  <li>NFC to Interact </li>
-  <li>Scan to Interact</li>
-  <li>Gesture Recognition</li>
-  <li>Activity Recognition </li>
-  <li>JmDNS</li>
+  <h3 id="whats-ambient-dynamix-httpambientdynamixorg"><a href="http://ambientdynamix.org/">What’s Ambient Dynamix ?</a></h3>
+<p>Ambient Dynamix (Dynamix) is a lightweight software framework that transforms a user’s mobile device into an adaptive smart gateway to the Internet of Things. Dynamix enables mobile apps and Web apps to fluidly interact with the physical world through advanced sensing, control and actuation plug-ins that can be installed into the user’s device on-demand. A Dynamix-enabled device can also serve as a gateway between mutually incompatible smart devices that are situated in the user’s environment. Dynamix comes with a growing collection of ready-made plug-ins and provides open SDKs that enable 3rd party developers to create and share new plug-in types with the community.</p>
+
+<h3 id="plugins">Plugins</h3>
+
+<p><a href="http://ambientdynamix.org/documentation/plug-in-development-guide#nav2">What are these plugins and how do they work ?</a></p>
+
+<ul>
+  <li>
+    <p><strong>NFC to Interact</strong> - The NFC to Interact plugin, enables a Dynamix device to read a pairing code from an NFC chip and then update the Dynamix pairing server with the relevant details. The <a href="http://localhost:4000/projects/dynamix-py">DynamixPy Demo</a> uses this plugin to setup a secure communication channel with a Raspberry Pi. <br /> <a href="https://bitbucket.org/dynamixdevelopers/nfc-to-interact/">[Source Code]</a></p>
+  </li>
+  <li>
+    <p><strong>Scan to Interact</strong> - The Scan to Interact plugin behaves the same as the NFC to Interact plugin. However, the pairing code in this case is received by scanning a QR Code. The plugin is used by <a href="http://localhost:4000/projects/ambient-flow">Ambient Flow</a> to setup a secure communication channel between the Flow Designer and the Dynamix device. <br /> <a href="https://bitbucket.org/dynamixdevelopers/barcodepluginzbar/src/9debc4897c69d11d40a8800df6a2caaebaeb4e68?at=develop&gt;">[Source Code]</a></p>
+  </li>
+  <li>
+    <p><strong>Gesture Recognition</strong> - Apps requiring support of gestures on a Samsung device can make use of this plugin. It can detect the TOP, BOTTOM, LEFT and RIGHT palm movement in front of the device.  The <a href="http://localhost:4000/projects/dynamix-py">DynamixPy Demo</a> uses this plugin to detect gestures to lock and unlock the Raspberry Pi. <br /><a href="https://bitbucket.org/dynamixdevelopers/activityrecognition/">[Source Code]</a></p>
+  </li>
+  <li>
+    <p><strong>Activity Recognition</strong> - The Activity Recognition plugin makes use of the Google Activity Recognition APIs to provide information to the requesting application. Check out the <a href="https://bitbucket.org/dynamixdevelopers/activityrecognition/src/1d0eaeb6af26dad9448b5411e2a7aa06af5a92b3/ActivityRecognition-Datatypes/src/main/java/org/ambientdynamix/contextplugins/activityrecognition/CustomDetectedActivity.java?at=develop&amp;fileviewer=file-view-default">CustomActivityDetected</a> class for the list of supported activities. Every activity is associdated with a confidence level, an integer between 0 and 100. <br /> <a href="https://bitbucket.org/dynamixdevelopers/activityrecognition/src">[Source Code]</a></p>
+  </li>
+  <li>
+    <p><strong>Dynamix Service Advertiser</strong> - This plugin enables Dynamix to advertise it’s service using the JmDNS library. <a href="https://bitbucket.org/dynamixdevelopers/dynamix-python-apis/src">DynamixPy</a> has an experimental support for service discovery which enables it to reconnect to Dynamix devices as and when the device moves in and out of the network. <br /><a href="https://bitbucket.org/vshivam/dynamix-service-advertiser/">[Source Code]</a></p>
+  </li>
 </ul>
 
 </article>
@@ -87,7 +104,7 @@
       </center>
           <!--
           &copy; 
-          <time datetime="2015-10-20T18:58:56+08:00">2015</time>. All rights reserved.
+          <time datetime="2015-10-20T21:34:18+08:00">2015</time>. All rights reserved.
           -->
         </small>
       </footer>
