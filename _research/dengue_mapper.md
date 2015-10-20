@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Dengue Mapper (Ongoing)
+subtitle : Analyzing movement patterns of Dengue Patients in Singapore.
 description : An application on the Android platform for analyzing the movement patterns of a hundred dengue patients along with a hundred control users in Singapore. The study aims to guide control measures which could be carried out to reduce the incidences of mosquito breeding and dengue infection in Singapore.
 
 ---

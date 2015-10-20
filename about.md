@@ -11,24 +11,16 @@ layout: page
 	<a href="https://twitter.com/vshivam"> <i class="fa fa-twitter fa-3x"></i></a> 
 </div>
 </p>
-In the novel, *The Strange Case of Dr. Jekyll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
 
-There are currently two themes built on Poole:
+Hi! I'm Shivam Verma. I'm an open source enthusiast, a ubiquitous computing researcher, traveler and music lover. 
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+I'm 24 and currently work as a Research Assistant at the [Felicitous Computing Institute](http://fci.comp.nus.edu.sg/), National University of Singapore.
 
-Learn more and contribute on [GitHub](https://github.com/poole).
+I graduated from [BITS Pilani](https://en.wikipedia.org/wiki/Birla_Institute_of_Technology_and_Science,_Pilani_%E2%80%93_Goa_Campus) with a Bachelors in Information Systems and prior to joining NUS, I worked as a Software Developer at [Teewe](http://teewe.in/) in Bangalore, India. 
 
-## Setup
+On the open source front, I started the android version of [Privly](https://github.com/privly/privly-android) as a Google Summer of Code student in 2013 and have since been maintaining the project. 
 
-Some fun facts about the setup of this project include:
+I've traveled extensively in India. I've also been to Japan, where I hiked the Mount Fuji overnight, The United States of America to attend the Google Summer of Code Reunion and I'm visiting Seoul next week to attend the IoT 2015 Conference.  
 
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
+###Contact
+You can drop me an email at first-name[dot]bitsgoa[at]gmail.com or tweet to me @vshivam. 

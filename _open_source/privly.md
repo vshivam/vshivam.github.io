@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Privly
-
+subtitle : Protecting your content on the web.
 description: An open source project built by contributors from around the world, that helps you protect your content in the wild. It gives you more than privacy, it gives you security and enables you to protect your content from being exposed in the long run. 
 
 ---

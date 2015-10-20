@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Ambient Flow
+subtitle: Remixing the Internet of Things.
 description : Ambient Flow provides a set of novel smart space design tools, which enable non-programmers to visually “remix” their ambient environments in new, playful and potentially unforeseen ways using an intuitive flow-graph model.
 thumbnail: assets/portfolio/userStudyPhoto.jpg
 ---
@@ -15,7 +16,7 @@ Ambient Flow provides a set of novel smart space design tools, which enable non-
 
 <center> 
 	<strong>
-		A user study participant controls the light bulb using the sphero robotic ball
+		A user study participant controls the lifx light bulb using the sphero robotic ball
 	</strong>
 </center>
 <br/>

@@ -6,16 +6,17 @@ title: Portfolio
 ### Research Projects
 {% for project in site.research %}
 
-* [{{ project.title }} ]({{ project.url }}) - 
+**[{{ project.title }}]({{ project.url }}) - {{project.subtitle}}** <br/>
 {{ project.description}}
 
  ---
 
 {% endfor %}
 
-### Open Source Contributions
+### Open Source Projects
 {% for project in site.open_source %}
 
-* [{{ project.title }} ]({{ project.url }}) -  {{ project.description }}
+**[{{ project.title }}]({{ project.url }}) - {{project.subtitle}}** <br/>
+{{ project.description}}
 
 {% endfor %}

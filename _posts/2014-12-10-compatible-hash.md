@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Generating compatible SHA512 Hash between Java and JavaScript using CryptoJS
+title: Generating compatible SHA512 Hash between Java and JavaScript using CryptoJS.
 comments: True
 ---
 
