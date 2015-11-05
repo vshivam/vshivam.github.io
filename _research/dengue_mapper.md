@@ -18,7 +18,7 @@ dengue patients along with a hundred control users in Singapore. The application
 <p align="center">
 	<iframe src="https://player.vimeo.com/video/142143184?color=ff9933" width="500" height="319" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
 </p>
-The study is currently underway and a part of the Dengue Fever study from the NUS Saw Swee School of Public Health and NUS School of Computing in collaboration with the Tan Tock Seng Hospital in Singapore. The study aims to identify the types of places and location where they may be high incidences of mosquito breeding and dengue infection. 
+The study is currently underway and a part of the Dengue Fever study from the NUS Saw Swee School of Public Health and NUS School of Computing in collaboration with the Tan Tock Seng Hospital in Singapore. The study aims to identify the types of places and location where there may be high incidences of mosquito breeding and dengue infection. 
 
 It could then guide vector control measures which could be carried out to reduce the incidences of mosquito breeding and dengue infection in those locations. 
 
