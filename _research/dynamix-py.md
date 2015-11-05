@@ -1,7 +1,7 @@
 ---
 layout: page
 title: DynamixPy
-subtitle : Making desktops Context - Aware. 
+subtitle : Making desktops context-aware. 
 description : A fully functional version of DynamixPy for devices that support python. Any Python app developer can easily drop-in this py library and use runtime installed Dynamix plug-ins to discover rich, high order contextual information, perform context-aware adaptations to influence the user's physical environment.
 ---
 
