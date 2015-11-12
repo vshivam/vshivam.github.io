@@ -1,6 +1,6 @@
 ---
 layout: page
-title: DynamixPy
+title: DynamixPy 1.x
 subtitle : Making desktops context-aware. 
 description : A fully functional version of DynamixPy for devices that support python. Any Python app developer can easily drop-in this py library and use runtime installed Dynamix plug-ins to discover rich, high order contextual information, perform context-aware adaptations to influence the user's physical environment.
 ---
@@ -11,10 +11,7 @@ This project aims to bring developers and users back to desktops by allowing the
 
 We present a fully functional version of DynamixPy for devices that support python. A python based app developer can easily drop-in this py library and use runtime installed Dynamix plug-ins to discover rich, high order contextual information, perform context-aware adaptations and influence the user's physical environment.
 
-While the api could be used without the need of any physical interaction between the desktop and the mobile by using service discovery, we developed two pairing mechanisms to setup a secure communication channel between the Ambient Dynamix instance  :
-
-* NFC to Interact - We tested out the _NFC to interact_ pairing mechanism on Raspberry Pi 2 with an NFC chip. 
-* Scan to Interact - The _scan to interact_ mechanism is based on a simple QR code mechanism and is currently used by DynamixJS to enable legacy websites to be contextually aware. 
+While the api could be used without the need of any physical interaction between the desktop and the mobile by using service discovery, the library also provides the _NFC to Interact_ pairing mechanism to support encryption. We tested this pairing mechanism on a Raspberry Pi 2 with an NFC chip. 
 
 The following video shows a demo of how a python script running on a raspberry pi uses DynamixPy to listen to gestures on the user's android device. As you'll see in the video, once the listener is setup, python logger uses the bottom to top gesture to lock the raspberry pi and the opposite gesture to popup the unlock dialog. 
 
@@ -32,4 +29,3 @@ Detailed explanation of how to use DynamixPy in your own python app can be found
 * [DynamixPy Logger](https://bitbucket.org/dynamixdevelopers/dynamix-python-apis/src/1124d0c71776ba7116ec2d1f90b968079efbc29d?at=master)
 * [Gesture Recognition Plugin](https://bitbucket.org/dynamixdevelopers/gesture-recognition-samsung)
 * [NFC to Interact Plugin](https://bitbucket.org/dynamixdevelopers/nfc-to-interact/src)
-* [DynamixJS](https://bitbucket.org/dynamixdevelopers/dynamix-2.x-javascript-apis/)

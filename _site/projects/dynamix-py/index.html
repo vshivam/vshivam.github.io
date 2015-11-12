@@ -11,7 +11,7 @@
 
   <title>
     
-      DynamixPy &middot; Shivam Verma
+      DynamixPy 1.x &middot; Shivam Verma
     
   </title>
 
@@ -64,19 +64,14 @@
 
       <main>
         <article class="page">
-  <h2 class="page-title">DynamixPy</h1>
+  <h2 class="page-title">DynamixPy 1.x</h1>
   <p>Developers are moving more and more towards mobile technologies due to the easy availabilty of a number of personalization techniques they can offer by being contextually aware.</p>
 
 <p>This project aims to bring developers and users back to desktops by allowing them to personalize the desktop experience using contextually relevant data from a user’s mobile device. </p>
 
 <p>We present a fully functional version of DynamixPy for devices that support python. A python based app developer can easily drop-in this py library and use runtime installed Dynamix plug-ins to discover rich, high order contextual information, perform context-aware adaptations and influence the user’s physical environment.</p>
 
-<p>While the api could be used without the need of any physical interaction between the desktop and the mobile by using service discovery, we developed two pairing mechanisms to setup a secure communication channel between the Ambient Dynamix instance  :</p>
-
-<ul>
-  <li>NFC to Interact - We tested out the <em>NFC to interact</em> pairing mechanism on Raspberry Pi 2 with an NFC chip. </li>
-  <li>Scan to Interact - The <em>scan to interact</em> mechanism is based on a simple QR code mechanism and is currently used by DynamixJS to enable legacy websites to be contextually aware. </li>
-</ul>
+<p>While the api could be used without the need of any physical interaction between the desktop and the mobile by using service discovery, the library also provides the <em>NFC to Interact</em> pairing mechanism to support encryption. We tested this pairing mechanism on a Raspberry Pi 2 with an NFC chip. </p>
 
 <p>The following video shows a demo of how a python script running on a raspberry pi uses DynamixPy to listen to gestures on the user’s android device. As you’ll see in the video, once the listener is setup, python logger uses the bottom to top gesture to lock the raspberry pi and the opposite gesture to popup the unlock dialog. </p>
 
@@ -94,7 +89,6 @@
   <li><a href="https://bitbucket.org/dynamixdevelopers/dynamix-python-apis/src/1124d0c71776ba7116ec2d1f90b968079efbc29d?at=master">DynamixPy Logger</a></li>
   <li><a href="https://bitbucket.org/dynamixdevelopers/gesture-recognition-samsung">Gesture Recognition Plugin</a></li>
   <li><a href="https://bitbucket.org/dynamixdevelopers/nfc-to-interact/src">NFC to Interact Plugin</a></li>
-  <li><a href="https://bitbucket.org/dynamixdevelopers/dynamix-2.x-javascript-apis/">DynamixJS</a></li>
 </ul>
 
 </article>
@@ -111,7 +105,7 @@
       </center>
           <!--
           &copy; 
-          <time datetime="2015-11-05T19:29:10+08:00">2015</time>. All rights reserved.
+          <time datetime="2015-11-12T15:05:57+08:00">2015</time>. All rights reserved.
           -->
         </small>
       </footer>
