@@ -20,7 +20,9 @@ I graduated from [BITS Goa](https://en.wikipedia.org/wiki/Birla_Institute_of_Tec
 
 On the open source front, I started the android version of [Privly](https://github.com/privly/privly-android) as a Google Summer of Code student in 2013 and have since been maintaining the project. I also contribute to the [Ambient Dynamix](http://ambientdynamix.org/) Project. 
 
-I've traveled extensively in India. I've also been to Japan, where I summited the Mount Fuji overnight, the United States of America to attend the 10th Google Summer of Code Reunion. In October of 2015, I visited Seoul, to attend the 5th International Conference on Internet of Things. 
+I've traveled extensively in India. I've also been to Japan, the USA and South Korea. New Zealand currently is on the top of my travel bucket list. 
+
+<iframe src="https://www.google.com/maps/d/embed?mid=zW38gweCTgWA.kFNiEcQ2r8DY" width="500" height="319"></iframe>
 
 ###Contact
 You can drop me an email at first-name[dot]bitsgoa[at]gmail.com or tweet to me @vshivam. 
