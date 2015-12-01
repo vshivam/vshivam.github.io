@@ -32,5 +32,5 @@ in <strong>5th International Conference on the Internet of Things (IoT 2015) </s
 
 <strong>Awards : </strong>
 
-* <strong>Best Demo Award</strong> at the <strong>5th International Conference on the Internet of Things (IoT 2015) </strong>
+* [Best Demo Award at the 5th International Conference on the Internet of Things (IoT 2015)](http://dynamix.io/news/best-demo-award-at-iot-2015)
 

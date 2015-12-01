@@ -4,7 +4,7 @@
  <title>Shivam Verma</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2015-11-30T18:06:28+08:00</updated>
+ <updated>2015-12-01T18:23:17+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
@@ -1175,9 +1175,9 @@ For example -&lt;/p&gt;
  
  <entry>
    <title>Google Summer of Code Begins!!</title>
-   <link href="http://localhost:4000/2013/06/16/gsoc-beings/"/>
+   <link href="http://localhost:4000/2013/06/16/gsoc-begins/"/>
    <updated>2013-06-16T00:00:00+08:00</updated>
-   <id>http://localhost:4000/2013/06/16/gsoc-beings</id>
+   <id>http://localhost:4000/2013/06/16/gsoc-begins</id>
    <content type="html">&lt;p&gt;So well, I was lucky enough to make it to the final selections for the Google Summer of Code 2013 with The Privly Foundation. Feels awesome!
 I’ll be working on the Mobile Version of &lt;a href=&quot;https://privlyalpha.org/&amp;quot;&amp;gt;https://privlyalpha.org/&quot;&gt;Privly&lt;/a&gt; for the Android Platform.
 “Privly makes it possible for you to control your data after posting it across the internet. You can post to Facebook without allowing Facebook access to your communications, you can even unsend emails. Privly works by extending browsers to look for specially formatted links, which are then ‘injected’ into the pages you are viewing. Privly is a Foundation owned concept being made by and for all internet users.”&lt;/p&gt;
