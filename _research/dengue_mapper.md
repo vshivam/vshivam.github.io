@@ -22,7 +22,7 @@ The study is currently underway and a part of the Dengue Fever study from the NU
 
 It could then guide vector control measures which could be carried out to reduce the incidences of mosquito breeding and dengue infection in those locations. 
 
-<strong> More about Dengue Mapper </strong>
+<strong> More about Dengue Mapper :</strong>
 
 * [Play Store](https://play.google.com/store/apps/details?id=sg.nus.comp.fci.denguemapper&hl=en)
 * [Featured on Ambient Dynamix Webpage !](http://ambientdynamix.org/news/dynamix-joins-the-fight-against-dengue-fever)
