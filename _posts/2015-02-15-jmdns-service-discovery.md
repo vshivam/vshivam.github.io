@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Using JmDNS for service advertisement and discovery on android.
+title: Using JmDNS for service advertisement and discovery on Android.
 comments: True
 ---
 

@@ -4,7 +4,7 @@
  <title>Shivam Verma</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2015-12-06T15:20:38+08:00</updated>
+ <updated>2015-12-06T15:39:35+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
@@ -395,7 +395,7 @@ $(&amp;#39;#icon-stylesheet&amp;#39;).attr(href:&amp;quot;css/dark/themes/jquery
  </entry>
  
  <entry>
-   <title>Using JmDNS for service advertisement and discovery on android.</title>
+   <title>Using JmDNS for service advertisement and discovery on Android.</title>
    <link href="http://localhost:4000/2015/02/15/jmdns-service-discovery/"/>
    <updated>2015-02-15T00:00:00+08:00</updated>
    <id>http://localhost:4000/2015/02/15/jmdns-service-discovery</id>
