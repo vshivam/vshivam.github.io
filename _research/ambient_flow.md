@@ -32,5 +32,9 @@ in <strong>5th International Conference on the Internet of Things (IoT 2015) </s
 
 <strong>Awards : </strong>
 
-* [Best Demo Award at the 5th International Conference on the Internet of Things (IoT 2015)](http://dynamix.io/news/best-demo-award-at-iot-2015)
+* [Best Demo Award](http://www.iot-conference.org/iot2015/awards/) at the <strong> 5th International Conference on the Internet of Things (IoT 2015) </strong>
+
+<strong>Related : </strong>
+
+* [Featured on the NUS School of Computing webpage.](https://gala2014.comp.nus.edu.sg/news/2015IOT.html)
 
