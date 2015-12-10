@@ -17,7 +17,6 @@ The following video shows a demo of how a python script running on a raspberry p
 
 <p align="center">
 	<iframe src="https://player.vimeo.com/video/147292614?color=ff9933" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-	DynamixPy Demo
 </p>
 
 Detailed explanation of how to use DynamixPy in your own python app can be found in the [DynamixPy source code repository](https://bitbucket.org/dynamixdevelopers/dynamix-python-apis/src/ecb83df9ddc712626818f5261fadf2f722c9249d?at=master). 

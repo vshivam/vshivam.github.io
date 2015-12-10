@@ -10,14 +10,8 @@ The number of networked “smart devices” available in everyday environments i
 
 Ambient Flow provides a set of novel smart space design tools, which enable non-programmers to visually “remix” their ambient environments in new, playful and potentially unforeseen ways using an intuitive flow-graph model.
 
-![User Study]({{ site.url }}/assets/portfolio/userStudyPhoto.jpg)
-
-![Web User Interface]({{ site.url }}/assets/portfolio/webUi.png)
-
 <center> 
-	<strong>
-		A user study participant controls the lifx light bulb using the sphero robotic ball
-	</strong>
+	<iframe src="https://player.vimeo.com/video/148456907?color=ff9933" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </center>
 <br/>
 
