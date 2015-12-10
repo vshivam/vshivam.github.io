@@ -16,7 +16,7 @@ Hi! I'm Shivam Verma. I'm an open source enthusiast, a ubiquitous computing rese
 
 I'm 24 and currently work as a Research Assistant at the [Felicitous Computing Institute](http://fci.comp.nus.edu.sg/), National University of Singapore.
 
-I graduated from [BITS Goa](https://en.wikipedia.org/wiki/Birla_Institute_of_Technology_and_Science,_Pilani_%E2%80%93_Goa_Campus) with a Bachelors in Information Systems and prior to joining NUS, I worked as a Software Developer at [Teewe](http://teewe.in/) in Bangalore, India. 
+I graduated from the [Goa Campus of BITS Pilani](https://en.wikipedia.org/wiki/Birla_Institute_of_Technology_and_Science,_Pilani_%E2%80%93_Goa_Campus) with a Bachelors in Information Systems and prior to joining NUS, I worked as a Software Developer at [Teewe](http://teewe.in/) in Bangalore, India. 
 
 On the open source front, I started the android version of [Privly](https://github.com/privly/privly-android) as a Google Summer of Code student in 2013 and have since been maintaining the project. I also contribute to the [Ambient Dynamix](http://ambientdynamix.org/) Project. 
 
