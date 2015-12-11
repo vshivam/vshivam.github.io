@@ -19,10 +19,10 @@ Ambient Flow provides a set of novel smart space design tools, which enable non-
 
 * D. Carlson, M. Mogerle, M. Pagel, <strong>S. Verma</strong>, and D. S. Rosenblum, “Ambient flow: A
 visual approach for remixing the internet of things” in <strong>5th International
-Conference on the Internet of Things (IoT 2015) </strong> <br/> [[Full Paper]]({{site.url}}/assets/portfolio/papers/Ambient_Flow.pdf)
+Conference on Internet of Things (IoT 2015) </strong> <br/> [[Full Paper]]({{site.url}}/assets/portfolio/papers/Ambient_Flow.pdf)
 
 * D. Carlson, M. Mogerle, M. Pagel, <strong>S. Verma</strong>, and D. S. Rosenblum, "A Visual Design Toolset for Drag-and-drop Smart Space Configuration" 
-in <strong>5th International Conference on the Internet of Things (IoT 2015) </strong> <br/> [[Demo Paper]]({{site.url}}/assets/portfolio/papers/Demo_Ambient_Flow.pdf)
+in <strong>5th International Conference on Internet of Things (IoT 2015) </strong> <br/> [[Demo Paper]]({{site.url}}/assets/portfolio/papers/Demo_Ambient_Flow.pdf)
 
 <strong>Awards : </strong>
 
