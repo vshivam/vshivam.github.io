@@ -10,6 +10,8 @@ When the web app is running on an Android device, any request can be made direct
 
 All the encryption, pairing related code is handled by the library internally and the only thing that the developer needs to do is specify if the connection should be encrypted. 
 
+The [Ambient Flow]({{ site.url }}/projects/ambient_flow) prototype makes use of the DynamixJS library to deploy IoT designs in the real world. 
+
 <strong>Related : </strong>
 
 * [DynamixJS Source Code](https://bitbucket.org/dynamixdevelopers/dynamix-2.x-javascript-apis/src/?at=encryption)

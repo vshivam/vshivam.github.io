@@ -18,7 +18,7 @@ I'm 24 and currently work as a Research Assistant at the [Felicitous Computing I
 
 I graduated from the [Goa Campus of BITS Pilani](https://en.wikipedia.org/wiki/Birla_Institute_of_Technology_and_Science,_Pilani_%E2%80%93_Goa_Campus) with a Bachelors in Information Systems and prior to joining NUS, I worked as a Software Developer at [Teewe](http://teewe.in/) in Bangalore, India. 
 
-On the open source front, I started the android version of [Privly](https://github.com/privly/privly-android) as a Google Summer of Code student in 2013 and have since been maintaining the project. I also contribute to the [Ambient Dynamix](http://ambientdynamix.org/) Project. 
+On the open source front, I started the Android version of [Privly](https://priv.ly/) as a Google Summer of Code student in 2013 and have since been maintaining the project. I also frequently contribute to the [Ambient Dynamix](http://ambientdynamix.org/) Project. 
 
 I've traveled extensively in India. I've also been to Japan, the USA and South Korea. New Zealand currently is on the top of my travel bucket list. 
 
