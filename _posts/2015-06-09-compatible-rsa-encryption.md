@@ -4,7 +4,7 @@ title: Android, JavaScript and Python compatible RSA Encryption.
 comments: True
 ---
 
-It's extremely painful to implement RSA Encryption so that data encrypted on either of these platforms can be easily decrypted on the other platforms and even more so for someone like me who had almost zero knowledge of programming using encryption algorithms. 
+It's somewhat complicated to implement RSA Encryption so that data encrypted on either of these platforms can be easily decrypted on the other platforms and even more so for someone like me who had almost zero knowledge of programming using encryption algorithms. 
 
 While developing an initial pairing mechanism for Ambient Dynamix, I had already settled on the <a href="https://github.com/digitalbazaar/forge">forge</a> library for javascript because of the availability of symmetric, asymmetric encryption algorithms, password based key derivation functions and hashing algorithms. It also had a fair performance according to <a href="http://dominictarr.github.io/crypto-bench/">this</a> evaluation. 
 

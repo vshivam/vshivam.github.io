@@ -4,7 +4,7 @@
  <title>Shivam Verma</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2015-12-18T15:24:35+08:00</updated>
+ <updated>2015-12-29T12:57:29+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
@@ -17,7 +17,7 @@
    <link href="http://localhost:4000/2015/06/09/compatible-rsa-encryption/"/>
    <updated>2015-06-09T00:00:00+08:00</updated>
    <id>http://localhost:4000/2015/06/09/compatible-rsa-encryption</id>
-   <content type="html">&lt;p&gt;It’s extremely painful to implement RSA Encryption so that data encrypted on either of these platforms can be easily decrypted on the other platforms and even more so for someone like me who had almost zero knowledge of programming using encryption algorithms. &lt;/p&gt;
+   <content type="html">&lt;p&gt;It’s somewhat complicated to implement RSA Encryption so that data encrypted on either of these platforms can be easily decrypted on the other platforms and even more so for someone like me who had almost zero knowledge of programming using encryption algorithms. &lt;/p&gt;
 
 &lt;p&gt;While developing an initial pairing mechanism for Ambient Dynamix, I had already settled on the &lt;a href=&quot;https://github.com/digitalbazaar/forge&quot;&gt;forge&lt;/a&gt; library for javascript because of the availability of symmetric, asymmetric encryption algorithms, password based key derivation functions and hashing algorithms. It also had a fair performance according to &lt;a href=&quot;http://dominictarr.github.io/crypto-bench/&quot;&gt;this&lt;/a&gt; evaluation. &lt;/p&gt;
 
