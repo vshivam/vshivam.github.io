@@ -24,5 +24,5 @@ I've traveled extensively in India. I've also been to Japan, the USA and South K
 
 <iframe src="https://www.google.com/maps/d/embed?mid=zW38gweCTgWA.kFNiEcQ2r8DY" width="500" height="319"></iframe>
 
-###Contact
+### Contact
 You can drop me an email at first-name[dot]bitsgoa[at]gmail.com or tweet to me @vshivam. 
