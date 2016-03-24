@@ -42,7 +42,7 @@
       <header class="masthead">
         <center>
           <h2 class="masthead-title">
-            <a href="http://localhost:4000">Shivam Verma</a>
+            <a href="http://vshivam.github.io">Shivam Verma</a>
             <br/>
             
               &nbsp;&nbsp;&nbsp;
@@ -70,124 +70,124 @@
 
 <p>To get an idea of what DNS Service discovery is and how it works, check out <a href="http://www.dns-sd.org/">this</a> and <a href="http://www.multicastdns.org/">this</a>.</p>
 
-<p>Here’s the sample code with comments for explanation. </p>
+<p>Here’s the sample code with comments for explanation.</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DnssdDiscovery</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DnssdDiscovery</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
 	<span class="n">android</span><span class="o">.</span><span class="na">net</span><span class="o">.</span><span class="na">wifi</span><span class="o">.</span><span class="na">WifiManager</span><span class="o">.</span><span class="na">MulticastLock</span> <span class="n">lock</span><span class="o">;</span>
 	<span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Handler</span> <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Handler</span><span class="o">();</span>
 	<span class="kd">private</span> <span class="n">String</span> <span class="n">LOGTAG</span> <span class="o">=</span> <span class="n">getClass</span><span class="o">().</span><span class="na">getSimpleName</span><span class="o">();</span>
 
 	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="n">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
 		<span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
 		<span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">main</span><span class="o">);</span>
 	<span class="o">}</span>
 
 	<span class="nd">@Override</span>
-	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onStart</span><span class="o">()</span> <span class="o">{</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="n">onStart</span><span class="o">()</span> <span class="o">{</span>
 		<span class="kd">super</span><span class="o">.</span><span class="na">onStart</span><span class="o">();</span>
 		<span class="n">setUp</span><span class="o">();</span>
 	<span class="o">}</span>
 
-	<span class="kd">private</span> <span class="n">String</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;_dynamix._tcp.local.&quot;</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">type</span> <span class="o">=</span> <span class="s">"_dynamix._tcp.local."</span><span class="o">;</span>
 	<span class="kd">private</span> <span class="n">JmDNS</span> <span class="n">jmdns</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
 	<span class="kd">private</span> <span class="n">ServiceListener</span> <span class="n">listener</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
 	<span class="kd">private</span> <span class="n">ServiceInfo</span> <span class="n">serviceInfo</span><span class="o">;</span>
 
-	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kt">void</span> <span class="n">setUp</span><span class="o">()</span> <span class="o">{</span>
 
-		<span class="k">new</span> <span class="nf">Thread</span><span class="o">(</span><span class="k">new</span> <span class="nf">Runnable</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{</span>
 
 			<span class="nd">@Override</span>
-			<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+			<span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">()</span> <span class="o">{</span>
 				<span class="n">android</span><span class="o">.</span><span class="na">net</span><span class="o">.</span><span class="na">wifi</span><span class="o">.</span><span class="na">WifiManager</span> <span class="n">wifi</span> <span class="o">=</span> <span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">net</span><span class="o">.</span><span class="na">wifi</span><span class="o">.</span><span class="na">WifiManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">Context</span><span class="o">.</span><span class="na">WIFI_SERVICE</span><span class="o">);</span>
 				
-				<span class="cm">/*Allows an application to receive </span>
-<span class="cm">				Wifi Multicast packets. Normally the Wifi stack </span>
-<span class="cm">				filters out packets not explicitly addressed to </span>
-<span class="cm">				this device. Acquiring a MulticastLock will cause </span>
-<span class="cm">				the stack to receive packets addressed to multicast</span>
-<span class="cm">				addresses. Processing these extra packets can </span>
-<span class="cm">				cause a noticable battery drain and should be </span>
-<span class="cm">				disabled when not needed. */</span>
+				<span class="cm">/*Allows an application to receive 
+				Wifi Multicast packets. Normally the Wifi stack 
+				filters out packets not explicitly addressed to 
+				this device. Acquiring a MulticastLock will cause 
+				the stack to receive packets addressed to multicast
+				addresses. Processing these extra packets can 
+				cause a noticable battery drain and should be 
+				disabled when not needed. */</span>
 				<span class="n">lock</span> <span class="o">=</span> <span class="n">wifi</span><span class="o">.</span><span class="na">createMulticastLock</span><span class="o">(</span><span class="n">getClass</span><span class="o">().</span><span class="na">getSimpleName</span><span class="o">());</span>
 				
-				<span class="cm">/*Controls whether this is a reference-counted or </span>
-<span class="cm">				non-reference- counted MulticastLock. </span>
-<span class="cm">				Reference-counted MulticastLocks keep track of the </span>
-<span class="cm">				number of calls to acquire() and release(), and </span>
-<span class="cm">				only stop the reception of multicast packets when </span>
-<span class="cm">				every call to acquire() has been balanced with a </span>
-<span class="cm">				call to release(). Non-reference- counted </span>
-<span class="cm">				MulticastLocks allow the reception of multicast </span>
-<span class="cm">				packets whenever acquire() is called and stop </span>
-<span class="cm">				accepting multicast packets whenever release() is </span>
-<span class="cm">				called.*/</span>
+				<span class="cm">/*Controls whether this is a reference-counted or 
+				non-reference- counted MulticastLock. 
+				Reference-counted MulticastLocks keep track of the 
+				number of calls to acquire() and release(), and 
+				only stop the reception of multicast packets when 
+				every call to acquire() has been balanced with a 
+				call to release(). Non-reference- counted 
+				MulticastLocks allow the reception of multicast 
+				packets whenever acquire() is called and stop 
+				accepting multicast packets whenever release() is 
+				called.*/</span>
 				<span class="n">lock</span><span class="o">.</span><span class="na">setReferenceCounted</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
 				
 				<span class="k">try</span> <span class="o">{</span>
 					<span class="n">InetAddress</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">getLocalIpAddress</span><span class="o">();</span>
 					<span class="n">String</span> <span class="n">hostname</span> <span class="o">=</span> <span class="n">addr</span><span class="o">.</span><span class="na">getHostName</span><span class="o">();</span>
 					<span class="n">lock</span><span class="o">.</span><span class="na">acquire</span><span class="o">();</span>
-					<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">&quot;Addr : &quot;</span> <span class="o">+</span> <span class="n">addr</span><span class="o">);</span>
-					<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">&quot;Hostname : &quot;</span> <span class="o">+</span> <span class="n">hostname</span><span class="o">);</span>
+					<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">"Addr : "</span> <span class="o">+</span> <span class="n">addr</span><span class="o">);</span>
+					<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">"Hostname : "</span> <span class="o">+</span> <span class="n">hostname</span><span class="o">);</span>
 					<span class="n">jmdns</span> <span class="o">=</span> <span class="n">JmDNS</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">addr</span><span class="o">,</span> <span class="n">hostname</span><span class="o">);</span>
-					<span class="n">listener</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ServiceListener</span><span class="o">()</span> <span class="o">{</span>
+					<span class="n">listener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServiceListener</span><span class="o">()</span> <span class="o">{</span>
 
-						<span class="cm">/*</span>
-<span class="cm">						 * Note:This event is only the service added event. The</span>
-<span class="cm">						 * service info associated with this event does not</span>
-<span class="cm">						 * include resolution information.</span>
-<span class="cm">						 */</span>
+						<span class="cm">/*
+						 * Note:This event is only the service added event. The
+						 * service info associated with this event does not
+						 * include resolution information.
+						 */</span>
 						<span class="nd">@Override</span>
-						<span class="kd">public</span> <span class="kt">void</span> <span class="nf">serviceAdded</span><span class="o">(</span><span class="n">ServiceEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-							<span class="cm">/*</span>
-<span class="cm">							 * Request service information.</span>
-<span class="cm">                                                         * The information about the service is requested and the</span>
-<span class="cm">							 * ServiceListener.resolveService method is called</span>
-<span class="cm">							 * as soon as it is available.</span>
-<span class="cm">							 */</span>
+						<span class="kd">public</span> <span class="kt">void</span> <span class="n">serviceAdded</span><span class="o">(</span><span class="n">ServiceEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+							<span class="cm">/*
+							 * Request service information.
+                                                         * The information about the service is requested and the
+							 * ServiceListener.resolveService method is called
+							 * as soon as it is available.
+							 */</span>
 							<span class="n">jmdns</span><span class="o">.</span><span class="na">requestServiceInfo</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getType</span><span class="o">(),</span>
 							<span class="n">event</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="mi">1000</span><span class="o">);</span>
 						<span class="o">}</span>
 
-						<span class="cm">/*</span>
-<span class="cm">						 * A service has been resolved. Its details are now</span>
-<span class="cm">						 * available in the ServiceInfo record.</span>
-<span class="cm">						 */</span>
+						<span class="cm">/*
+						 * A service has been resolved. Its details are now
+						 * available in the ServiceInfo record.
+						 */</span>
 						<span class="nd">@Override</span>
-						<span class="kd">public</span> <span class="kt">void</span> <span class="nf">serviceResolved</span><span class="o">(</span><span class="n">ServiceEvent</span> <span class="n">ev</span><span class="o">)</span> <span class="o">{</span>
-							<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">&quot;Service resolved: &quot;</span> <span class="o">+</span> <span class="n">ev</span><span class="o">.</span><span class="na">getInfo</span><span class="o">().</span><span class="na">getQualifiedName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; port:&quot;</span> <span class="o">+</span> <span class="n">ev</span><span class="o">.</span><span class="na">getInfo</span><span class="o">().</span><span class="na">getPort</span><span class="o">());</span>
-							<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">&quot;Service Type : &quot;</span> <span class="o">+</span> <span class="n">ev</span><span class="o">.</span><span class="na">getInfo</span><span class="o">().</span><span class="na">getType</span><span class="o">());</span>
+						<span class="kd">public</span> <span class="kt">void</span> <span class="n">serviceResolved</span><span class="o">(</span><span class="n">ServiceEvent</span> <span class="n">ev</span><span class="o">)</span> <span class="o">{</span>
+							<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">"Service resolved: "</span> <span class="o">+</span> <span class="n">ev</span><span class="o">.</span><span class="na">getInfo</span><span class="o">().</span><span class="na">getQualifiedName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" port:"</span> <span class="o">+</span> <span class="n">ev</span><span class="o">.</span><span class="na">getInfo</span><span class="o">().</span><span class="na">getPort</span><span class="o">());</span>
+							<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">"Service Type : "</span> <span class="o">+</span> <span class="n">ev</span><span class="o">.</span><span class="na">getInfo</span><span class="o">().</span><span class="na">getType</span><span class="o">());</span>
 						<span class="o">}</span>
 
 						<span class="nd">@Override</span>
-						<span class="kd">public</span> <span class="kt">void</span> <span class="nf">serviceRemoved</span><span class="o">(</span><span class="n">ServiceEvent</span> <span class="n">ev</span><span class="o">)</span> <span class="o">{</span>
-							<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">&quot;Service removed: &quot;</span> <span class="o">+</span> <span class="n">ev</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+						<span class="kd">public</span> <span class="kt">void</span> <span class="n">serviceRemoved</span><span class="o">(</span><span class="n">ServiceEvent</span> <span class="n">ev</span><span class="o">)</span> <span class="o">{</span>
+							<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">"Service removed: "</span> <span class="o">+</span> <span class="n">ev</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
 						<span class="o">}</span>
 
 					<span class="o">};</span>
 					<span class="n">jmdns</span><span class="o">.</span><span class="na">addServiceListener</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">listener</span><span class="o">);</span>
 
-					<span class="cm">/*</span>
-<span class="cm">					 * Advertising a JmDNS Service </span>
+					<span class="cm">/*
+					 * Advertising a JmDNS Service 
 
-<span class="cm">                                         * Construct a service description for registering with JmDNS. </span>
-<span class="cm">					 * Parameters: </span>
-<span class="cm">					 * type : fully qualified service type name, such as _dynamix._tcp.local</span>
-<span class="cm">					 * name : unqualified service instance name, such as DynamixInstance </span>
-<span class="cm">					 * port : the local port on which the service runs text string describing the service</span>
-<span class="cm">					 * text : text describing the service</span>
-<span class="cm">					 */</span>
+                                         * Construct a service description for registering with JmDNS. 
+					 * Parameters: 
+					 * type : fully qualified service type name, such as _dynamix._tcp.local
+					 * name : unqualified service instance name, such as DynamixInstance 
+					 * port : the local port on which the service runs text string describing the service
+					 * text : text describing the service
+					 */</span>
 					<span class="n">serviceInfo</span> <span class="o">=</span> <span class="n">ServiceInfo</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">type</span><span class="o">,</span>
-						<span class="s">&quot;DynamixInstance&quot;</span><span class="o">,</span> <span class="mi">7433</span><span class="o">,</span>
-						<span class="s">&quot;Service Advertisement for Ambient Dynamix&quot;</span><span class="o">);</span>
+						<span class="s">"DynamixInstance"</span><span class="o">,</span> <span class="mi">7433</span><span class="o">,</span>
+						<span class="s">"Service Advertisement for Ambient Dynamix"</span><span class="o">);</span>
 
 					<span class="cm">/*A Key value map that can be advertised with the service*/</span>
 					<span class="n">serviceInfo</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">getDeviceDetailsMap</span><span class="o">());</span>
 					<span class="n">jmdns</span><span class="o">.</span><span class="na">registerService</span><span class="o">(</span><span class="n">serviceInfo</span><span class="o">);</span>
-					<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">&quot;Service Type : &quot;</span> <span class="o">+</span> <span class="n">serviceInfo</span><span class="o">.</span><span class="na">getType</span><span class="o">());</span>
-					<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">&quot;Service Registration thread complete&quot;</span><span class="o">);</span>
+					<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">"Service Type : "</span> <span class="o">+</span> <span class="n">serviceInfo</span><span class="o">.</span><span class="na">getType</span><span class="o">());</span>
+					<span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">LOGTAG</span><span class="o">,</span> <span class="s">"Service Registration thread complete"</span><span class="o">);</span>
 				<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
 					<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
 					<span class="k">return</span><span class="o">;</span>
@@ -198,7 +198,7 @@
 	<span class="o">}</span>
 
 	<span class="nd">@Override</span>
-	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onStop</span><span class="o">()</span> <span class="o">{</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="n">onStop</span><span class="o">()</span> <span class="o">{</span>
 		<span class="kd">super</span><span class="o">.</span><span class="na">onStop</span><span class="o">();</span>
 		<span class="c1">//Unregister services</span>
 		<span class="k">if</span> <span class="o">(</span><span class="n">jmdns</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
@@ -218,32 +218,32 @@
 		<span class="n">lock</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
 	<span class="o">}</span>
 
-	<span class="kd">private</span> <span class="n">InetAddress</span> <span class="nf">getLocalIpAddress</span><span class="o">()</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">InetAddress</span> <span class="n">getLocalIpAddress</span><span class="o">()</span> <span class="o">{</span>
 		<span class="n">WifiManager</span> <span class="n">wifiManager</span> <span class="o">=</span> <span class="o">(</span><span class="n">WifiManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">WIFI_SERVICE</span><span class="o">);</span>
 		<span class="n">WifiInfo</span> <span class="n">wifiInfo</span> <span class="o">=</span> <span class="n">wifiManager</span><span class="o">.</span><span class="na">getConnectionInfo</span><span class="o">();</span>
 		<span class="kt">int</span> <span class="n">ipAddress</span> <span class="o">=</span> <span class="n">wifiInfo</span><span class="o">.</span><span class="na">getIpAddress</span><span class="o">();</span>
 		<span class="n">InetAddress</span> <span class="n">address</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
 		<span class="k">try</span> <span class="o">{</span>
 			<span class="n">address</span> <span class="o">=</span> <span class="n">InetAddress</span><span class="o">.</span><span class="na">getByName</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">Locale</span><span class="o">.</span><span class="na">ENGLISH</span><span class="o">,</span>
-				<span class="s">&quot;%d.%d.%d.%d&quot;</span><span class="o">,</span> <span class="o">(</span><span class="n">ipAddress</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">),</span> <span class="o">(</span><span class="n">ipAddress</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">),</span> <span class="o">(</span><span class="n">ipAddress</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">),</span> <span class="o">(</span><span class="n">ipAddress</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">)));</span>
+				<span class="s">"%d.%d.%d.%d"</span><span class="o">,</span> <span class="o">(</span><span class="n">ipAddress</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">),</span> <span class="o">(</span><span class="n">ipAddress</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">),</span> <span class="o">(</span><span class="n">ipAddress</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">),</span> <span class="o">(</span><span class="n">ipAddress</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="o">)));</span>
 		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnknownHostException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
 			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
 		<span class="o">}</span>
 		<span class="k">return</span> <span class="n">address</span><span class="o">;</span>
 	<span class="o">}</span>
 
-	<span class="kd">private</span> <span class="n">Map</span> <span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getDeviceDetailsMap</span><span class="o">()</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">Map</span> <span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">getDeviceDetailsMap</span><span class="o">()</span> <span class="o">{</span>
 		<span class="n">Map</span> <span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">info</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span> <span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">();</span>
-		<span class="n">info</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;device_name&quot;</span><span class="o">,</span> <span class="s">&quot;my_device_name&quot;</span><span class="o">);</span>
+		<span class="n">info</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"device_name"</span><span class="o">,</span> <span class="s">"my_device_name"</span><span class="o">);</span>
 		<span class="k">return</span> <span class="n">info</span><span class="o">;</span>
 	<span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 
 <p>Don’t forget to include the following permissions in the Android Manifest.</p>
 
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.INTERNET&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_WIFI_STATE&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.CHANGE_WIFI_MULTICAST_STATE&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.ACCESS_WIFI_STATE"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.CHANGE_WIFI_MULTICAST_STATE"</span> <span class="nt">/&gt;</span></code></pre></figure>
 
 <p>Will follow up with a post on how to discover these services from your desktop using python. Cheers!</p>
 
@@ -313,7 +313,7 @@
       </center>
           <!--
           &copy; 
-          <time datetime="2016-01-29T14:53:21+08:00">2016</time>. All rights reserved.
+          <time datetime="2016-03-24T17:08:37+08:00">2016</time>. All rights reserved.
           -->
         </small>
       </footer>

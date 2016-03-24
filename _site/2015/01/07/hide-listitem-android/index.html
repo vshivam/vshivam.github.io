@@ -42,7 +42,7 @@
       <header class="masthead">
         <center>
           <h2 class="masthead-title">
-            <a href="http://localhost:4000">Shivam Verma</a>
+            <a href="http://vshivam.github.io">Shivam Verma</a>
             <br/>
             
               &nbsp;&nbsp;&nbsp;
@@ -68,51 +68,51 @@
   <time datetime="2015-01-07T00:00:00+08:00" class="post-date">07 Jan 2015</time>
   <p>Ideally when I have to remove a list item from a listview, I’d remove the data object from the collection which the adapter uses and then do a <code> adapter.notifyDataSetChanged() </code> call which’ll redraw the list view.</p>
 
-<p>Consider an adapter which uses an array list of Strings. </p>
+<p>Consider an adapter which uses an array list of Strings.</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleAdapter</span> <span class="kd">extends</span> <span class="n">BaseAdapter</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleAdapter</span> <span class="kd">extends</span> <span class="n">BaseAdapter</span> <span class="o">{</span>
     <span class="n">Activity</span> <span class="n">activity</span><span class="o">;</span>
     <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listItems</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="nf">SampleAdapter</span><span class="o">(</span><span class="n">Activity</span> <span class="n">activity</span><span class="o">,</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listItems</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">SampleAdapter</span><span class="o">(</span><span class="n">Activity</span> <span class="n">activity</span><span class="o">,</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listItems</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">activity</span> <span class="o">=</span> <span class="n">activtity</span><span class="o">;</span>
         <span class="k">this</span><span class="o">.</span><span class="na">listItems</span> <span class="o">=</span> <span class="n">listItems</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">View</span> <span class="nf">getView</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="n">View</span> <span class="n">convertView</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">View</span> <span class="n">getView</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="n">View</span> <span class="n">convertView</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">String</span> <span class="n">testString</span> <span class="o">=</span> <span class="n">listItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">position</span><span class="o">);</span>
     <span class="o">}</span>    
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 
-<p>Now, to delete an item from the ListView, </p>
+<p>Now, to delete an item from the ListView,</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">listItems</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">position</span><span class="o">);</span>
-<span class="n">adapter</span><span class="o">.</span><span class="na">notifyDataSetChanged</span><span class="o">();</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">listItems</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">position</span><span class="o">);</span>
+<span class="n">adapter</span><span class="o">.</span><span class="na">notifyDataSetChanged</span><span class="o">();</span></code></pre></figure>
 
-<p>But this approach also removes the item from the <code>listItems</code> ArrayList. </p>
+<p>But this approach also removes the item from the <code>listItems</code> ArrayList.</p>
 
 <h3 id="what-if-i-do-not-want-to-remove-the-item-from-the-collection-and-prevent-it-from-displaying-in-the-listview">What if I do not want to remove the item from the collection and prevent it from displaying in the ListView?</h3>
 
-<p>A couple of solutions suggest setting the height of the list item to 0 or to set the visibility of the view to <code>GONE</code> but this does not solve the problem effectively because the list item separator still shows up in the list view making it look clumsy. </p>
+<p>A couple of solutions suggest setting the height of the list item to 0 or to set the visibility of the view to <code>GONE</code> but this does not solve the problem effectively because the list item separator still shows up in the list view making it look clumsy.</p>
 
-<p>To tackle this problem, I’ll use another ArrayList which stores the positions of items in the <code>listItems</code> ArrayList which shouldn’t show up in the ListView. </p>
+<p>To tackle this problem, I’ll use another ArrayList which stores the positions of items in the <code>listItems</code> ArrayList which shouldn’t show up in the ListView.</p>
 
-<p>Let’s define another ArrayList of Integers which can store these positions, as an instance variable, and add the logic of hiding a particular view in the<code>getView()</code> method of the adapter. </p>
+<p>Let’s define another ArrayList of Integers which can store these positions, as an instance variable, and add the logic of hiding a particular view in the<code>getView()</code> method of the adapter.</p>
 
 <p>Also, check out the <code>getCount()</code> method which should return the correct size of the number of items in the ListView.</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleAdapter</span> <span class="kd">extends</span> <span class="n">BaseAdapter</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleAdapter</span> <span class="kd">extends</span> <span class="n">BaseAdapter</span> <span class="o">{</span>
     <span class="n">Activity</span> <span class="n">activity</span><span class="o">;</span>
     <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listItems</span><span class="o">;</span>
     <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">hiddenPositions</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
 
-    <span class="kd">public</span> <span class="nf">SampleAdapter</span><span class="o">(</span><span class="n">Activity</span> <span class="n">activity</span><span class="o">,</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listItems</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">SampleAdapter</span><span class="o">(</span><span class="n">Activity</span> <span class="n">activity</span><span class="o">,</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listItems</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">activity</span> <span class="o">=</span> <span class="n">activtity</span><span class="o">;</span>
         <span class="k">this</span><span class="o">.</span><span class="na">listItems</span> <span class="o">=</span> <span class="n">listItems</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">View</span> <span class="nf">getView</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="n">View</span> <span class="n">convertView</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">View</span> <span class="n">getView</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="n">View</span> <span class="n">convertView</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span>
         <span class="c1">// The following small snippet of code ensures </span>
         <span class="c1">// that we skip data from all the hidden positions </span>
         <span class="c1">// and use the updated position to fetch the </span>
@@ -126,12 +126,12 @@
     <span class="o">}</span>    
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCount</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">getCount</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">listItems</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="n">hiddenPositions</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 
-<p>Now, whenever I need to hide an item from appearing in the ListView, I add the position value to the <code>hiddenPositions</code> ArrayList and do a <code>notifyDataSetChanged()</code> call. </p>
+<p>Now, whenever I need to hide an item from appearing in the ListView, I add the position value to the <code>hiddenPositions</code> ArrayList and do a <code>notifyDataSetChanged()</code> call.</p>
 
 <p>To show hidden items again, just remove the position value from the <code> hiddenPositions </code> ArrayList and call <code> notifyDataSetChanged() </code>.</p>
 
@@ -203,7 +203,7 @@
       </center>
           <!--
           &copy; 
-          <time datetime="2016-01-29T14:53:21+08:00">2016</time>. All rights reserved.
+          <time datetime="2016-03-24T17:08:37+08:00">2016</time>. All rights reserved.
           -->
         </small>
       </footer>

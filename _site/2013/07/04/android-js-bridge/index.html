@@ -42,7 +42,7 @@
       <header class="masthead">
         <center>
           <h2 class="masthead-title">
-            <a href="http://localhost:4000">Shivam Verma</a>
+            <a href="http://vshivam.github.io">Shivam Verma</a>
             <br/>
             
               &nbsp;&nbsp;&nbsp;
@@ -70,15 +70,15 @@
 
 <p>The Posting applications being in Javascript created a really interesting problem of integration with the Native Android Code. Something I had never really worked with before.  The solution was however pretty simple. A Js interface is added to the WebView which enables the Js to talk to Java and then depending on the user selection, the Js code for either of the Posting Applications is loaded in the WebView.</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">WebView</span> <span class="n">w</span> <span class="o">=</span> <span class="o">(</span><span class="n">WebView</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">webview_1</span><span class="o">);</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">WebView</span> <span class="n">w</span> <span class="o">=</span> <span class="o">(</span><span class="n">WebView</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">webview_1</span><span class="o">);</span>
 <span class="n">w</span><span class="o">.</span><span class="na">getSettings</span><span class="o">().</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-<span class="n">w</span><span class="o">.</span><span class="na">addJavascriptInterface</span><span class="o">(</span><span class="k">new</span> <span class="nf">JsObject</span><span class="o">(</span><span class="k">this</span><span class="o">),</span> <span class="s">&quot;androidJsBridge&quot;</span><span class="o">);</span></code></pre></div>
+<span class="n">w</span><span class="o">.</span><span class="na">addJavascriptInterface</span><span class="o">(</span><span class="k">new</span> <span class="n">JsObject</span><span class="o">(</span><span class="k">this</span><span class="o">),</span> <span class="s">"androidJsBridge"</span><span class="o">);</span></code></pre></figure>
 
 <p>The <code>JsObject Class</code> defines the functions that are accessible to Js.</p>
 
 <p>Like,</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JsObject</span><span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JsObject</span><span class="o">{</span>
 
     <span class="n">Context</span> <span class="n">c</span><span class="o">;</span>
 
@@ -87,17 +87,17 @@
     <span class="o">}</span>
 
     <span class="nd">@JavascriptInterface</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDeviceVersion</span><span class="o">(){</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getDeviceVersion</span><span class="o">(){</span>
         <span class="n">String</span> <span class="n">deviceVersion</span><span class="o">=</span> <span class="n">Build</span><span class="o">.</span><span class="na">VERSION</span><span class="o">.</span><span class="na">RELEASE</span><span class="o">;</span>
-        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&quot;androidJSBridge Version Request&quot;</span><span class="o">,</span><span class="n">deviceVersion</span><span class="o">);</span>
+        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"androidJSBridge Version Request"</span><span class="o">,</span><span class="n">deviceVersion</span><span class="o">);</span>
         <span class="k">return</span> <span class="n">deviceVersion</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 
 <p>And the Js Code of the Posting-Applications can access these functions by using the androidJsBridge.
 For example -</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">android_version</span> <span class="o">=</span> <span class="nx">androidJsBridge</span><span class="p">.</span><span class="nx">getDeviceVersion</span><span class="p">();</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">android_version</span> <span class="o">=</span> <span class="nx">androidJsBridge</span><span class="p">.</span><span class="nx">getDeviceVersion</span><span class="p">();</span></code></pre></figure>
 
 <p>I also pushed some Android specific Js code to the Posting-Applications branch and now, the Android Application is now able to generate PlainPost and ZeroBin Links and allows the user to share the new Privly Urls.</p>
 
@@ -169,7 +169,7 @@ For example -</p>
       </center>
           <!--
           &copy; 
-          <time datetime="2016-01-29T14:53:21+08:00">2016</time>. All rights reserved.
+          <time datetime="2016-03-24T17:08:37+08:00">2016</time>. All rights reserved.
           -->
         </small>
       </footer>

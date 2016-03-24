@@ -42,7 +42,7 @@
       <header class="masthead">
         <center>
           <h2 class="masthead-title">
-            <a href="http://localhost:4000">Shivam Verma</a>
+            <a href="http://vshivam.github.io">Shivam Verma</a>
             <br/>
             
               &nbsp;&nbsp;&nbsp;
@@ -66,11 +66,11 @@
         <article class="post">
   <h1 class="post-title">Multicast DNS Service discovery in python.</h1>
   <time datetime="2015-02-17T00:00:00+08:00" class="post-date">17 Feb 2015</time>
-  <p>As discussed in the last post, I use the JmDNS library for service advertisement on the local area network. You can refer to it <a href="http://localhost:4000/2015/02/15/jmdns-service-discovery/">here</a>. In this post, I’ll discuss how I used the <a href="https://github.com/wmcbrine/pyzeroconf">pyZeroconf</a> library to search for the service advertised by the android device. There do exist other libraries but the ones that I came across are dependent on <a href="http://en.wikipedia.org/wiki/Avahi_%28software%29">avahi</a> or <a href="http://en.wikipedia.org/wiki/Bonjour_%28software%29">bonjour</a> and need them to be pre installed on the system and since I was working on py based api, I preferred not to have the extra baggage.</p>
+  <p>As discussed in the last post, I use the JmDNS library for service advertisement on the local area network. You can refer to it <a href="http://vshivam.github.io/2015/02/15/jmdns-service-discovery/">here</a>. In this post, I’ll discuss how I used the <a href="https://github.com/wmcbrine/pyzeroconf">pyZeroconf</a> library to search for the service advertised by the android device. There do exist other libraries but the ones that I came across are dependent on <a href="http://en.wikipedia.org/wiki/Avahi_%28software%29">avahi</a> or <a href="http://en.wikipedia.org/wiki/Bonjour_%28software%29">bonjour</a> and need them to be pre installed on the system and since I was working on py based api, I preferred not to have the extra baggage.</p>
 
 <p>Here goes the sample code :</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">zeroconf</span> <span class="kn">import</span> <span class="o">*</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">zeroconf</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
@@ -80,37 +80,37 @@
 
     <span class="k">def</span> <span class="nf">removeService</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">zeroconf</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">print</span>
-        <span class="k">print</span> <span class="s">&quot;Service&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">&quot;removed&quot;</span>
+        <span class="k">print</span> <span class="s">"Service"</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">"removed"</span>
 
     <span class="k">def</span> <span class="nf">addService</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">zeroconf</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">print</span>
-        <span class="k">print</span> <span class="s">&quot;Service&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">&quot;added&quot;</span>
-        <span class="k">print</span> <span class="s">&quot;  Type is&quot;</span><span class="p">,</span> <span class="nb">type</span>
+        <span class="k">print</span> <span class="s">"Service"</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">"added"</span>
+        <span class="k">print</span> <span class="s">"  Type is"</span><span class="p">,</span> <span class="nb">type</span>
         <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">getServiceInfo</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">&quot;  Address is </span><span class="si">%s</span><span class="s">:</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">inet_ntoa</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">getAddress</span><span class="p">()),</span>
+            <span class="k">print</span> <span class="s">"  Address is </span><span class="si">%</span><span class="s">s:</span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span> <span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">inet_ntoa</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">getAddress</span><span class="p">()),</span>
                                           <span class="n">info</span><span class="o">.</span><span class="n">getPort</span><span class="p">())</span>
-            <span class="k">print</span> <span class="s">&quot;  Weight is </span><span class="si">%d</span><span class="s">, Priority is </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">getWeight</span><span class="p">(),</span>
+            <span class="k">print</span> <span class="s">"  Weight is </span><span class="si">%</span><span class="s">d, Priority is </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span> <span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">getWeight</span><span class="p">(),</span>
                                                       <span class="n">info</span><span class="o">.</span><span class="n">getPriority</span><span class="p">())</span>
-            <span class="k">print</span> <span class="s">&quot;  Server is&quot;</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">getServer</span><span class="p">()</span>
+            <span class="k">print</span> <span class="s">"  Server is"</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">getServer</span><span class="p">()</span>
             <span class="n">prop</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">getProperties</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">prop</span><span class="p">:</span>
-                <span class="k">print</span> <span class="s">&quot;  Properties are&quot;</span>
+                <span class="k">print</span> <span class="s">"  Properties are"</span>
                 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">prop</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="k">print</span> <span class="s">&quot;    </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+                    <span class="k">print</span> <span class="s">"    </span><span class="si">%</span><span class="s">s: </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">Zeroconf</span><span class="p">()</span>
-    <span class="nb">type</span> <span class="o">=</span> <span class="s">&quot;_dynamix._tcp.local.&quot;</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="s">"_dynamix._tcp.local."</span>
     <span class="n">listener</span> <span class="o">=</span> <span class="n">ServiceListener</span><span class="p">()</span>
     <span class="n">browser</span> <span class="o">=</span> <span class="n">ServiceBrowser</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">listener</span><span class="p">)</span>
     <span class="c"># Search for devices for 40 seconds. </span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
-    <span class="n">r</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></div>
+    <span class="n">r</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
 
-<p>We could also use pyBonjour to search for devices from the browser by a simple hack, since the browsers generally have no native support for service discovery. The following code is just a proof of concept and uses an always running Simple HTTP Server to serve the results to a request from the browser. </p>
+<p>We could also use pyBonjour to search for devices from the browser by a simple hack, since the browsers generally have no native support for service discovery. The following code is just a proof of concept and uses an always running Simple HTTP Server to serve the results to a request from the browser.</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">SocketServer</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">SocketServer</span>
 <span class="kn">import</span> <span class="nn">SimpleHTTPServer</span>
 <span class="kn">from</span> <span class="nn">zeroconf</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">socket</span>
@@ -125,31 +125,31 @@
 
     <span class="k">def</span> <span class="nf">removeService</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">zeroconf</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">print</span>
-        <span class="k">print</span> <span class="s">&quot;Service&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">&quot;removed&quot;</span>
+        <span class="k">print</span> <span class="s">"Service"</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">"removed"</span>
 
     <span class="k">def</span> <span class="nf">addService</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">zeroconf</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">print</span>
-        <span class="k">print</span> <span class="s">&quot;Service&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">&quot;added&quot;</span>
-        <span class="k">print</span> <span class="s">&quot;  Type is&quot;</span><span class="p">,</span> <span class="nb">type</span>
+        <span class="k">print</span> <span class="s">"Service"</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">"added"</span>
+        <span class="k">print</span> <span class="s">"  Type is"</span><span class="p">,</span> <span class="nb">type</span>
         <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">getServiceInfo</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
             <span class="c">#Currently only saving the ip address.</span>
             <span class="n">devices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">inet_ntoa</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">getAddress</span><span class="p">()))</span>
-            <span class="k">print</span> <span class="s">&quot;  Address is </span><span class="si">%s</span><span class="s">:</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">inet_ntoa</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">getAddress</span><span class="p">()),</span>
+            <span class="k">print</span> <span class="s">"  Address is </span><span class="si">%</span><span class="s">s:</span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span> <span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">inet_ntoa</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">getAddress</span><span class="p">()),</span>
                                           <span class="n">info</span><span class="o">.</span><span class="n">getPort</span><span class="p">())</span>
-            <span class="k">print</span> <span class="s">&quot;  Weight is </span><span class="si">%d</span><span class="s">, Priority is </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">getWeight</span><span class="p">(),</span>
+            <span class="k">print</span> <span class="s">"  Weight is </span><span class="si">%</span><span class="s">d, Priority is </span><span class="si">%</span><span class="s">d"</span> <span class="o">%</span> <span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">getWeight</span><span class="p">(),</span>
                                                       <span class="n">info</span><span class="o">.</span><span class="n">getPriority</span><span class="p">())</span>
-            <span class="k">print</span> <span class="s">&quot;  Server is&quot;</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">getServer</span><span class="p">()</span>
+            <span class="k">print</span> <span class="s">"  Server is"</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">getServer</span><span class="p">()</span>
             <span class="n">prop</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">getProperties</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">prop</span><span class="p">:</span>
-                <span class="k">print</span> <span class="s">&quot;  Properties are&quot;</span>
+                <span class="k">print</span> <span class="s">"  Properties are"</span>
                 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">prop</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="k">print</span> <span class="s">&quot;    </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+                    <span class="k">print</span> <span class="s">"    </span><span class="si">%</span><span class="s">s: </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">searchForDynamixServices</span><span class="p">():</span>
     <span class="k">del</span> <span class="n">devices</span><span class="p">[:]</span> <span class="c"># Clear list.</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">Zeroconf</span><span class="p">()</span>
-    <span class="nb">type</span> <span class="o">=</span> <span class="s">&quot;_dynamix._tcp.local.&quot;</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="s">"_dynamix._tcp.local."</span>
     <span class="n">listener</span> <span class="o">=</span> <span class="n">ServiceListener</span><span class="p">()</span>
     <span class="n">browser</span> <span class="o">=</span> <span class="n">ServiceBrowser</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">listener</span><span class="p">)</span>
     <span class="c">#Will only be searching for 5 seconds. </span>
@@ -162,10 +162,10 @@
 
 <span class="k">class</span> <span class="nc">CustomHandler</span><span class="p">(</span><span class="n">SimpleHTTPServer</span><span class="o">.</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">do_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">==</span><span class="s">&#39;/search&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">==</span><span class="s">'/search'</span><span class="p">:</span>
             <span class="c">#This URL will trigger our sample function and send what it returns back to the browser</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">send_response</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">send_header</span><span class="p">(</span><span class="s">&#39;Content-type&#39;</span><span class="p">,</span><span class="s">&#39;text/html&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">send_header</span><span class="p">(</span><span class="s">'Content-type'</span><span class="p">,</span><span class="s">'text/html'</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">end_headers</span><span class="p">()</span>
             <span class="c"># write the list of ip address as a response. </span>
             <span class="bp">self</span><span class="o">.</span><span class="n">wfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">searchForDynamixServices</span><span class="p">())</span>
@@ -175,11 +175,11 @@
             <span class="c">#current working directory</span>
             <span class="n">SimpleHTTPServer</span><span class="o">.</span><span class="n">SimpleHTTPRequestHandler</span><span class="o">.</span><span class="n">do_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-<span class="n">httpd</span> <span class="o">=</span> <span class="n">SocketServer</span><span class="o">.</span><span class="n">ThreadingTCPServer</span><span class="p">((</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">PORT</span><span class="p">),</span><span class="n">CustomHandler</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;serving at port&quot;</span><span class="p">,</span> <span class="n">PORT</span>
-<span class="n">httpd</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span></code></pre></div>
+<span class="n">httpd</span> <span class="o">=</span> <span class="n">SocketServer</span><span class="o">.</span><span class="n">ThreadingTCPServer</span><span class="p">((</span><span class="s">'localhost'</span><span class="p">,</span> <span class="n">PORT</span><span class="p">),</span><span class="n">CustomHandler</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">"serving at port"</span><span class="p">,</span> <span class="n">PORT</span>
+<span class="n">httpd</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span></code></pre></figure>
 
-<p>Now, if you make an HTTP Request to http://127.0.0.1:7679/search (better if async) , it starts a zeroconf search for the services of the type ‘_dynamix._tcp.local.’ and provides the ip list as the response. </p>
+<p>Now, if you make an HTTP Request to http://127.0.0.1:7679/search (better if async) , it starts a zeroconf search for the services of the type ‘_dynamix._tcp.local.’ and provides the ip list as the response.</p>
 
 <p>This can be made much more efficient (browsers might even have a persistent connection?), provide more useful data as the response but as a proof of concept, definitely works! Tested on Ubuntu 14.04 and Windows 7 :)</p>
 
@@ -249,7 +249,7 @@
       </center>
           <!--
           &copy; 
-          <time datetime="2016-01-29T14:53:21+08:00">2016</time>. All rights reserved.
+          <time datetime="2016-03-24T17:08:37+08:00">2016</time>. All rights reserved.
           -->
         </small>
       </footer>

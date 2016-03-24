@@ -42,7 +42,7 @@
       <header class="masthead">
         <center>
           <h2 class="masthead-title">
-            <a href="http://localhost:4000">Shivam Verma</a>
+            <a href="http://vshivam.github.io">Shivam Verma</a>
             <br/>
             
               &nbsp;&nbsp;&nbsp;
@@ -75,38 +75,39 @@
 
 <p>To be able to use the hasher, include:</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
 
-<p>and then : </p>
+<p>and then :</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">//replace saltedToken with the relevant data.</span>
-<span class="kd">var</span> <span class="nx">hashWordArray</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">SHA512</span><span class="p">(</span><span class="s1">&#39;saltedToken&#39;</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">//replace saltedToken with the relevant data.
+</span>
+<span class="kd">var</span> <span class="nx">hashWordArray</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">SHA512</span><span class="p">(</span><span class="s1">'saltedToken'</span><span class="p">);</span></code></pre></figure>
 
 <p>This returns the SHA512 Hash in a word array which is an array of 32-bit words. Now, to be able to transfer the hash, I encoded the array into a Base64 String so that I could use the same encoding in Java to generate the hash. There are other options too such as encoding into a Hex String.</p>
 
 <p>CryptoJS also provides the encoding feature. To use the encoding methods, include :</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span></code></pre></figure>
 
 <p>and then :</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">base64HashString</span> <span class="o">=</span> <span class="nx">hashWordArray</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Base64</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">base64HashString</span> <span class="o">=</span> <span class="nx">hashWordArray</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Base64</span><span class="p">);</span></code></pre></figure>
 
 <h3 id="generating-sha512-hash-in-java-">Generating SHA512 Hash in Java :</h3>
 <p>Now, to be able to verify the authenticity in Java, for a given String, I should be able to generate the same SHA512 Hash and this can be done using the following code :</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">MessageDigest</span> <span class="n">md</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-<span class="n">String</span> <span class="n">saltedToken</span> <span class="o">=</span> <span class="s">&quot;saltedToken&quot;</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">MessageDigest</span> <span class="n">md</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">saltedToken</span> <span class="o">=</span> <span class="s">"saltedToken"</span><span class="o">;</span>
 <span class="k">try</span> <span class="o">{</span>
-    <span class="n">md</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">&quot;SHA-512&quot;</span><span class="o">);</span>
+    <span class="n">md</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"SHA-512"</span><span class="o">);</span>
     <span class="n">md</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">saltedToken</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
     <span class="kt">byte</span> <span class="n">byteData</span><span class="o">[]</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="na">digest</span><span class="o">();</span>
     <span class="n">String</span> <span class="n">base64</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">byteData</span><span class="o">,</span> <span class="n">Base64</span><span class="o">.</span><span class="na">NO_WRAP</span><span class="o">);</span>
 <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">Log</span><span class="o">.</span><span class="na">w</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Could not load MessageDigest: SHA-512&quot;</span><span class="o">);</span>
+    <span class="n">Log</span><span class="o">.</span><span class="na">w</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">"Could not load MessageDigest: SHA-512"</span><span class="o">);</span>
     <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 
 <p>The important thing to note here is the Base64.NO_WRAP flag which ensures that while encoding, the encoder should omit all line terminators which is exactly what the JS encoder does.</p>
 
@@ -179,7 +180,7 @@
       </center>
           <!--
           &copy; 
-          <time datetime="2016-01-29T14:53:21+08:00">2016</time>. All rights reserved.
+          <time datetime="2016-03-24T17:08:37+08:00">2016</time>. All rights reserved.
           -->
         </small>
       </footer>

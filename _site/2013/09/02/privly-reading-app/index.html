@@ -42,7 +42,7 @@
       <header class="masthead">
         <center>
           <h2 class="masthead-title">
-            <a href="http://localhost:4000">Shivam Verma</a>
+            <a href="http://vshivam.github.io">Shivam Verma</a>
             <br/>
             
               &nbsp;&nbsp;&nbsp;
@@ -85,38 +85,38 @@
 
 <p>In onCreate() method</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Setup WebView to detect swipes.</span>
-<span class="n">gestureDetector</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">GestureDetector</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="k">new</span> <span class="nf">SwipeGestureDetector</span><span class="o">());</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Setup WebView to detect swipes.</span>
+<span class="n">gestureDetector</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GestureDetector</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="k">new</span> <span class="n">SwipeGestureDetector</span><span class="o">());</span>
 <span class="n">gestureListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnTouchListener</span><span class="o">()</span> <span class="o">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onTouch</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">,</span> <span class="n">MotionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">onTouch</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">,</span> <span class="n">MotionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">gestureDetector</span><span class="o">.</span><span class="na">onTouchEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">};</span>
 <span class="n">webView</span><span class="o">.</span><span class="na">setOnTouchListener</span><span class="o">(</span><span class="n">gestureListener</span><span class="o">);</span>
 <span class="o">[/</span><span class="n">sourcecode</span><span class="o">]</span>
 
-<span class="n">And</span> <span class="n">then</span> <span class="n">we</span> <span class="n">define</span> <span class="n">the</span> <span class="nf">SwipeGestureDector</span><span class="o">()</span> <span class="n">Class</span>
+<span class="n">And</span> <span class="n">then</span> <span class="n">we</span> <span class="n">define</span> <span class="n">the</span> <span class="nf">SwipeGestureDector</span><span class="p">(</span><span class="o">)</span> <span class="n">Class</span>
 
-<span class="o">[</span><span class="n">sourcecode</span> <span class="n">language</span><span class="o">=</span><span class="s">&quot;java&quot;</span><span class="o">]</span>
+<span class="o">[</span><span class="n">sourcecode</span> <span class="n">language</span><span class="o">=</span><span class="s">"java"</span><span class="o">]</span>
 <span class="kd">class</span> <span class="nc">SwipeGestureDetector</span> <span class="kd">extends</span> <span class="n">SimpleOnGestureListener</span> <span class="o">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onFling</span><span class="o">(</span><span class="n">MotionEvent</span> <span class="n">e1</span><span class="o">,</span> <span class="n">MotionEvent</span> <span class="n">e2</span><span class="o">,</span> <span class="kt">float</span> <span class="n">velocityX</span><span class="o">,</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">onFling</span><span class="o">(</span><span class="n">MotionEvent</span> <span class="n">e1</span><span class="o">,</span> <span class="n">MotionEvent</span> <span class="n">e2</span><span class="o">,</span> <span class="kt">float</span> <span class="n">velocityX</span><span class="o">,</span>
     <span class="kt">float</span> <span class="n">velocityY</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">try</span> <span class="o">{</span>
-            <span class="n">Values</span> <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">());</span>
+            <span class="n">Values</span> <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">());</span>
             <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">valuesForSwipe</span> <span class="o">=</span> <span class="n">values</span>
             <span class="o">.</span><span class="na">getValuesForSwipe</span><span class="o">();</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">e1</span><span class="o">.</span><span class="na">getY</span><span class="o">()</span> <span class="o">-</span> <span class="n">e2</span><span class="o">.</span><span class="na">getY</span><span class="o">())</span> <span class="o">&gt;</span> <span class="n">valuesForSwipe</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;swipeMaxOffPath&quot;</span><span class="o">))</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">e1</span><span class="o">.</span><span class="na">getY</span><span class="o">()</span> <span class="o">-</span> <span class="n">e2</span><span class="o">.</span><span class="na">getY</span><span class="o">())</span> <span class="o">&gt;</span> <span class="n">valuesForSwipe</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"swipeMaxOffPath"</span><span class="o">))</span>
                 <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">e1</span><span class="o">.</span><span class="na">getX</span><span class="o">()</span> <span class="o">-</span> <span class="n">e2</span><span class="o">.</span><span class="na">getX</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">valuesForSwipe</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;swipeMinDistance&quot;</span><span class="o">)</span>
-            <span class="o">&amp;&amp;</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">velocityX</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">valuesForSwipe</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;swipeThresholdVelocity&quot;</span><span class="o">))</span> <span class="o">{</span>
-                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">&quot;Left Swipe&quot;</span><span class="o">,</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">e1</span><span class="o">.</span><span class="na">getX</span><span class="o">()</span> <span class="o">-</span> <span class="n">e2</span><span class="o">.</span><span class="na">getX</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">valuesForSwipe</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"swipeMinDistance"</span><span class="o">)</span>
+            <span class="o">&amp;&amp;</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">velocityX</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">valuesForSwipe</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"swipeThresholdVelocity"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"Left Swipe"</span><span class="o">,</span>
                 <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
                 <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">e2</span><span class="o">.</span><span class="na">getX</span><span class="o">()</span> <span class="o">-</span> <span class="n">e1</span><span class="o">.</span><span class="na">getX</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">valuesForSwipe</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;swipeMinDistance&quot;</span><span class="o">)</span>
-            <span class="o">&amp;&amp;</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">velocityX</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">valuesForSwipe</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;swipeThresholdVelocity&quot;</span><span class="o">))</span> <span class="o">{</span>
-                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">&quot;Right Swipe&quot;</span><span class="o">,</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">e2</span><span class="o">.</span><span class="na">getX</span><span class="o">()</span> <span class="o">-</span> <span class="n">e1</span><span class="o">.</span><span class="na">getX</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">valuesForSwipe</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"swipeMinDistance"</span><span class="o">)</span>
+            <span class="o">&amp;&amp;</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">velocityX</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">valuesForSwipe</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"swipeThresholdVelocity"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="s">"Right Swipe"</span><span class="o">,</span>
                 <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
                 <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
             <span class="o">}</span>
@@ -126,25 +126,25 @@
     <span class="o">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onDown</span><span class="o">(</span><span class="n">MotionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&quot;tag&quot;</span><span class="o">,</span> <span class="s">&quot;onDown: &quot;</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">onDown</span><span class="o">(</span><span class="n">MotionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"tag"</span><span class="o">,</span> <span class="s">"onDown: "</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
         <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
     <span class="o">}</span>
 
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 
 <p>We can use the ViewConfiguration Class to fetch the optimum values for variables which help us determine the type of gesture.</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">swipeValues</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">swipeValues</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
 <span class="n">ViewConfiguration</span> <span class="n">vc</span> <span class="o">=</span> <span class="n">ViewConfiguration</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
-<span class="n">swipeValues</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;swipeMinDistance&quot;</span><span class="o">,</span> <span class="n">vc</span><span class="o">.</span><span class="na">getScaledPagingTouchSlop</span><span class="o">());</span>
-<span class="n">swipeValues</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;swipeThresholdVelocity&quot;</span><span class="o">,</span>
+<span class="n">swipeValues</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"swipeMinDistance"</span><span class="o">,</span> <span class="n">vc</span><span class="o">.</span><span class="na">getScaledPagingTouchSlop</span><span class="o">());</span>
+<span class="n">swipeValues</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"swipeThresholdVelocity"</span><span class="o">,</span>
 <span class="n">vc</span><span class="o">.</span><span class="na">getScaledMinimumFlingVelocity</span><span class="o">());</span>
-<span class="n">swipeValues</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;swipeMaxOffPath&quot;</span><span class="o">,</span> <span class="n">vc</span><span class="o">.</span><span class="na">getScaledMinimumFlingVelocity</span><span class="o">());</span></code></pre></div>
+<span class="n">swipeValues</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"swipeMaxOffPath"</span><span class="o">,</span> <span class="n">vc</span><span class="o">.</span><span class="na">getScaledMinimumFlingVelocity</span><span class="o">());</span></code></pre></figure>
 
 <p>Next, I’ll be working on fetching Privly Links from a user’s social/email feed and pushing it to local db.</p>
 <h3>Undergraduate Thesis</h3>
-<p>In my Undergrad Thesis I am working on a very interesting problem of Indoor Navigation using smart phones ( where GPS fails!)  Just starting to learn how the sensors work. Hell lot of mathematics. </p>
+<p>In my Undergrad Thesis I am working on a very interesting problem of Indoor Navigation using smart phones ( where GPS fails!)  Just starting to learn how the sensors work. Hell lot of mathematics.</p>
 <h3>Latest privly-android commit</h3>
 <p><a href="https://github.com/vshivam/privly-android/tree/1d508671f6732c62d8fc5fafc59f1e55cebd3652">https://github.com/vshivam/privly-android/tree/1d508671f6732c62d8fc5fafc59f1e55cebd3652</a></p>
 
@@ -214,7 +214,7 @@
       </center>
           <!--
           &copy; 
-          <time datetime="2016-01-29T14:53:21+08:00">2016</time>. All rights reserved.
+          <time datetime="2016-03-24T17:08:37+08:00">2016</time>. All rights reserved.
           -->
         </small>
       </footer>

@@ -42,7 +42,7 @@
       <header class="masthead">
         <center>
           <h2 class="masthead-title">
-            <a href="http://localhost:4000">Shivam Verma</a>
+            <a href="http://vshivam.github.io">Shivam Verma</a>
             <br/>
             
               &nbsp;&nbsp;&nbsp;
@@ -70,18 +70,18 @@
 
 <p>Here are a few screenshots :</p>
 
-<p><img src="http://localhost:4000/assets/blog/screenshot-from-2013-08-15-144135.png" alt="Screenshot from 2013-08-15 14:41:35" /></p>
+<p><img src="http://vshivam.github.io/assets/blog/screenshot-from-2013-08-15-144135.png" alt="Screenshot from 2013-08-15 14:41:35" /></p>
 
 <p>One major feature that I’ve been working on for the past few days is implementing the Remember Me Option. The easiest way of doing this could be the way its implemented in the current code.</p>
 
 <p>Something like :</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">rememberMeCheckBox</span><span class="o">.</span><span class="na">isChecked</span><span class="o">())</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">rememberMeCheckBox</span><span class="o">.</span><span class="na">isChecked</span><span class="o">())</span> <span class="o">{</span>
     <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="na">edit</span><span class="o">();</span>
-    <span class="n">editor</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">&quot;uname&quot;</span><span class="o">,</span> <span class="n">userName</span><span class="o">);</span>
-    <span class="n">editor</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">&quot;pwd&quot;</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
+    <span class="n">editor</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">"uname"</span><span class="o">,</span> <span class="n">userName</span><span class="o">);</span>
+    <span class="n">editor</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">"pwd"</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
     <span class="n">editor</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 
 <p>This makes it really unsecure though. Malware can hook up apis and retrieve the password if stored in plain text. What I could do is to hash the password using some hashing mechanism such as SHA512 (SHA256 is already considered a legacy in the security world ?). This is obviously better than Plain Text Passwords, however, <a href="http://crackstation.net/">the easy availability of lookup tables</a> makes it pretty vulnerable to attacks.
 A more secure method will be use the Salt and Hash mechanism.</p>
@@ -172,7 +172,7 @@ A more secure method will be use the Salt and Hash mechanism.</p>
       </center>
           <!--
           &copy; 
-          <time datetime="2016-01-29T14:53:21+08:00">2016</time>. All rights reserved.
+          <time datetime="2016-03-24T17:08:37+08:00">2016</time>. All rights reserved.
           -->
         </small>
       </footer>
