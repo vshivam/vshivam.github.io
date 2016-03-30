@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Inflating different xml layouts in an Android ListView for different Objects. &middot; 
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="" href="/atom.xml">
+</head>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68715317-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <center>
+          <h2 class="masthead-title">
+            <a href="http://localhost:4000"></a>
+            <br/>
+            
+          </h3>
+        </center>
+
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Inflating different xml layouts in an Android ListView for different Objects.</h1>
+  <time datetime="2015-01-14T00:00:00+08:00" class="post-date">14 Jan 2015</time>
+  <p>While working on the Ambient Dynamix Project, I needed to create a listview which contains a non fixed number of headers each one followed by some list items.</p>
+
+<p>A common solution is to use the <a href="https://github.com/commonsguy/cwac-merge">MergeAdapter</a>. A MergeAdapter object exposes the <code>addAdapter()</code>, <code>addView()</code> and <code>addViews()</code> methods. The <a href="https://github.com/commonsguy/cwac-merge/blob/master/demo/src/com/commonsware/cwac/merge/demo/MergeAdapterDemo.java">demo</a> included in the repo is pretty self explanatory.
+But in case of the MergeAdapter, I’d need to keep track of multiple adapters, one for each of the list, which can be a bit of pain in case I need some data back from the adapters. So, I wrote a custom adapter which could inflate different layouts depending on the type of item.</p>
+
+<h3 id="writing-the-custom-adapter-">Writing the Custom Adapter :</h3>
+<p>Create a public class which contains the types of items in the list view.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListItemType</span> <span class="o">{</span>
+    <span class="kd">final</span> <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">HEADER_VIEW</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">CONTEXT_PLUGIN_VIEW</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Create another public class with two fields, an int and an Object. We’ll use an ArrayList of objects of this class as the data source for our custom adapter. The idea is to use the use the <code>type</code> value to inflate the relevant xml layout inside the adapter.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListViewItem</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">type</span><span class="o">;</span>
+    <span class="n">Object</span> <span class="n">object</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">ListViewItem</span><span class="o">(</span><span class="kt">int</span> <span class="n">type</span><span class="o">,</span> <span class="n">Object</span> <span class="n">object</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="n">type</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">object</span> <span class="o">=</span> <span class="n">object</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">getType</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">type</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setType</span><span class="o">(</span><span class="kt">int</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="n">type</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Object</span> <span class="n">getObject</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">object</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setObject</span><span class="o">(</span><span class="n">Object</span> <span class="n">object</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">object</span> <span class="o">=</span> <span class="n">object</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>We’ll assume that we also have two classes whose objects contain the data for the different list items. Let’s call them <code>HeaderObject</code> and <code>ListItemObject</code>. For the sake of simplicity, we’ll just add a String field to both the classes. But you’ll need to use this method only if you have very different data for the views and hence they cannot be stored by the same object.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HeaderObject</span> <span class="o">{</span>
+	<span class="n">String</span> <span class="n">headerName</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="n">HeaderObject</span><span class="o">(</span><span class="n">String</span> <span class="n">headerName</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">headerName</span> <span class="o">=</span> <span class="n">headerName</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">String</span> <span class="n">getHeaderName</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">headerName</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListItemObject</span> <span class="o">{</span>
+	<span class="n">String</span> <span class="n">itemName</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="n">ListItemObject</span><span class="o">(</span><span class="n">String</span> <span class="n">itemName</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">itemName</span> <span class="o">=</span> <span class="n">itemName</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">String</span> <span class="n">getItemName</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">itemName</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>The custom adapter :</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleAdapter</span> <span class="kd">extends</span> <span class="n">BaseAdapter</span> <span class="o">{</span>
+    <span class="n">Activity</span> <span class="n">activity</span><span class="o">;</span>
+    <span class="n">ArrayList</span> <span class="o">&lt;</span><span class="n">ListViewItem</span><span class="o">&gt;</span> <span class="n">listItems</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">SampleAdapter</span><span class="o">(</span><span class="n">Activity</span> <span class="n">activity</span><span class="o">,</span> <span class="n">ArrayList</span> <span class="o">&lt;</span><span class="n">ListViewItem</span><span class="o">&gt;</span> <span class="n">listItems</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">activity</span> <span class="o">=</span> <span class="n">activity</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">listItems</span> <span class="o">=</span> <span class="n">listItems</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">getItemViewType</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">installedPluginsListItems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">position</span><span class="o">).</span><span class="na">getType</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="c1">//Since we have two types of items here, we'll return 2. </span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">getViewTypeCount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="c1">//We'll use a switch case on the type and then typecast it to the relevant </span>
+<span class="c1">// HeaderObject or the ListItemObject.</span>
+
+<span class="c1">//We'll also use the ViewHolder pattern so that android can recycle the views </span>
+<span class="c1">//and we do not inflate it every time getView() is called. We'll need to create two ViewHolder //Objects for both the item types. </span>
+
+<span class="c1">//Let's assume the two layouts to inflated are called list_item_layout and header_layout. </span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">View</span> <span class="n">getView</span><span class="o">(</span><span class="kd">final</span> <span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="n">View</span> <span class="n">convertView</span><span class="o">,</span>
+        <span class="kd">final</span> <span class="n">ViewGroup</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">LayoutInflater</span> <span class="n">inflater</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="na">getLayoutInflater</span><span class="o">();</span>
+        <span class="n">Object</span> <span class="n">listObject</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="n">listObject</span> <span class="o">=</span> <span class="n">listItems</span>
+            <span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">position</span><span class="o">).</span><span class="na">getObject</span><span class="o">();</span>
+        <span class="k">switch</span> <span class="o">(</span><span class="n">getItemViewType</span><span class="o">(</span><span class="n">position</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="n">ListItemType</span><span class="o">.</span><span class="na">CONTEXT_PLUGIN_VIEW</span><span class="o">:</span>
+                <span class="n">ListItemObject</span> <span class="n">listItemObject</span> <span class="o">=</span> <span class="o">(</span><span class="n">ListItemObject</span><span class="o">)</span> <span class="n">listObject</span><span class="o">;</span>
+                <span class="n">ViewHolderListItem</span> <span class="n">holder</span><span class="o">;</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">convertView</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">holder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ViewHolderListItem</span><span class="o">();</span>
+                    <span class="n">convertView</span> <span class="o">=</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span>
+                            <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">list_item_layout</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>  
+                    <span class="n">holder</span><span class="o">.</span><span class="na">itemNameView</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">convertView</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">itemNameViewId</span><span class="o">);</span>
+                    <span class="n">convertView</span><span class="o">.</span><span class="na">setTag</span><span class="o">(</span><span class="n">holder</span><span class="o">);</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">holder</span> <span class="o">=</span> <span class="n">convertView</span><span class="o">.</span><span class="na">getTag</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="n">holder</span><span class="o">.</span><span class="na">itemNameView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">listItemObject</span><span class="o">.</span><span class="na">getItemName</span><span class="o">());</span>
+                <span class="k">return</span> <span class="n">convertView</span><span class="o">;</span>              
+            <span class="k">case</span> <span class="n">ListItemType</span><span class="o">.</span><span class="na">HEADER_VIEW</span><span class="o">:</span>
+                <span class="n">HeaderObject</span> <span class="n">headerObject</span> <span class="o">=</span> <span class="o">(</span><span class="n">HeaderObject</span><span class="o">)</span> <span class="n">listObject</span><span class="o">;</span>
+                <span class="n">ViewHolderHeader</span> <span class="n">holder</span><span class="o">;</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">convertView</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">holder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ViewHolderListItem</span><span class="o">();</span>
+                    <span class="n">convertView</span> <span class="o">=</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span>
+                            <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">header_layout</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>  
+                    <span class="n">holder</span><span class="o">.</span><span class="na">headerNameView</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">convertView</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">headerNameViewId</span><span class="o">);</span>
+                    <span class="n">convertView</span><span class="o">.</span><span class="na">setTag</span><span class="o">(</span><span class="n">holder</span><span class="o">);</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">holder</span> <span class="o">=</span> <span class="n">convertView</span><span class="o">.</span><span class="na">getTag</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="n">holder</span><span class="o">.</span><span class="na">headerNameView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">headerObject</span><span class="o">.</span><span class="na">getHeaderName</span><span class="o">());</span>
+                <span class="k">return</span> <span class="n">convertView</span><span class="o">;</span> 
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ViewHolderListItem</span> <span class="o">{</span>
+        <span class="n">TextView</span> <span class="n">itemNameView</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ViewHolderHeader</span> <span class="o">{</span>
+        <span class="n">TextView</span> <span class="n">headerNameView</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Creating the adapter:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">ListViewItem</span><span class="o">&gt;</span> <span class="n">listItems</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+<span class="n">listItems</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">ListViewItem</span><span class="o">(</span><span class="n">ListItemType</span><span class="o">.</span><span class="na">HEADER_VIEW</span><span class="o">,</span> <span class="k">new</span> <span class="n">HeaderObject</span><span class="o">(..)));</span>
+<span class="n">listItems</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">ListViewItem</span><span class="o">(</span><span class="n">ListItemType</span><span class="o">.</span><span class="na">CONTEXT_PLUGIN_VIEW</span><span class="o">,</span> <span class="k">new</span> <span class="n">ListItemObject</span><span class="o">(..)));</span>
+<span class="n">listItems</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">ListViewItem</span><span class="o">(</span><span class="n">ListItemType</span><span class="o">.</span><span class="na">CONTEXT_PLUGIN_VIEW</span><span class="o">,</span> <span class="k">new</span> <span class="n">ListItemObject</span><span class="o">(..)));</span>
+
+<span class="n">SampleAdapter</span> <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SampleAdapter</span><span class="o">(</span><span class="n">activity</span><span class="o">,</span> <span class="n">listItems</span><span class="o">);</span></code></pre></figure>
+
+<p>I am not too sure if this is the best way to go about this and there definitely is an overhead of typecasting every object but it works!</p>
+
+<p>Suggestions / Queries ? Cheers! :D</p>
+
+
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/03/30/unfollow-all-quora.html">
+            How to unfollow everyone on Quora, you ask ?
+            <small><time datetime="2016-03-30T00:00:00+08:00">30 Mar 2016</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/06/09/compatible-rsa-encryption.html">
+            Android, JavaScript and Python compatible RSA Encryption.
+            <small><time datetime="2015-06-09T00:00:00+08:00">09 Jun 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/06/07/dynamic-jquery-swatch.html">
+            Dynamically change jQuery Mobile colour swatch.
+            <small><time datetime="2015-06-07T00:00:00+08:00">07 Jun 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+        
+<!-- Add Disqus comments. -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'vshivam';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </main>
+
+      <footer class="footer">
+      <center> 
+            <small>
+              Made By Shivam Verma. <br/>Powered by Jekyll and 
+              Github. Theme adapted from Poole.
+            </small>
+      </center>
+          <!--
+          &copy; 
+          <time datetime="2016-03-30T17:33:35+08:00">2016</time>. All rights reserved.
+          -->
+        </small>
+      </footer>
+    </div>
+
+
+
+  </body>
+</html>

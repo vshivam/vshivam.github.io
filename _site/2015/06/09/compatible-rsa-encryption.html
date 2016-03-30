@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Android, JavaScript and Python compatible RSA Encryption. &middot; 
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="" href="/atom.xml">
+</head>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68715317-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <center>
+          <h2 class="masthead-title">
+            <a href="http://localhost:4000"></a>
+            <br/>
+            
+          </h3>
+        </center>
+
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Android, JavaScript and Python compatible RSA Encryption.</h1>
+  <time datetime="2015-06-09T00:00:00+08:00" class="post-date">09 Jun 2015</time>
+  <p>It’s somewhat complicated to implement RSA Encryption so that data encrypted on either of these platforms can be easily decrypted on the other platforms and even more so for someone like me who had almost zero knowledge of programming using encryption algorithms.</p>
+
+<p>While developing an initial pairing mechanism for Ambient Dynamix, I had already settled on the <a href="https://github.com/digitalbazaar/forge">forge</a> library for javascript because of the availability of symmetric, asymmetric encryption algorithms, password based key derivation functions and hashing algorithms. It also had a fair performance according to <a href="http://dominictarr.github.io/crypto-bench/">this</a> evaluation.</p>
+
+<p>The library also supported decryption using a private key using RSAES-OAEP/SHA-256/MGF1-SHA-256 which is compatible with Java’s RSA/ECB/OAEPWithSHA-256AndMGF1Padding algorithm. Big thumbs up!</p>
+
+<p>The idea was to pick up a public key generated on android and use it to encrypt content in javascript. Android should then be able to successfully decrypt the data using its private key. I also needed to support the whole process in reverse <em>i.e.</em> android encrypting the content using a public key generated on javascript and then javascript decrypting it.</p>
+
+<h2> Encrypting content in javascript and decrypting in java. </h2>
+
+<p>Generating RSA KeyPair on Android:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">KeyPair</span> <span class="nf">generateRsaKeyPair</span><span class="p">(</span><span class="kt">int</span> <span class="n">keySize</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+    <span class="n">KeyPairGenerator</span> <span class="n">kpg</span> <span class="o">=</span> <span class="n">KeyPairGenerator</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"RSA"</span><span class="o">);</span>
+    <span class="n">kpg</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">keySize</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">kpg</span><span class="o">.</span><span class="na">generateKeyPair</span><span class="o">();</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>To retrieve the public key from the keypair object use the <code>getPublic();</code> method of the <code>KeyPair</code> class.</p>
+
+<p>Once the keypair is generated, I convert the public key into a String which could be then be used by javascript for encrypting content. For my purpose, the public key is sent back as a response to a simple http request made by javascript.</p>
+
+<p>To convert public key to a String :</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">PUBLIC_KEY_HEADER</span> <span class="o">=</span> <span class="s">"-----BEGIN PUBLIC KEY-----"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">PUBLIC_KEY_FOOTER</span> <span class="o">=</span> <span class="s">"-----END PUBLIC KEY-----"</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">createStringFromPublicKey</span><span class="p">(</span><span class="n">Key</span> <span class="n">publicKey</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+    <span class="n">X509EncodedKeySpec</span> <span class="n">x509EncodedKeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">X509EncodedKeySpec</span><span class="o">(</span><span class="n">publicKey</span><span class="o">.</span><span class="na">getEncoded</span><span class="o">());</span>
+    <span class="k">return</span> <span class="n">PUBLIC_KEY_HEADER</span> <span class="o">+</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">Base64</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">x509EncodedKeySpec</span><span class="o">.</span><span class="na">getEncoded</span><span class="o">(),</span> <span class="n">Base64</span><span class="o">.</span><span class="na">NO_WRAP</span><span class="o">),</span> <span class="s">"UTF-8"</span><span class="o">)</span>
+            <span class="o">+</span> <span class="n">PUBLIC_KEY_FOOTER</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Importing a public key in javascript and encryption :</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">doRSA</span><span class="p">(</span><span class="nx">stringToBeEncrypted</span><span class="p">,</span> <span class="nx">pubkey</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">publicKey</span> <span class="o">=</span> <span class="nx">forge</span><span class="p">.</span><span class="nx">pki</span><span class="p">.</span><span class="nx">publicKeyFromPem</span><span class="p">(</span><span class="nx">pubkey</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">buffer</span> <span class="o">=</span> <span class="nx">forge</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">createBuffer</span><span class="p">(</span><span class="nx">stringToBeEncrypted</span><span class="p">,</span> <span class="s1">'utf8'</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">binaryString</span> <span class="o">=</span> <span class="nx">buffer</span><span class="p">.</span><span class="nx">getBytes</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">encrypted</span> <span class="o">=</span> <span class="nx">publicKey</span><span class="p">.</span><span class="nx">encrypt</span><span class="p">(</span><span class="nx">binaryString</span><span class="p">,</span> <span class="s1">'RSA-OAEP'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">md</span><span class="p">:</span> <span class="nx">forge</span><span class="p">.</span><span class="nx">md</span><span class="p">.</span><span class="nx">sha256</span><span class="p">.</span><span class="nx">create</span><span class="p">(),</span>
+        <span class="na">mgf1</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">md</span><span class="p">:</span> <span class="nx">forge</span><span class="p">.</span><span class="nx">md</span><span class="p">.</span><span class="nx">sha256</span><span class="p">.</span><span class="nx">create</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">forge</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">encode64</span><span class="p">(</span><span class="nx">encrypted</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<div id="explanation">
+The important thing to note here is that I am using SHA-256 in the mask generation function (the mgf1 parameter). I could have very well used SHA-1 and everything would work. However, when implementing the same algorithm on python, it becomes an issue because the python library uses the same hashing mechanism for the message digest and the mask digest but only lets us specify the message digest algorithm. 
+</div>
+
+<p>So, now, the base64 encoded encrypted string can safely be sent over a non - encrypted connection to java.</p>
+
+<p>Decrypting in java :</p>
+
+<p>I’ll use the private key generated in the first step to decrypt the content. To get the private key use the <code>getPrivate();</code> method of the <code>KeyPair</code> class.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">RSA_CONFIGURATION</span> <span class="o">=</span> <span class="s">"RSA/ECB/OAEPWithSHA-256AndMGF1Padding"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">RSA_PROVIDER</span> <span class="o">=</span> <span class="s">"BC"</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">decryptRsa</span><span class="p">(</span><span class="n">Key</span> <span class="n">key</span><span class="o">,</span> <span class="n">String</span> <span class="n">base64cypherText</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+    <span class="n">Cipher</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Cipher</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">RSA_CONFIGURATION</span><span class="o">,</span> <span class="n">RSA_PROVIDER</span><span class="o">);</span>
+    <span class="n">c</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">Cipher</span><span class="o">.</span><span class="na">DECRYPT_MODE</span><span class="o">,</span> <span class="n">key</span><span class="o">,</span> <span class="k">new</span> <span class="n">OAEPParameterSpec</span><span class="o">(</span><span class="s">"SHA-256"</span><span class="o">,</span> <span class="s">"MGF1"</span><span class="o">,</span> <span class="n">MGF1ParameterSpec</span><span class="o">.</span><span class="na">SHA256</span><span class="o">,</span>
+            <span class="n">PSource</span><span class="o">.</span><span class="na">PSpecified</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">));</span>
+    <span class="kt">byte</span><span class="o">[]</span> <span class="n">decodedBytes</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">Base64</span><span class="o">.</span><span class="na">decode</span><span class="o">(</span><span class="n">base64cypherText</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">),</span> <span class="n">Base64</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">));</span>
+    <span class="n">String</span> <span class="n">clearText</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">decodedBytes</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">clearText</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<h2> Encrypting content in java and decrypting in javascript. </h2>
+
+<p>Generating RSA KeyPair in javascript:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">generateRSAKeyPair</span><span class="p">(</span><span class="nx">keysize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">rsa</span> <span class="o">=</span> <span class="nx">forge</span><span class="p">.</span><span class="nx">pki</span><span class="p">.</span><span class="nx">rsa</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">keypair</span> <span class="o">=</span> <span class="nx">rsa</span><span class="p">.</span><span class="nx">generateKeyPair</span><span class="p">({</span><span class="na">bits</span><span class="p">:</span> <span class="nx">keysize</span><span class="p">,</span> <span class="na">e</span><span class="p">:</span> <span class="mh">0x10001</span><span class="p">,</span> <span class="na">workers</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">});</span>
+    <span class="k">return</span> <span class="nx">keypair</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>To convert public key to a String :</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">getPubKeyPem</span><span class="p">(</span><span class="nx">keypair</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">forge</span><span class="p">.</span><span class="nx">pki</span><span class="p">.</span><span class="nx">publicKeyToPem</span><span class="p">(</span><span class="nx">keypair</span><span class="p">.</span><span class="nx">publicKey</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The public key pem can easily be transferred over the network.</p>
+
+<p>Importing a public key in java and encryption:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">RSA_CONFIGURATION</span> <span class="o">=</span> <span class="s">"RSA/ECB/OAEPWithSHA-256AndMGF1Padding"</span><span class="o">;</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">RSA_PROVIDER</span> <span class="o">=</span> <span class="s">"BC"</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">PublicKey</span> <span class="nf">createPublicKeyFromString</span><span class="p">(</span><span class="n">String</span> <span class="n">publicKeyString</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+    <span class="n">KeyFactory</span> <span class="n">keyFactory</span> <span class="o">=</span> <span class="n">KeyFactory</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"RSA"</span><span class="o">);</span>
+    <span class="n">publicKeyString</span> <span class="o">=</span> <span class="n">publicKeyString</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="n">PUBLIC_KEY_HEADER</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+    <span class="n">publicKeyString</span> <span class="o">=</span> <span class="n">publicKeyString</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="n">PUBLIC_KEY_FOOTER</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">keyFactory</span><span class="o">.</span><span class="na">generatePublic</span><span class="o">(</span><span class="k">new</span> <span class="n">X509EncodedKeySpec</span><span class="o">(</span><span class="n">Base64</span><span class="o">.</span><span class="na">decode</span><span class="o">(</span><span class="n">publicKeyString</span><span class="o">,</span> <span class="n">Base64</span><span class="o">.</span><span class="na">NO_WRAP</span><span class="o">)));</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">encryptRsa</span><span class="p">(</span><span class="n">Key</span> <span class="n">key</span><span class="o">,</span> <span class="n">String</span> <span class="n">clearText</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+    <span class="n">Cipher</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Cipher</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">RSA_CONFIGURATION</span><span class="o">,</span> <span class="n">RSA_PROVIDER</span><span class="o">);</span>
+    <span class="n">c</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">Cipher</span><span class="o">.</span><span class="na">ENCRYPT_MODE</span><span class="o">,</span> <span class="n">key</span><span class="o">,</span> <span class="k">new</span> <span class="n">OAEPParameterSpec</span><span class="o">(</span><span class="s">"SHA-256"</span><span class="o">,</span> <span class="s">"MGF1"</span><span class="o">,</span> <span class="n">MGF1ParameterSpec</span><span class="o">.</span><span class="na">SHA256</span><span class="o">,</span>
+            <span class="n">PSource</span><span class="o">.</span><span class="na">PSpecified</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">));</span>
+    <span class="kt">byte</span><span class="o">[]</span> <span class="n">encodedBytes</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">clearText</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">)),</span> <span class="n">Base64</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">cipherText</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">encodedBytes</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">cipherText</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Decrypting cipher text in javascript :</p>
+
+<p>The privateKey used in this step can be retrieved from the keypair generated in the first step. 
+Use the <code>keypair.privateKey;</code> property.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java">   <span class="n">function</span> <span class="nf">decryptRSA</span><span class="p">(</span><span class="n">encryptedString</span><span class="o">,</span> <span class="n">privateKey</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">var</span> <span class="n">decrypted</span> <span class="o">=</span> <span class="n">privateKey</span><span class="o">.</span><span class="na">decrypt</span><span class="o">(</span><span class="n">forge</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">decode64</span><span class="o">(</span><span class="n">encryptedString</span><span class="o">),</span> <span class="err">'</span><span class="n">RSA</span><span class="o">-</span><span class="n">OAEP</span><span class="err">'</span><span class="o">,</span> <span class="o">{</span>
+            <span class="nl">md:</span> <span class="n">forge</span><span class="o">.</span><span class="na">md</span><span class="o">.</span><span class="na">sha256</span><span class="o">.</span><span class="na">create</span><span class="o">(),</span>
+            <span class="nl">mgf1:</span> <span class="o">{</span>
+                <span class="nl">md:</span> <span class="n">forge</span><span class="o">.</span><span class="na">md</span><span class="o">.</span><span class="na">sha256</span><span class="o">.</span><span class="na">create</span><span class="o">()</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="k">return</span> <span class="n">decrypted</span><span class="o">;</span>
+    <span class="o">}</span></code></pre></figure>
+
+<p>All the above mentioned code is compatible with the following python code and any of the platforms can be switched. For instance, content encrypted on python can be easily decrypted on java.</p>
+
+<p>For encryption and decryption in python, we’ll use the <a href="https://github.com/dlitz/pycrypto">PyCrypto</a> library.</p>
+
+<p>Generating rsa keypair :</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">Crypto.Protocol.KDF</span> <span class="kn">import</span> <span class="n">PBKDF2</span>
+<span class="kn">from</span> <span class="nn">Crypto.Hash</span> <span class="kn">import</span> <span class="n">SHA256</span>
+<span class="kn">from</span> <span class="nn">Crypto.PublicKey</span> <span class="kn">import</span> <span class="n">RSA</span>
+<span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">PKCS1_OAEP</span>
+<span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+
+<span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">generate_RSA</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="n">keysize</span><span class="p">):</span>
+    <span class="n">new_key</span> <span class="o">=</span> <span class="n">RSA</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="mi">65537</span><span class="p">)</span>
+    <span class="n">public_key</span> <span class="o">=</span> <span class="n">new_key</span><span class="o">.</span><span class="n">publickey</span><span class="p">()</span><span class="o">.</span><span class="n">exportKey</span><span class="p">(</span><span class="s">"PEM"</span><span class="p">)</span>
+    <span class="n">private_key</span> <span class="o">=</span> <span class="n">new_key</span><span class="o">.</span><span class="n">exportKey</span><span class="p">(</span><span class="s">"PEM"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">private_key</span><span class="p">,</span> <span class="n">public_key</span></code></pre></figure>
+
+<p>Encrypting content :</p>
+
+<p>When creating the cipher, we use SHA256 as the hash algo. Python automatically uses the same algorithm for the message digest and for the mask function digest as mentioned <a href="#explanation">before</a>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">doRSAFromBytes</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">plaintext</span><span class="p">):</span>
+    <span class="c"># Assuming that the public key is coming from java or javascript, </span>
+    <span class="c"># strip off the headers.</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'-----BEGIN PUBLIC KEY-----'</span><span class="p">,</span> <span class="s">''</span><span class="p">)</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'-----END PUBLIC KEY-----'</span><span class="p">,</span> <span class="s">''</span><span class="p">);</span>
+    <span class="c"># Since it's coming from java/javascript, it's base 64 encoded. </span>
+    <span class="c"># Decode before importing.</span>
+    <span class="n">pubkey</span> <span class="o">=</span> <span class="n">RSA</span><span class="o">.</span><span class="n">importKey</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+    <span class="n">cipher</span> <span class="o">=</span> <span class="n">PKCS1_OAEP</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">pubkey</span><span class="p">,</span> <span class="n">hashAlgo</span><span class="o">=</span><span class="n">SHA256</span><span class="p">)</span>
+    <span class="n">encrypted</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">plaintext</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">encrypted</span><span class="p">)</span></code></pre></figure>
+
+<p>Decrypting content :</p>
+
+<p>The <code>importKey</code> method is used to import private keys from pem strings. I’ll use the private_key generated in the first step.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">decryptRSA</span><span class="p">(</span><span class="n">ciphertext</span><span class="p">,</span> <span class="n">private_key</span><span class="p">):</span>
+    <span class="n">rsa_key</span> <span class="o">=</span> <span class="n">RSA</span><span class="o">.</span><span class="n">importKey</span><span class="p">(</span><span class="n">private_key</span><span class="p">)</span>
+    <span class="n">cipher</span> <span class="o">=</span> <span class="n">PKCS1_OAEP</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">rsa_key</span><span class="p">,</span> <span class="n">hashAlgo</span><span class="o">=</span><span class="n">SHA256</span><span class="p">)</span>
+    <span class="n">decrypted</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">ciphertext</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">decrypted</span></code></pre></figure>
+
+<p>Cheers!</p>
+
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/03/30/unfollow-all-quora.html">
+            How to unfollow everyone on Quora, you ask ?
+            <small><time datetime="2016-03-30T00:00:00+08:00">30 Mar 2016</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/06/07/dynamic-jquery-swatch.html">
+            Dynamically change jQuery Mobile colour swatch.
+            <small><time datetime="2015-06-07T00:00:00+08:00">07 Jun 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/02/17/dnssd-python.html">
+            Multicast DNS Service discovery in python.
+            <small><time datetime="2015-02-17T00:00:00+08:00">17 Feb 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+        
+<!-- Add Disqus comments. -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'vshivam';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </main>
+
+      <footer class="footer">
+      <center> 
+            <small>
+              Made By Shivam Verma. <br/>Powered by Jekyll and 
+              Github. Theme adapted from Poole.
+            </small>
+      </center>
+          <!--
+          &copy; 
+          <time datetime="2016-03-30T17:33:35+08:00">2016</time>. All rights reserved.
+          -->
+        </small>
+      </footer>
+    </div>
+
+
+
+  </body>
+</html>
