@@ -1,0 +1,3 @@
+[submodule "presentations/talk.js"]
+	path = presentations/talk.js
+	url = https://github.com/vshivam/dynamix-talk.js.git
