@@ -33,11 +33,11 @@ gestureListener = new View.OnTouchListener() {
     }
 };
 webView.setOnTouchListener(gestureListener);
-[/sourcecode]
+{% endhighlight %}
 
 And then we define the SwipeGestureDector() Class
 
-[sourcecode language="java"]
+{% highlight java %}
 class SwipeGestureDetector extends SimpleOnGestureListener {
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
