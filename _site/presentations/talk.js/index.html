@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Dynamix JS</h1>
+					Building context aware web applications
+					<p>
+						By - Shivam Verma
+						<br>
+						<small>Felicitous Computing Institute, Department of Computer Science
+						<br>National University of Singapore.</small>
+					</p>
+				</section>
+
+				<section>
+					<h2> What is Dynamix JS </h2>
+
+					<ul>
+						<li>Existing browsers restrict web apps from accessing hardware resources on a phone such as the proximity or light sensors
+						<li>Dynamix JS enables web applications 
+							to interact with these hardware components</li>
+						<li>Adapt any web-app's behaviour based on the user's context<small>&nbsp;(There's more to context than location)</small>
+						<li>Uses the sensing and communication capabilities 
+							provided by the Ambient Dynamix Framework </li>
+				</section>
+
+				<section>
+					<h2>So, What is Ambient Dynamix ?</h2>
+					<p>
+						<ul>
+							<li>A light-weight software framework that runs on the Android platform. <small>(Sorry, iOS users)</small> </li>
+							<li>Leverages the Android device's communication capabilities</li>
+							<li>Enables mobile, web and python applications to interact with the physical world</li>
+							<li>Serves as a gateway between incompatible smart devices</li>
+						</ul>
+					</p>
+				</section>
+
+				<section>
+						<h2>Ambient Dynamix's Features</h2>
+						<p>
+							<ul>
+								<li>Runs as a background service on the user's <i>unmodified</i> mobile device</li>
+								<li>Dynamically install context plug-ins without the need of restarting/updating framework</li>
+								<li>Parallel plug-in installation, plugin updates, external repositories</li>
+								<li>Sends context information to clients using POJOs or string-encoded formats</li>
+								<li>Plug-in security sandbox</li>
+							</ul>
+						</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>How to use Dynamix JS</h2>
+						<h4>Step 1: Bind with Dynamix </h4>
+						<pre>
+							<code data-trim>
+bindDynamix : function() {
+	var that = this;
+	var bindListener = function (status) {
+		switch (status) {
+			case Dynamix.Enums.BOUND :
+				that.openDynamixSession();
+				break;
+			case Dynamix.Enums.BIND_ERROR :
+				break;
+			case Dynamix.Enums.UNBOUND :
+				break;
+			}
+		};
+	Dynamix.bind(bindListener);
+}
+							</code>
+						</pre>
+					</section>
+
+					<section> 
+						<h2> Cases </h2>
+							<ul>
+								<li> Binding with a local Dynamix instance </li>
+								<li> Binding with a remote Dynamix instance </li>
+							</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>How to use Dynamix JS</h2>
+						<h4>Step 2: Open a session </h4>
+						<pre>
+							<code data-trim>
+openDynamixSession : function() {
+    var that = this;
+
+    var openSessionCallback = function (status) {
+        switch (status) {
+            case Dynamix.Enums.SUCCESS :
+                that.createContextHandler();
+                break;
+        }
+    };     
+    
+    var sessionListener = function (status, result) {
+        switch (status) {
+            case Dynamix.Enums.SESSION_OPENED :
+                break;
+            case Dynamix.Enums.SESSION_CLOSED :
+                break;
+            case Dynamix.Enums.PLUGIN_UNINSTALLED :
+                break;
+            case Dynamix.Enums.PLUGIN_INSTALLED :
+                break;
+            case Dynamix.Enums.PLUGIN_ENABLED :
+                break;
+            case Dynamix.Enums.PLUGIN_DISABLED :
+                break;
+            case Dynamix.Enums.PLUGIN_ERROR :
+                break;
+        }
+    };   
+
+    Dynamix.openDynamixSession({
+    	listener: sessionListener, 
+    	callback: openSessionCallback
+    });
+}
+							</code>
+						</pre>
+				</section>
+
+				<section>
+					<h2>How to use Dynamix JS</h2>
+						<h4>Step 3: Create a context handler </h4>
+						<pre>
+							<code data-trim>
+createContextHandler : function () {
+    var that = this;
+    var createNewHandlerCallback = function (status, handler) {
+        switch (status) {
+            case Dynamix.Enums.SUCCESS :
+            	that.contextHandler = contextHandler;
+                that.addActivityRecognitionContextSupport();
+                break;
+        }
+    };
+    Dynamix.createContextHandler(createNewHandlerCallback);
+}
+							</code>
+						</pre>
+
+				</section>
+
+				<section>
+					<section>
+					<h2>How to use Dynamix JS</h2>
+						<h4>Step 4: Add context support </h4>
+						<pre>
+							<code data-trim>
+addActivityRecognitionSupport : function () {
+	var activitySupportCallback = function(status){
+		// doSomething();
+	};
+
+    this.contextHandler.addContextSupport('org.ambientdynamix.contextplugins.activityrecognition', 
+        'org.ambientdynamix.contextplugins.activityrecognition.activityinfo', {
+        	callback : activitySupportCallback, 
+        	listener : activityListener
+    	});
+}
+							</code>
+						</pre>
+
+						<h4>Or use Configured Context Support </h4>
+						</section>
+
+						<section>
+							<h4>Context Firewall Popup</h4>
+							<img src="data:image/jpeg;base64,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"></img>
+						</section>
+
+				</section>
+
+				<section>
+					<h2>How to use Dynamix JS</h2>
+						<h4>Step 5: Context Requests </h4>
+						<pre>
+							<code data-trim>
+voiceResultsRequest : function () {
+	var voiceResultsCallback = function(status, result){
+		// doSomething();
+	};
+
+    this.contextHandler.contextRequest('org.ambientdynamix.contextplugins.speechtotext', 
+        'org.ambientdynamix.contextplugins.voiceresults', {
+        	callback : voiceResultsCallback
+    	});
+}
+							</code>
+						</pre>
+
+						<h4>Or use Configured Context Requests </h4>
+				</section>
+
+				<section>
+					<h2> Plugins </h2>
+					<ul>
+						<li> AR Drone </li>
+						<li> Sphero Robotic Ball </li>
+						<li> WeMo WiFi Switch</li>
+						<li> Ambient Media </li>
+						<li> Light Sensor </li>
+						<li> Myo Armband </li>
+						<li> NFC </li>
+						<li> Barcode Scanner </li>
+						<li> Activity Recognition </li>
+						<li> Proximity</li>
+						<li> Gesture Recognition </li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Ambient Dynamix Architecture</h2>
+					<img src="img/dynamix_arch.png"></img>
+				</section>
+
+				<section>
+					<h2>Thank You !</h2>
+					<h4>github/vshivam </h4>
+					<h4>twitter/vshivam </h4>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
