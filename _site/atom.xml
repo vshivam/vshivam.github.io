@@ -4,7 +4,7 @@
  <title>Shivam Verma</title>
  <link href="http://vshivam.github.io/atom.xml" rel="self"/>
  <link href="http://vshivam.github.io/"/>
- <updated>2016-04-22T21:27:05+08:00</updated>
+ <updated>2016-04-23T01:29:34+07:00</updated>
  <id>http://vshivam.github.io</id>
  <author>
    <name>Mark Otto</name>
@@ -15,7 +15,7 @@
  <entry>
    <title>An even fresher 'Fork me on GitHub' callout !</title>
    <link href="http://vshivam.github.io/2016/04/22/github-corner-text/"/>
-   <updated>2016-04-22T00:00:00+08:00</updated>
+   <updated>2016-04-22T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2016/04/22/github-corner-text</id>
    <content type="html">&lt;p&gt;If you’re looking for a ‘Fork me on Github’ solution for your blog, I am sure you’ve come across the &lt;a href=&quot;https://github.com/tholman/github-corners&quot;&gt;GitHub Corners&lt;/a&gt; or the &lt;a href=&quot;https://github.com/blog/273-github-ribbons&quot;&gt;Github Ribbons&lt;/a&gt; project. &lt;br /&gt; So did I.&lt;/p&gt;
 
@@ -113,7 +113,7 @@ for creating Github Corners!&lt;/p&gt;
  <entry>
    <title>FOSSAsia 2016</title>
    <link href="http://vshivam.github.io/2016/04/20/fossasia-2016/"/>
-   <updated>2016-04-20T00:00:00+08:00</updated>
+   <updated>2016-04-20T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2016/04/20/fossasia-2016</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://2016.fossasia.org/&quot;&gt;FOSSAsia&lt;/a&gt; is an annual free and open source software conference for anyone remotely interested in learning more about open source.&lt;/p&gt;
 
@@ -144,7 +144,7 @@ for creating Github Corners!&lt;/p&gt;
  <entry>
    <title>How to unfollow everyone on Quora, you ask ?</title>
    <link href="http://vshivam.github.io/2016/03/30/unfollow-all-quora/"/>
-   <updated>2016-03-30T00:00:00+08:00</updated>
+   <updated>2016-03-30T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2016/03/30/unfollow-all-quora</id>
    <content type="html">&lt;p&gt;Use this script I wrote while trying to clean up the mess my quora timeline had become.&lt;/p&gt;
 
@@ -197,7 +197,7 @@ for creating Github Corners!&lt;/p&gt;
  <entry>
    <title>Android, JavaScript and Python compatible RSA Encryption.</title>
    <link href="http://vshivam.github.io/2015/06/09/compatible-rsa-encryption/"/>
-   <updated>2015-06-09T00:00:00+08:00</updated>
+   <updated>2015-06-09T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2015/06/09/compatible-rsa-encryption</id>
    <content type="html">&lt;p&gt;It’s somewhat complicated to implement RSA Encryption so that data encrypted on either of these platforms can be easily decrypted on the other platforms and even more so for someone like me who had almost zero knowledge of programming using encryption algorithms.&lt;/p&gt;
 
@@ -378,7 +378,7 @@ Use the &lt;code&gt;keypair.privateKey;&lt;/code&gt; property.&lt;/p&gt;
  <entry>
    <title>Dynamically change jQuery Mobile colour swatch.</title>
    <link href="http://vshivam.github.io/2015/06/07/dynamic-jquery-swatch/"/>
-   <updated>2015-06-07T00:00:00+08:00</updated>
+   <updated>2015-06-07T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2015/06/07/dynamic-jquery-swatch</id>
    <content type="html">&lt;p&gt;There’s no easy way to be able to switch the jQuery Mobile colour swatch dynamically for the whole page. A quick google search suggests &lt;a href=&quot;http://stackoverflow.com/questions/7347664/change-jquery-mobile-color-swatch-dynamically&quot; target=&quot;_blank&quot;&gt;this&lt;/a&gt; stackoverflow question where the accepted answer suggests removing and adding relevant classes for the required colour swatch.&lt;/p&gt;
 
@@ -455,7 +455,7 @@ $(&#39;#icon-stylesheet&#39;).attr(href:&quot;css/dark/themes/jquery.mobile.icon
  <entry>
    <title>Multicast DNS Service discovery in python.</title>
    <link href="http://vshivam.github.io/2015/02/17/dnssd-python/"/>
-   <updated>2015-02-17T00:00:00+08:00</updated>
+   <updated>2015-02-17T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2015/02/17/dnssd-python</id>
    <content type="html">&lt;p&gt;As discussed in the last post, I use the JmDNS library for service advertisement on the local area network. You can refer to it &lt;a href=&quot;http://vshivam.github.io/2015/02/15/jmdns-service-discovery/&quot;&gt;here&lt;/a&gt;. In this post, I’ll discuss how I used the &lt;a href=&quot;https://github.com/wmcbrine/pyzeroconf&quot;&gt;pyZeroconf&lt;/a&gt; library to search for the service advertised by the android device. There do exist other libraries but the ones that I came across are dependent on &lt;a href=&quot;http://en.wikipedia.org/wiki/Avahi_%28software%29&quot;&gt;avahi&lt;/a&gt; or &lt;a href=&quot;http://en.wikipedia.org/wiki/Bonjour_%28software%29&quot;&gt;bonjour&lt;/a&gt; and need them to be pre installed on the system and since I was working on py based api, I preferred not to have the extra baggage.&lt;/p&gt;
 
@@ -579,7 +579,7 @@ $(&#39;#icon-stylesheet&#39;).attr(href:&quot;css/dark/themes/jquery.mobile.icon
  <entry>
    <title>Using JmDNS for service advertisement and discovery on Android.</title>
    <link href="http://vshivam.github.io/2015/02/15/jmdns-service-discovery/"/>
-   <updated>2015-02-15T00:00:00+08:00</updated>
+   <updated>2015-02-15T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2015/02/15/jmdns-service-discovery</id>
    <content type="html">&lt;p&gt;While working on the Ambient Dynamix project, I needed to search for android devices running the Dynamix framework from a python based application running on the desktop. Starting API 16, android provides the &lt;a href=&quot;http://developer.android.com/reference/android/net/nsd/NsdManager.html&quot;&gt;NSDManager&lt;/a&gt; class to advertise and search for services. However, to be able to support pre android 16 devices, I used the &lt;a href=&quot;http://mvnrepository.com/artifact/com.github.rickyclarkson/jmdns/3.4.2-r353-1&quot;&gt;JmDNS&lt;/a&gt; library. (The one on the soureforge page is an older version)&lt;/p&gt;
 
@@ -767,7 +767,7 @@ $(&#39;#icon-stylesheet&#39;).attr(href:&quot;css/dark/themes/jquery.mobile.icon
  <entry>
    <title>Inflating different xml layouts in an Android ListView for different Objects.</title>
    <link href="http://vshivam.github.io/2015/01/14/inflate-diff-layout/"/>
-   <updated>2015-01-14T00:00:00+08:00</updated>
+   <updated>2015-01-14T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2015/01/14/inflate-diff-layout</id>
    <content type="html">&lt;p&gt;While working on the Ambient Dynamix Project, I needed to create a listview which contains a non fixed number of headers each one followed by some list items.&lt;/p&gt;
 
@@ -933,7 +933,7 @@ But in case of the MergeAdapter, I’d need to keep track of multiple adapters, 
  <entry>
    <title>Hiding a list item from an Android ListView without removing it from the data source.</title>
    <link href="http://vshivam.github.io/2015/01/07/hide-listitem-android/"/>
-   <updated>2015-01-07T00:00:00+08:00</updated>
+   <updated>2015-01-07T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2015/01/07/hide-listitem-android</id>
    <content type="html">&lt;p&gt;Ideally when I have to remove a list item from a listview, I’d remove the data object from the collection which the adapter uses and then do a &lt;code&gt; adapter.notifyDataSetChanged() &lt;/code&gt; call which’ll redraw the list view.&lt;/p&gt;
 
@@ -1011,7 +1011,7 @@ But in case of the MergeAdapter, I’d need to keep track of multiple adapters, 
  <entry>
    <title>Generating compatible SHA512 Hash between Java and JavaScript using CryptoJS.</title>
    <link href="http://vshivam.github.io/2014/12/10/compatible-hash/"/>
-   <updated>2014-12-10T00:00:00+08:00</updated>
+   <updated>2014-12-10T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2014/12/10/compatible-hash</id>
    <content type="html">&lt;p&gt;While working on the development of a secure way for authenticating a remote web application with the Ambient Dynamix Framework, I needed to generate a SHA512 of a salt and token which the web application could transmit to the framework via a dynamically generated QR Code. The Dynamix instance running on the android device can then use this hash to verify the authenticity of any further HTTP requests.&lt;/p&gt;
 
@@ -1066,7 +1066,7 @@ But in case of the MergeAdapter, I’d need to keep track of multiple adapters, 
  <entry>
    <title>Detecting up-down, left-right swipe on Android with greater accuracy.</title>
    <link href="http://vshivam.github.io/2014/04/28/novel-swipe-detect/"/>
-   <updated>2014-04-28T00:00:00+08:00</updated>
+   <updated>2014-04-28T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2014/04/28/novel-swipe-detect</id>
    <content type="html">&lt;p&gt;This probably is the simplest way to detect the exact swipe direction on Android. We split the screen into four quadrants and then use the MotionEvents to calculate the angle of swipe. The code is pretty self explanatory.&lt;/p&gt;
 
@@ -1117,7 +1117,7 @@ But in case of the MergeAdapter, I’d need to keep track of multiple adapters, 
  <entry>
    <title>Privly-Android Application Flow.</title>
    <link href="http://vshivam.github.io/2013/09/21/privly-android-flow/"/>
-   <updated>2013-09-21T00:00:00+08:00</updated>
+   <updated>2013-09-21T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2013/09/21/privly-android-flow</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;http://vshivam.github.io/assets/blog/privly-android-application-flow.png&quot; alt=&quot;Privly-Android Application Flow&quot; /&gt;&lt;/p&gt;
 </content>
@@ -1126,7 +1126,7 @@ But in case of the MergeAdapter, I’d need to keep track of multiple adapters, 
  <entry>
    <title>Privly reading app integration and detecting swipe gesture.</title>
    <link href="http://vshivam.github.io/2013/09/02/privly-reading-app/"/>
-   <updated>2013-09-02T00:00:00+08:00</updated>
+   <updated>2013-09-02T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2013/09/02/privly-reading-app</id>
    <content type="html">&lt;h3 id=&quot;reading-app&quot;&gt;Reading App&lt;/h3&gt;
 &lt;p&gt;The Privly JS reading app helps a user to view the encrypted content behind privly links. We’ve been working to make sure that the same js app can be used on all platforms and have successfully integrated it on android apart from the web application and the &lt;a href=&quot;https://addons.mozilla.org/en-us/firefox/addon/privly/&quot;&gt;firefox&lt;/a&gt; and &lt;a href=&quot;https://chrome.google.com/webstore/detail/privly-content-extension/pkokikcdapfpkkkjpdaamjanniaempol&quot;&gt;chrome&lt;/a&gt; extensions. This makes it really easy to drop in new Encryption Apps across all platforms.&lt;/p&gt;
@@ -1213,7 +1213,7 @@ But in case of the MergeAdapter, I’d need to keep track of multiple adapters, 
  <entry>
    <title>Virtual Machine on Ubuntu 12.04 and Samba.</title>
    <link href="http://vshivam.github.io/2013/08/14/vm-samba/"/>
-   <updated>2013-08-14T00:00:00+08:00</updated>
+   <updated>2013-08-14T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2013/08/14/vm-samba</id>
    <content type="html">&lt;p&gt;I wanted to use a Windows XP VM to well, play Age of Empires on Ubuntu. As it turns out, I can’t connect to multiplayer aoe using this method but I did learn a few cool things along the way. In case you know of a method to play aoe 2 on ubuntu, (without using wine ?) please do drop a comment. &lt;a href=&quot;http://www.howtogeek.com/117635/how-to-install-kvm-and-create-virtual-machines-on-ubuntu/&quot;&gt;This&lt;/a&gt; is probably one of the easiest methods of creating VMs on Ubuntu.&lt;/p&gt;
 
@@ -1266,7 +1266,7 @@ valid users &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; shivam&lt;/code&gt;&l
  <entry>
    <title>Security.</title>
    <link href="http://vshivam.github.io/2013/07/06/security/"/>
-   <updated>2013-07-06T00:00:00+08:00</updated>
+   <updated>2013-07-06T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2013/07/06/security</id>
    <content type="html">&lt;p&gt;Pushed a fairly major update to my github fork of &lt;a href=&quot;https://github.com/vshivam/privly-android/&quot;&gt;Privly - Android&lt;/a&gt;. Users can now create new Privly Content and share it using any sharing option available on the device.&lt;/p&gt;
 
@@ -1313,7 +1313,7 @@ A more secure method will be use the Salt and Hash mechanism.&lt;/p&gt;
  <entry>
    <title>Week 2.5 - androidJsBridge.</title>
    <link href="http://vshivam.github.io/2013/07/04/android-js-bridge/"/>
-   <updated>2013-07-04T00:00:00+08:00</updated>
+   <updated>2013-07-04T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2013/07/04/android-js-bridge</id>
    <content type="html">&lt;p&gt;Its been almost two and a half weeks since the GSoC coding period started and it has been nothing less than interesting. Finally, after quite a few hours of coding I’ve been able to successfully integrate the &lt;a href=&quot;https://github.com/vshivam/privly-applications/tree/posting-applications&quot;&gt;Posting-Applications&lt;/a&gt;, PlainPost and Zerobin, with the Privly Android Application.&lt;/p&gt;
 
@@ -1357,7 +1357,7 @@ For example -&lt;/p&gt;
  <entry>
    <title>Google Summer of Code Begins!!</title>
    <link href="http://vshivam.github.io/2013/06/16/gsoc-begins/"/>
-   <updated>2013-06-16T00:00:00+08:00</updated>
+   <updated>2013-06-16T00:00:00+07:00</updated>
    <id>http://vshivam.github.io/2013/06/16/gsoc-begins</id>
    <content type="html">&lt;p&gt;So well, I was lucky enough to make it to the final selections for the Google Summer of Code 2013 with The Privly Foundation. Feels awesome!
 I’ll be working on the Mobile Version of &lt;a href=&quot;https://privlyalpha.org/&amp;quot;&amp;gt;https://privlyalpha.org/&quot;&gt;Privly&lt;/a&gt; for the Android Platform.
