@@ -82,5 +82,8 @@ So I went ahead, added the relevant code to the layout but I missed having an ex
 
 * Play around with the fill and color css properties of the `<svg>` element. 
 
+<h4>Project Repository </h4>
+[https://github.com/vshivam/github-corners-text](https://github.com/vshivam/github-corners-text)
+
 This project is a fork of the original [Github Corners](http://tholman.com/github-corners/) project. Thanks to Tim Holman
 for creating Github Corners!

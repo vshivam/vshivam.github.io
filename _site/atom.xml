@@ -4,7 +4,7 @@
  <title>Shivam Verma</title>
  <link href="http://vshivam.github.io/atom.xml" rel="self"/>
  <link href="http://vshivam.github.io/"/>
- <updated>2016-04-22T21:19:10+08:00</updated>
+ <updated>2016-04-22T21:27:05+08:00</updated>
  <id>http://vshivam.github.io</id>
  <author>
    <name>Mark Otto</name>
@@ -101,6 +101,9 @@
 &lt;ul&gt;
   &lt;li&gt;Play around with the fill and color css properties of the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;svg&amp;gt;&lt;/code&gt; element.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h4&gt;Project Repository &lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/vshivam/github-corners-text&quot;&gt;https://github.com/vshivam/github-corners-text&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;This project is a fork of the original &lt;a href=&quot;http://tholman.com/github-corners/&quot;&gt;Github Corners&lt;/a&gt; project. Thanks to Tim Holman
 for creating Github Corners!&lt;/p&gt;
