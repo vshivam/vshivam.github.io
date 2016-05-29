@@ -1,3 +1,6 @@
 [submodule "presentations/talk.js"]
 	path = presentations/talk.js
 	url = https://github.com/vshivam/dynamix-talk.js.git
+[submodule "presentations/multi-line-chart"]
+	path = presentations/multi-line-chart
+	url = https://github.com/vshivam/multi-line-chart.git
