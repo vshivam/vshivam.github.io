@@ -4,3 +4,9 @@
 [submodule "presentations/multi-line-chart"]
 	path = presentations/multi-line-chart
 	url = https://github.com/vshivam/multi-line-chart.git
+[submodule "presentations/dynamix/dashboard/editor"]
+	path = presentations/dynamix/dashboard/editor
+	url = https://github.com/vshivam/Dynamix-Roles-Editor.git
+[submodule "presentations/dynamix/dashboard/dashboard"]
+	path = presentations/dynamix/dashboard/dashboard
+	url = https://github.com/vshivam/Roles-Based-Dashboard.git
