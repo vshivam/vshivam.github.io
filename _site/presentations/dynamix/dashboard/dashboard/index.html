@@ -1,0 +1,65 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<title>Ambient Dynamix</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  	
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    
+    <script type="text/javascript" src="scripts/dynamix/widgets/widgets.js"></script>
+    <script type="text/javascript" src="scripts/data.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <script type="text/javascript" src="scripts/dynamix/libs/forge.min.js"></script>
+    <script type="text/javascript" src="scripts/dynamix/dynamix.js"></script>
+    <script type="text/javascript" src="scripts/dynamix/dynamixPairing.js"></script>
+    <script type="text/javascript" src="scripts/utils.js"></script>
+    <script type="text/javascript" src="scripts/dynamixUtils.js"></script>
+    <script type="text/javascript" src="scripts/dynamix/widgets/js/jqColorPicker.min.js"></script>
+
+</head>
+
+<body>
+	<div data-role="page" id="scopes-page" data-theme="b">
+		<div data-role="header">
+            <center>
+	            <div class="center-wrapper">
+	                <img alt="logo" src="img/logo.png" /> 
+	                <span>Ambient Dashboards</span>
+	            </div>
+            </center>
+        </div>
+		<div role="main" class="ui-content">
+			<h4 style="margin-left: 1em;">The following Dashboards have been shared with you :</h4>
+			<!-- here goes the list of scopes -->
+		</div>
+	</div><!-- /page -->
+
+	<div data-role="page" id="controls-page" data-theme="b">
+		<div data-role="header">
+            <center>
+	            <div class="center-wrapper">
+	                <img alt="logo" src="img/logo.png" /> 
+	                <span>Ambient Dashboards</span>
+	            </div>
+            </center>
+        </div>
+		<div role="main" class="ui-content">
+			<div id="scenes-container">
+				<!-- list of scenes -->
+			</div>	
+			<h4 style="margin-left: 1em;">Available devices : </h4>			
+			<div id="plugins-list">
+				<!-- list of controls, grouped by plugin id --> 
+			</div>
+		</div><!-- /content -->
+	</div><!-- /page -->
+</body>
+</html>

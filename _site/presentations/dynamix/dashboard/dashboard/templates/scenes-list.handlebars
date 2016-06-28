@@ -1,0 +1,10 @@
+<ul data-role="listview" data-inset="true" class="scenes" id="scenes-list">
+	<li data-role="header" data-theme="b">Scenes</li>
+	{{#each scenes}}
+	<li class="ui-field-contain controls-list">
+		<a href="#" data-name="{{this}}">
+			{{this}}
+		</a>
+	</li>
+	{{/each}}
+</ul>

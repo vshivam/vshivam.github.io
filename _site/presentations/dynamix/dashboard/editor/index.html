@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ambient Dynamix Roles Editor</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" href="styles/styles.css" />
+
+        <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+        
+        <script type="text/javascript" src="scripts/data.js"></script>
+        <script src="scripts/utils.js"></script>
+        <script type="text/javascript" src="scripts/script.js"></script>
+        <script type="text/javascript" src="scripts/dynamix/libs/forge.min.js"></script>
+        <script type="text/javascript" src="scripts/dynamix/dynamix.js"></script>
+        <script type="text/javascript" src="scripts/dynamix/dynamixPairing.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+        <script type="text/javascript" src="scripts/dynamixUtils.js"></script>
+        <script type="text/javascript" src="scripts/dynamix/widgets/js/jqColorPicker.min.js"></script>
+        <script type="text/javascript" src="scripts/dynamix/widgets/widgets.js"></script>
+
+    </head>
+    <body>
+        <div data-role="page" id="roles-page" data-theme="b">
+            <div data-role="header">
+                <center>
+                <div class="center-wrapper">
+                    <img alt="logo" src="img/logo.png" /> 
+                    <span>Dashboard Designer</span>
+                </div>
+                </center>
+            </div>
+            <!-- /header -->
+            <div role="main" class="ui-content">
+                <fieldset class="custom">
+                    <legend>Welcome !</legend>
+
+                    <ul data-role="listview" data-inset="true" id="add-new-role">
+                        <li class="ui-body" data-icon="plus">
+                            <a href="#addNewRolePopup" data-rel="popup" data-position-to="window" data-transition="pop">Create a New Dashboard</a>
+                        </li>
+                    </ul>
+
+                    <ul data-role="listview" data-inset="true" name="roles-list" id="roles-list">
+                        <!-- 
+                            Here goes the list of roles 
+                        -->
+                    </ul>
+                </fieldset>
+
+                <div data-role="popup" id="addNewRolePopup" data-theme="b">
+                    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                    <div>
+                        <form id="addNewRoleForm">
+                            <input type="text" id="role-name" name="name" data-theme="a" placeholder="role name">
+                            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check"> Create </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div data-role="popup" id="editRolePopup" data-theme="b">
+                    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
+                    <ul data-role="listview" data-inset="true" style="min-width: 210px">
+                        <li> <a href="#" class="ui-icon-edit" id="edit-role"> Edit </a> </li>
+                        <li> <a href="#" class="ui-icon-delete" id="delete-role"> Delete </a> </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /content -->
+            <div data-role="footer" data-position="fixed">
+                <h4>&copy; 2016 Ambient Dynamix</h4>
+            </div>
+            <!-- /footer -->
+        </div>
+        <!-- /page -->
+        <div data-role="page" id="scopes-page" data-theme="b">
+            <div data-role="header">
+                <center>
+                <div class="center-wrapper">
+                    <img alt="logo" src="img/logo.png" /> 
+                    <span>Dashboard Designer</span>
+                </div>
+                </center>
+            </div>
+
+            <div role="main" class="ui-content">
+                <!--
+                <center>
+                    <h4 style="margin: 1em 0 0 1em; text-decoration: underline;">Edit Dashboard for role <span id="role-name"></span></h4>
+                </center>
+                -->
+                <fieldset class="custom">
+                    <legend>Edit Dashboard for role <span id="role-name"></span> </legend>
+                    <ul data-role="listview" data-inset="true" id="add-new-scope">
+                        <li class="ui-body" data-icon="plus">
+                            <a href="#addScopePopup" data-rel="popup" data-position-to="window" data-transition="pop">Add New Scope</a>
+                        </li>
+                    </ul>
+                    <ul data-role="listview" data-inset="true" id="scopes-list">
+                        <!-- 
+                            Here goes the list of scopes 
+                            -->
+                    </ul>
+                </fieldset>
+                
+                <div data-role="popup" id="addScopePopup" data-theme="b">
+                    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                    <div class="ui-field-contain">
+                        <form id="addExistingScopeForm">
+                            <select name="scopes-select" id="scopes-select" >
+                                <!-- Here goes the list of existing scopes -->    
+                            </select>
+                            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check"> Add </button>
+                        </form>
+                        <br/>
+                        <form id="addNewScopeForm">
+                            <input type="text" id="scope-name" name="name" data-theme="a" placeholder="scope name">
+                            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check"> Create </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h4>&copy; 2016 Ambient Dynamix</h4>
+            </div>
+            <!-- /footer -->
+        </div>
+        <!-- /page -->
+        <div data-role="page" id="devices-page" data-theme="b">
+            <div data-role="header">
+                <center>
+                <div class="center-wrapper">
+                    <img alt="logo" src="img/logo.png" /> 
+                    <span>Dashboard Designer</span>
+                </div>
+                </center>
+            </div>
+
+            <div role="main" class="ui-content">
+                <fieldset class="custom">
+                    <legend> Scenes for <span id="scope-name"> </span> </legend>
+                <!--
+                     <center>
+                        <h4 style="margin: 1em 0 0 1em; text-decoration: underline;">Ambient Flow graph for scope <span id="scope-name"> </span></h4>
+                    </center>
+
+                    <ul data-role="listview" data-inset="true">
+                        <li class="ui-body">
+                            <span id="current-graph-name">No graph selected yet </span>
+                        </li>
+                    </ul>
+                    
+                    <ul data-role="listview" data-inset="true" id="scenes-list">
+                        <li class="ui-body" data-icon="edit">
+                            <span id="current-graph-name">No graph selected yet </span>
+                        </li>
+                    </ul>
+
+                -->
+                    <ul data-role="listview" data-inset="true">
+                        <li class="ui-body" data-icon="plus">
+                            <a href="#addNewScenePopup" data-rel="popup" data-position-to="window" data-transition="pop">Create New Scene </a>
+                        </li>
+                    </ul>
+
+                    <ul data-role="listview" data-inset="true" id="scenes-list">
+
+                    </ul>                    
+                    
+                </fieldset>
+                <fieldset class="custom">
+                    <legend> Edit devices for scope <span id="scope-name"> </span> </legend>
+                    <!--
+                    <center>
+                        <h4 style="margin: 1em 0 0 1em; text-decoration: underline;">Edit devices for scope <span id="scope-name"> </span></h4>
+                    </center>
+                    -->
+                    <ul data-role="listview" data-inset="true" id="add-new-plugin">
+                        <li class="ui-body" data-icon="plus">
+                            <a href="#addAccessControlPopup" data-rel="popup" data-position-to="window" data-transition="pop">Add New Devices</a>
+                        </li>
+                    </ul>
+                    <ul data-role="listview" class="ui-listview-outer" data-inset="true" id="plugins-list">
+                
+                    </ul>
+                </fieldset>
+            </div>
+            <div data-role="popup" id="addNewScenePopup" data-theme="b" data-overlay-theme="b">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                <center><h4>Create new Scene </h4></center>
+                <form id="addNewSceneForm">
+                    <input type="text" placeholder="scene name" id="scene-name">
+                    <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check"> Create </button>
+                </form>
+            </div>
+            <div data-role="popup" id="addAccessControlPopup" data-theme="b">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                    <form id="addAccessControlForm">
+                        <input type="text" name="access-control-name" placeholder="access control name">
+                        <select name="plugin-id-select" id="plugin-id-select">
+                            <!-- Here goes the list of plugin ids -->    
+                        </select>
+                        <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check"> Create </button>
+                    </form>
+            </div>
+            <div data-role="popup" id="addDeviceToAccessControlPopup" data-theme="b">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                <div>
+                    <form id="addDeviceToAccessControlForm">
+                        <select name="device-id-select" id="device-id-select">
+                            <!-- Here goes the list of devices -->    
+                        </select>
+                        <br/>
+                        <fieldset data-role="controlgroup" id="device-commands-controlgroup">
+                            <!-- Here goes the list of command for devices -->
+
+                        </fieldset>
+                        <br/>
+                        <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check"> Add </button>
+                    </form>
+                </div>
+            </div>     
+            <div data-role="popup" id="editDeviceAccessPopup" data-theme="b">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                <div>
+                    <form id="editDeviceAccessForm">
+                        <center><h3 id="device-name"> </h3></center>
+                        <br/>
+                        <fieldset data-role="controlgroup" id="edit-device-commands-controlgroup">
+                            <!-- Here goes the list of command for devices -->
+
+                        </fieldset>
+                        <br/>
+                        <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check"> Add </button>
+                    </form>
+                </div>
+            </div>         
+            <div data-role="footer" data-position="fixed">
+                <h4>&copy; 2016 Ambient Dynamix</h4>
+            </div>
+            <!-- /footer -->
+        </div>
+        <!-- /page -->
+
+        <div data-role="page" data-theme="b" id="scene-editor">
+            <div data-role="header">
+                <center>
+                <div class="center-wrapper">
+                    <img alt="logo" src="img/logo.png" /> 
+                    <span>Dashboard Designer</span>
+                </div>
+                </center>
+            </div>
+
+            <div role="main" class="ui-content">
+                <fieldset class="custom">
+                    <legend> Graphs for <span id="scene-name"> </span> </legend>
+
+                    <ul data-role="listview" data-inset="true" id="add-new-graph">
+                        <li class="ui-body" data-icon="plus">
+                            <a href="#addNewGraphPopup" data-rel="popup" data-position-to="window" data-transition="pop" data-overlay-theme="b">Add New Graph</a>
+                        </li>
+                    </ul>
+                    <ul data-role="listview" class="ui-listview-outer" data-inset="true" id="graphs-list">
+                        
+                    </ul>
+                </fieldset>
+
+                <fieldset class="custom">
+                    <legend>Select device state for <span id="scene-name"> </span></legend>
+                    <div id="scene-editor-plugins-list">
+                            
+                    </div>
+                </fieldset>
+            </div>
+
+            <div data-role="footer" data-position="fixed">
+                <h4>&copy; 2016 Ambient Dynamix</h4>
+            </div>
+             <div data-role="popup" id="addNewGraphPopup" data-theme="b">
+                <center><h4>Select a graph</h4></center>
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                    <form id="addNewGraphForm">
+                        <select id="graph-id-select">
+                            <!-- Here goes the list of plugin ids -->    
+                        </select>
+                        <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check"> Add </button>
+                    </form>
+            </div>
+        </div>
+    </body>
+</html>

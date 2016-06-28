@@ -1,0 +1,12 @@
+<div data-deviceid="{{data.deviceId}}" class="ui-grid-b controls-container">
+	<h3>{{data.deviceId}}</h3>
+	<br/>
+	{{#if data.commands.SWITCH}}
+	<div class="ui-block-a">
+		<select class="wemoSwitch" data-role="slider" data-deviceid="{{data.deviceId}}">
+		   	<option value="off">Off</option>
+		   	<option value="on">On</option>
+		</select>
+	</div>
+	{{/if}}
+</div>

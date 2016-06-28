@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" />
+<title>D3 Multi Line Chart</title>
+<head>
+  <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+<body>
+  <div id="content">
+    <div id="header">
+      Asia's rice bowl
+    </div>
+    <br>
+    <div id="description">
+      Nearly a decade after a spike in global food prices
+      sent shockwaves around the world, Asia's top rice
+      producers are suffering from a blistering drought that
+      threatens to cut output and boost prices of a staple
+      for half the world's population.
+    </div>
+    <br>
+    <span class="bold-text">MILLED RICE ENDING STOCKS</span>
+    <div id="countries-list-container-horizontal">
+      <i class="regular-text"> Click to hide/show </i>
+      <ul class="countries-list toggle" id="horizontal">
+        <li data-name="India">
+          <span class="bold-text country-label"> &mdash;<span>
+          <span class="bold-text dark"> India </span>
+        </li>
+        <li data-name="Thailand">
+          <span class="bold-text country-label"> &mdash;<span>
+          <span class="bold-text dark"> Thailand </span>
+        </li>
+        <li data-name="Vietnam">
+          <span class="bold-text country-label"> &mdash;<span>
+          <span class="bold-text dark"> Vietnam </span>
+        </li>
+      </ul>
+    </div>
+    <div class="bold-text">Thousand metric tonnes</div>
+    <div id="chart-container">
+    </div>
+    <div id="countries-list-container-vertical">
+      <i class="regular-text"> Click to hide/show </i><br><br>
+      <div class="bold-text dark year"> </div>
+      <ul class="countries-list toggle" id="vertical">
+        <li data-name="India">
+          <div class="country-name">
+            <span class="bold-text country-label"> &mdash;</span>
+            <span class="bold-text dark"> India </span><br>
+          </div>
+          <span class="rice bold-text dark"> </span>
+        </li>
+        <li data-name="Thailand">
+          <div class="country-name">
+            <span class="bold-text country-label"> &mdash;</span>
+            <span class="bold-text dark"> Thailand </span><br>
+          </div>
+          <span class="rice bold-text dark"> </span>
+        </li>
+        <li data-name="Vietnam">
+          <div class="country-name">
+            <span class="bold-text country-label"> &mdash;</span>
+            <span class="bold-text dark"> Vietnam </span><br>
+          </div>
+          <span class="rice bold-text dark"> </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="countries-list-popup">
+    <div class="bold-text dark year"> </div>
+    <ul class="countries-list" id="vertical">
+      <li data-name="India">
+        <span class="bold-text country-label"> &mdash;</span>
+        <span class="bold-text dark"> India </span>  &nbsp;&nbsp;&nbsp;
+        <span class="rice bold-text dark"> </span>
+      </li>
+      <li data-name="Thailand">
+        <span class="bold-text country-label"> &mdash;</span>
+        <span class="bold-text dark"> Thailand </span>  &nbsp;&nbsp;
+        <span class="rice bold-text dark"> </span>
+      </li>
+      <li data-name="Vietnam">
+        <span class="bold-text country-label"> &mdash;</span>
+        <span class="bold-text dark"> Vietnam </span> &nbsp;&nbsp;
+        <span class="rice bold-text dark"> </span>
+      </li>
+    </ul>
+  </div>
+</body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="scripts/main.js"></script>

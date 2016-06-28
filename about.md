@@ -12,15 +12,13 @@ layout: page
 </div>
 </p>
 
-Hi! I'm Shivam Verma. I'm an open source enthusiast, a ubiquitous computing researcher, traveler and music lover. 
-
-I'm 24 and currently work as a Research Assistant at the [Felicitous Computing Institute](http://fci.comp.nus.edu.sg/), National University of Singapore.
+Hi! I'm Shivam Verma and I currently work as an Internet of Things researcher at the [Felicitous Computing Institute](http://fci.comp.nus.edu.sg/), NUS. 
 
 I graduated from the [Goa Campus of BITS Pilani](https://en.wikipedia.org/wiki/Birla_Institute_of_Technology_and_Science,_Pilani_%E2%80%93_Goa_Campus) with a Bachelors in Information Systems and prior to joining NUS, I worked as a Software Developer at [Teewe](http://teewe.in/) in Bangalore, India. 
 
-On the open source front, I started the Android version of [Privly](https://priv.ly/) as a Google Summer of Code student in 2013 and have since been maintaining the project. I also frequently contribute to the [Ambient Dynamix](http://ambientdynamix.org/) Project. 
+I am an open source software enthusiast and try to contribute back to the community as much as possible. Apart from some bug fixes here and there, I started the Android version of [Privly](https://priv.ly/) as a Google Summer of Code student back in 2013 and have since been maintaining the project. But it's been inactive for a while now. However, I do actively contribute to the [Ambient Dynamix](http://ambientdynamix.org/) Project. An Internet of Things framework for your Android device. 
 
-I've traveled extensively in India. I've also been to Japan, the USA and South Korea. New Zealand currently is on the top of my travel bucket list. 
+And finally, like everyone out there, I love traveling. I've traveled extensively in India and a little bit outside of it. Here's a list of the places I've been to internationally. Hit me up if you're going to any of these and need some <small>(probably)</small>useless advice or someone to tag along with you in your next adventure. 
 
 <iframe src="https://www.google.com/maps/d/embed?mid=zW38gweCTgWA.kFNiEcQ2r8DY" width="500" height="319"></iframe>
 

@@ -1,0 +1,22 @@
+<div data-deviceid="{{data.deviceId}}">
+	<h3>{{data.deviceId}}</h3>
+	<br>
+	<div class="ui-grid-a">
+		{{#if data.commands.SWITCH}}
+		<div class="ui-block-a">
+			<select class="colorSwitch" data-role="slider" data-deviceid="{{data.deviceId}}">
+			   	<option value="off">Off</option>
+			   	<option value="on">On</option>
+			</select>
+		</div>
+	  	{{/if}}
+	  	{{#if data.commands.DISPLAY_COLOR}}
+	 	<div class="ui-block-b">
+	  		<a class="ui-btn ui-corner-all ui-mini colorPicker" data-deviceid="{{data.deviceId}}">
+	  			Choose Color
+	  		</a>
+		</div>
+	  	{{/if}}
+	</div>
+</div>
+<br>
