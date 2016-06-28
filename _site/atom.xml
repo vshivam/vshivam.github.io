@@ -4,7 +4,7 @@
  <title>Shivam Verma</title>
  <link href="http://vshivam.github.io/atom.xml" rel="self"/>
  <link href="http://vshivam.github.io/"/>
- <updated>2016-06-28T15:28:42+08:00</updated>
+ <updated>2016-06-28T16:05:09+08:00</updated>
  <id>http://vshivam.github.io</id>
  <author>
    <name>Mark Otto</name>
@@ -111,15 +111,15 @@ for creating Github Corners!&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>FOSSAsia 2016</title>
+   <title>Speaking at FOSSAsia 2016.</title>
    <link href="http://vshivam.github.io/2016/04/20/fossasia-2016/"/>
    <updated>2016-04-20T00:00:00+08:00</updated>
    <id>http://vshivam.github.io/2016/04/20/fossasia-2016</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://2016.fossasia.org/&quot;&gt;FOSSAsia&lt;/a&gt; is an annual free and open source software conference for anyone remotely interested in learning more about open source.&lt;/p&gt;
 
-&lt;p&gt;I personally feel that attending any FOSS event is a great way to get introduced to amazing projects that I’ll probably not hear of otherwise. One such project is &lt;a href=&quot;https://github.com/mikera/clisk&quot;&gt;Clisk&lt;/a&gt; or the Clojure Image Synthesis Kit, a library for procedural image generation. Check out &lt;a href=&quot;https://twitter.com/tweegeemee&quot;&gt;this&lt;/a&gt; twitter bot to see what I’m talking about!&lt;/p&gt;
+&lt;p&gt;I personally feel that attending any FOSS event is a great way to get introduced to amazing projects that I’ll probably not hear of otherwise. One such really interesting project at FOSSAsia was the Clojure Image Synthesis Kit or &lt;a href=&quot;https://github.com/mikera/clisk&quot;&gt;Clisk&lt;/a&gt;, a library for procedural image generation. Check out &lt;a href=&quot;https://twitter.com/tweegeemee&quot;&gt;this&lt;/a&gt; twitter bot to see it in action. For someone like me who has never done anything of this sort it was nothing short of amazing!&lt;/p&gt;
 
-&lt;p&gt;Some other interesting projects that I got introduced to (or learnt more about) at FOSSAsia:&lt;/p&gt;
+&lt;p&gt;Some other interesting projects that I got introduced to (or learnt more about):&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/facebook/graphql&quot;&gt;GraphQL&lt;/a&gt;&lt;/li&gt;
@@ -130,9 +130,9 @@ for creating Github Corners!&lt;/p&gt;
 
 &lt;p&gt;Secondly, it’s a great way to talk to the core developers of softwares that I use daily and ask them some hard hitting questions or simply thank them for the great work they’ve been doing. Looking at you there Github and VLC.&lt;/p&gt;
 
-&lt;p&gt;And most importantly, I got the opportunity to talk about the work I’ve been doing with the Ambient Computing Research Group at NUS.&lt;/p&gt;
+&lt;p&gt;Finally, I also got the opportunity to talk about the work we’ve been doing at the Ambient Computing Research Group at NUS. All of our code is open source and you can check it out &lt;a href=&quot;https://bitbucket.org/dynamixdevelopers/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;So, here’s me talking about Ambient Dynamix.&lt;/p&gt;
+&lt;p&gt;Here’s me talking about Ambient Dynamix.&lt;/p&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/bkdhfeCTpJs&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
