@@ -38,7 +38,7 @@ collections:
 pages_list:    
   Blog: '/index.html'  
   Portfolio : '/portfolio'
-  About: '/about'
+  About / Contact Me: '/about'
   Feed: '/atom.xml'
 
 gems:
