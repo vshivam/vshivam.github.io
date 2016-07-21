@@ -35,10 +35,10 @@ collections:
     output: true
     permalink: /projects/:path/
 
-pages_list:    
-  Blog: '/index.html'  
-  Portfolio : '/portfolio'
-  About / Contact Me: '/about'
+pages_list:
+  Blog: '/index.html'
+  Portfolio: '/portfolio'
+  About Me / Contact: '/about'
   Feed: '/atom.xml'
 
 gems:
