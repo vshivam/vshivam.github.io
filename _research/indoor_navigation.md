@@ -16,7 +16,7 @@ In this project, we designed an end-to-end system for indoor navigation using of
 </center>
 
 <br/>
-The application then uses smartphone sensor data for a dead reckoning based localization technique to estimate the user's current location. Visual feedback is provided to the user moves around in the indoor environment. 
+The application then uses smartphone sensor data for a Dead-reckoning based localization technique to estimate the user's current location. Visual feedback is provided as the user moves around in the indoor environment. 
 
 <strong>Publications : </strong>
 
