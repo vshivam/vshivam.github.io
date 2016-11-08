@@ -20,6 +20,6 @@ The application then uses smartphone sensor data for a Dead-reckoning based loca
 
 <strong>Publications : </strong>
 
-* <strong>S. Verma</strong>, R. Omanwar, Sreejith V., Meera GS., “A Smartphone Based Indoor Navigation System” in <emph>Proc. of 28th Int'l
-Conference on Microelectronics (ICM 2016) </emph> <br/>
+* <strong>S. Verma</strong>, R. Omanwar, Sreejith V., Meera GS., “A Smartphone Based Indoor Navigation System” in <i>Proc. of 28th Int'l
+Conference on Microelectronics (ICM 2016) </i> <br/>
 

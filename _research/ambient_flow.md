@@ -18,13 +18,13 @@ Ambient Flow provides a set of novel smart space design tools, which enable non-
 <strong>Publications : </strong>
 
 * D. Carlson, M. Mogerle, M. Pagel, <strong>S. Verma</strong>, and D. S. Rosenblum, “Ambient flow: A
-visual approach for remixing the internet of things” in <emph>Proc. of 5th Int'l
-Conference on Internet of Things (IoT 2015) </emph> <br/> [[Full Paper]]({{site.url}}/assets/portfolio/papers/Ambient_Flow.pdf)
+visual approach for remixing the internet of things” in <i>Proc. of 5th Int'l
+Conference on Internet of Things (IoT 2015) </i> <br/> [[Full Paper]]({{site.url}}/assets/portfolio/papers/Ambient_Flow.pdf)
 
 * D. Carlson, M. Mogerle, M. Pagel, <strong>S. Verma</strong>, and D. S. Rosenblum, "A Visual Design Toolset for Drag-and-drop Smart Space Configuration" 
-in <emph>Proc. of 5th Int'l Conference on Internet of Things (IoT 2015) </emph> <br/> [[Demo Paper]]({{site.url}}/assets/portfolio/papers/Demo_Ambient_Flow.pdf)
+in <i>Proc. of 5th Int'l Conference on Internet of Things (IoT 2015) </i> <br/> [[Demo Paper]]({{site.url}}/assets/portfolio/papers/Demo_Ambient_Flow.pdf)
 
 <strong>Awards : </strong>
 
-* [Best Demo Award](http://www.iot-conference.org/iot2015/awards/) at the <strong> 5th International Conference on the Internet of Things (IoT 2015) </strong>
+* [Best Demo Award](http://www.iot-conference.org/iot2015/awards/) at the <i> 5th International Conference on the Internet of Things (IoT 2015) </i>
 
