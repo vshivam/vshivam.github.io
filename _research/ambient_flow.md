@@ -2,7 +2,7 @@
 layout: page
 title: Ambient Flow
 subtitle: Remixing the Internet of Things.
-description : Ambient Flow provides a set of novel smart space design tools, which enable non-programmers to visually “remix” their ambient environments in new, playful and potentially unforeseen ways using an intuitive flow-graph model.
+description : Ambient Flow provides a set of novel smart space design tools, which enable non-programmers to visually “remix” their ambient environments in new, playful and potentially unforeseen ways using an intuitive flow-graph model. [Publications Inside]
 thumbnail: assets/portfolio/userStudyPhoto.jpg
 ---
 
@@ -18,11 +18,11 @@ Ambient Flow provides a set of novel smart space design tools, which enable non-
 <strong>Publications : </strong>
 
 * D. Carlson, M. Mogerle, M. Pagel, <strong>S. Verma</strong>, and D. S. Rosenblum, “Ambient flow: A
-visual approach for remixing the internet of things” in <strong>5th International
-Conference on Internet of Things (IoT 2015) </strong> <br/> [[Full Paper]]({{site.url}}/assets/portfolio/papers/Ambient_Flow.pdf)
+visual approach for remixing the internet of things” in <emph>Proc. of 5th Int'l
+Conference on Internet of Things (IoT 2015) </emph> <br/> [[Full Paper]]({{site.url}}/assets/portfolio/papers/Ambient_Flow.pdf)
 
 * D. Carlson, M. Mogerle, M. Pagel, <strong>S. Verma</strong>, and D. S. Rosenblum, "A Visual Design Toolset for Drag-and-drop Smart Space Configuration" 
-in <strong>5th International Conference on Internet of Things (IoT 2015) </strong> <br/> [[Demo Paper]]({{site.url}}/assets/portfolio/papers/Demo_Ambient_Flow.pdf)
+in <emph>Proc. of 5th Int'l Conference on Internet of Things (IoT 2015) </emph> <br/> [[Demo Paper]]({{site.url}}/assets/portfolio/papers/Demo_Ambient_Flow.pdf)
 
 <strong>Awards : </strong>
 
