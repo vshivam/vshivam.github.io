@@ -3,7 +3,7 @@ layout: page
 ---
 
 <p >
-<div class="message" align="center">
+<div align="center">
 	<a href="https://github.com/vshivam" target="_blank"> <i class="fa fa-github-alt fa-3x"></i></a> &nbsp; &nbsp;
 	<a href="http://stackoverflow.com/users/1239966/shivam-verma" target="_blank"> <i class="fa fa-stack-overflow fa-3x"></i> </a> &nbsp; &nbsp;
 	<a href="https://www.facebook.com/vshivam91" target="_blank"> <i class="fa fa-facebook fa-3x"></i></a> &nbsp; &nbsp;
