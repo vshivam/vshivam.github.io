@@ -5,7 +5,7 @@ subtitle: A plug and play context-aware Framework.
 description: A lightweight software framework that transforms a user's mobile device into an adaptive smart gateway to the Internet of Things. It enables mobile apps and Web apps to fluidly interact with the physical world through advanced sensing, control and actuation plug-ins that can be installed into the user’s device on-demand.
 ---
 
-###[What's Ambient Dynamix ?](http://ambientdynamix.org/)
+### What's [Ambient Dynamix ?](http://ambientdynamix.org/)
 Ambient Dynamix (Dynamix) is a lightweight software framework that transforms a user’s mobile device into an adaptive smart gateway to the Internet of Things. Dynamix enables mobile apps and Web apps to fluidly interact with the physical world through advanced sensing, control and actuation plug-ins that can be installed into the user’s device on-demand. 
 
 A Dynamix-enabled device can also serve as a gateway between mutually incompatible smart devices that are situated in the user’s environment. Dynamix comes with a growing collection of ready-made plug-ins and provides open SDKs that enable 3rd party developers to create and share new plug-in types with the community.
