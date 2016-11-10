@@ -7,9 +7,8 @@ description : An Indoor Navigation application for off-the shelf Android smartph
 
 In this project, we designed an end-to-end system for indoor navigation using off-the-shelf smartphones. The proposed approach uses a web based architecture to generate an indoor map based on the links between panoramic images uploaded to the server with the help of our Map Maker application. 
 
-![Shortest Path Screengrab]({{ site.url }}/assets/portfolio/shortestPath.png)
-
 <center> 
+	<img src="{{ site.url }}/assets/portfolio/shortestPath.png"/>
 	<strong>
 		Map generated using panoramic image data
 	</strong>
