@@ -5,7 +5,7 @@ subtitle: A Smartphone Based Indoor Navigation System.
 description : An Indoor Navigation application for off-the shelf Android smartphones. The application is supported by an easy to use web frontend for creating indoor maps and providing a set of Points of Interest for Localization and Navigation. [Publications Inside]
 ---
 
-In this project, we designed an end-to-end system for indoor navigation using off-the-shelf smartphones. The proposed approach uses a web based architecture to generate an indoor map based on the links between panoramic images uploaded to the server with the help of our Map Maker application. 
+In this project, we designed an end-to-end system for indoor navigation using off-the-shelf smartphones. The proposed approach uses a web based architecture to generate an indoor map based on tags between panoramic images and respective step counts.
 
 <center> 
 	<img src="{{ site.url }}/assets/portfolio/shortestPath.png"/>
