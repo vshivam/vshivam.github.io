@@ -2,7 +2,7 @@ function render(data) {
     d3.select("svg").remove();
 
     var margin = {
-            top: 40,
+            top: 10,
             right: 20,
             bottom: 30,
             left: 40
@@ -35,15 +35,28 @@ function render(data) {
         .attr("transform", "translate(0, " + height + ")")
         .call(d3.axisBottom(x).tickFormat(""));
 
+    svg.append("text")             
+      .attr("transform",
+            "translate(" + (width/2) + " ," + 
+                           (height + 20) + ")")
+      .style("text-anchor", "middle")
+      .text("Episodes (hover for more details)");
+
     svg.append("g")
         .attr("class", "y axis")
         .call(d3.axisLeft(y).ticks(10))
         .append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
-        .attr("dy", ".71em")
-        .style("text-anchor", "middle")
-        .text("IMDB Rating");
+        .attr("dy", ".71em");
+
+     svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left)
+      .attr("x",0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("IMDB Rating"); 
 
     svg.selectAll(".bar")
         .data(data)
@@ -67,7 +80,7 @@ function render(data) {
             var season = d.season_episode.split('.')[0];
             var episode = d.season_episode.split('.')[1];
 
-            div.html("S" + season + "E" + episode + "<br>" + d.imdbRating)
+            div.html("S" + season + "E" + episode + ", " + d.imdbRating + "<br><br> Click to IMDB")
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY) + "px");
 
@@ -80,5 +93,9 @@ function render(data) {
             div.transition()
                 .duration(10)
                 .style("opacity", 0);
+        })
+        .on("click", function(d){
+             var url = "http://imdb.com/title/" + d.imdbID;
+             window.open(url, '_blank');
         });
 }
