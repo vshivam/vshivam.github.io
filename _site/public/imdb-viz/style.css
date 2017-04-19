@@ -1,0 +1,69 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:700);
+div#content {
+    width: 960px;
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+.bar {
+    fill: orange;
+}
+.bar:hover {
+    fill: orangered;
+}
+.x.axis path {
+    display: none;
+}
+.d3-tip {
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+    line-height: 1;
+    font-weight: bold;
+    padding: 12px;
+    background: rgb(0, 0, 0);
+    color: #fff;
+    border-radius: 2px;
+}
+#search_input {
+    font-size: 24px;
+}
+.thumbnail-wrapper {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin: 10px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    background: blue;
+}
+.thumbnail {
+    width: 100px;
+    height: 100px;
+}
+.loader {
+    border: 16px solid #f3f3f3;
+    /* Light grey */
+    
+    border-top: 16px solid #3498db;
+    /* Blue */
+    
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    display: none;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

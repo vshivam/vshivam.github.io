@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+<link rel="stylesheet" href="style.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="http://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+
+<body>
+	<div id="content">
+		<center>
+			<input id="search-input" type="text" name="sname" placeholder="TV Show Name ...">
+			<div id="suggestion-list" class="row">
+			</div>
+			<div class="loader"></div>
+		</center>
+</body>
+
+<script id="suggestion-template" type="text/x-handlebars-template">
+	<div class="col s12 m3">
+		<div class="card blue-grey darken-1" data-imdb="{{imdbID}}" data-title="{{Title}}">
+			<div class="card-content white-text">
+				<span class="card-title">{{Title}}</span>
+				<p>{{Year}}</p>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/javascript" src="d3-stuff.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
