@@ -1,24 +1,45 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:700);
+
+body{
+  background: #0e0e0e;
+}
+
 div#content {
     width: 960px;
     margin: 0 auto;
     font-family: 'Raleway', sans-serif;
+    color: white;
+    padding-top: 1%;
 }
+
+.line {
+  fill: none;
+  stroke: white;
+  stroke-width: 1px;
+}
+
+circle {
+    fill: #9c9ede;
+}
+
+circle:hover {
+    fill: orangered;
+}
+
 .axis path,
 .axis line {
     fill: none;
-    stroke: #000;
+    stroke: #ffffff;
     shape-rendering: crispEdges;
 }
-.bar {
-    fill: orange;
+
+.y.axis text{
+  fill: white;
 }
 .bar:hover {
     fill: orangered;
 }
-.x.axis path {
-    display: none;
-}
+
 .d3-tip {
     position: absolute;
     text-align: center;
@@ -30,22 +51,16 @@ div#content {
     color: #fff;
     border-radius: 2px;
 }
-#search_input {
-    font-size: 24px;
+
+#input-label{
+  color: #bcbcbc;
 }
-.thumbnail-wrapper {
-    width: 100px;
-    height: 100px;
-    float: left;
-    margin: 10px;
-    border-radius: 15px;
-    -moz-border-radius: 15px;
-    background: blue;
+
+#search-input {
+    color: white;
+    font-size: 2em;
 }
-.thumbnail {
-    width: 100px;
-    height: 100px;
-}
+
 .loader {
     border: 16px solid #f3f3f3;
     /* Light grey */
@@ -59,6 +74,11 @@ div#content {
     animation: spin 2s linear infinite;
     display: none;
 }
+
+.suggestion{
+  cursor: pointer;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -66,4 +86,12 @@ div#content {
     100% {
         transform: rotate(360deg);
     }
+}
+
+#toggle-chart{
+    display: none;
+}
+
+#toggle-chart:hover{
+    cursor: pointer;
 }

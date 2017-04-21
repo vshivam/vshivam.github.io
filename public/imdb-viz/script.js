@@ -1,10 +1,11 @@
+var epDetails = new Array();
+var baseUrl = "http://shivamverma.info/";
+
 $(document).ready(function(){
-    var baseUrl = "http://shivamverma.info/";
     function loadTv(imdbId) {
         $.get("http://www.omdbapi.com/?r=json&i=" + imdbId, function(data) {
             $('.loader').show();
             $('#search-input').val(data.Title);
-            var epDetails = new Array();
             var totalSeasons = data.totalSeasons;
             var season = 1;
             var callback = function(eps) {
@@ -44,7 +45,16 @@ $(document).ready(function(){
     $('#search-input').on('input', function() {
         $('.loader').show();
         var term = $(this).val();
+        if(term.length==0){
+            $('.loader').hide();
+            return;
+        }
         getSearchSuggestions(term);
+    });
+
+    $('#toggle-chart').on('click', function(){
+        bar = !bar;
+        render(epDetails);
     });
 
 
@@ -70,7 +80,7 @@ $(document).ready(function(){
         $('.loader').hide();
     }
 
-    $(document).on('click', '.card', function() {
+    $(document).on('click', '.suggestion', function() {
         /*
         var movieTitle = $(this).data('title');
         $('#search-input').val(movieTitle);
@@ -93,7 +103,7 @@ $(document).ready(function(){
     }
 
     var imdbId = getParameterByName('i');
-    if(typeof imdbId !== 'undefined'){
+    if(typeof imdbId !== 'undefined' && imdbId.trim() != ''){
         loadTv(imdbId);
     }
 
