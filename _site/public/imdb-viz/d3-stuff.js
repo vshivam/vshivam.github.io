@@ -1,4 +1,4 @@
-var bar = false;
+var bar = true;
 
 function getColorForRating(imdbRating){
   if(imdbRating<6){
