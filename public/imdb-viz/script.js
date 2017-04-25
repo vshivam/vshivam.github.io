@@ -1,5 +1,5 @@
 var epDetails = new Array();
-var baseUrl = "http://shivamverma.info/";
+var baseUrl = window.location.origin + window.location.pathname;
 
 $(document).ready(function(){
     function loadTv(imdbId) {
@@ -88,7 +88,10 @@ $(document).ready(function(){
         $('.loader').show();
         */
         var imdbId = $(this).data('imdb');
-        location.href = baseUrl + 'public/imdb-viz/?i=' + imdbId;
+        var redirectTo = baseUrl + '?i=' + imdbId;
+        console.log(redirectTo);
+        location.href = redirectTo;
+        console.log();
         // loadTv(imdbId);
     });
 
@@ -103,7 +106,7 @@ $(document).ready(function(){
     }
 
     var imdbId = getParameterByName('i');
-    if(typeof imdbId !== 'undefined' && imdbId.trim() != ''){
+    if(typeof imdbId !== 'undefined' && imdbId != null && imdbId.trim() != ''){
         loadTv(imdbId);
     }
 

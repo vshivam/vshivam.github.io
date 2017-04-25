@@ -93,14 +93,12 @@ function render(data) {
         })
         .attr("fill", function(d){ return getColorForRating(d.imdbRating); })
         .on("mouseover", function(d) {
-          div.transition()
-          .duration(10)
-          .style("opacity", .9);
+          div.style("opacity", .9);
 
           var season = d.season_episode.split('.')[0];
           var episode = d.season_episode.split('.')[1];
 
-          div.html("S" + season + "E" + episode + ", " + d.imdbRating + "<br><br> Click to IMDB")
+          div.html("S" + season + "E" + episode + " - " + d.Title +", " + d.imdbRating + "<br><br> Click to show on IMDB")
           .style("left", (d3.event.pageX) + "px")
           .style("top", (d3.event.pageY) + "px");
 
@@ -110,16 +108,13 @@ function render(data) {
                            (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
         })
         .on("mouseout", function(d) {
-          div.transition()
-          .duration(10)
-          .style("opacity", 0);
+          div.style("opacity", 0);
         })
         .on("click", function(d){
           var url = "http://imdb.com/title/" + d.imdbID;
           window.open(url, '_blank');
         });
     } else {
-    	// define the line
     	var valueline = d3.line()
     	    .x(function(d) { return x(d.season_episode); })
     	    .y(function(d) { return y(d.imdbRating); });
@@ -143,14 +138,12 @@ function render(data) {
         })
         .attr("fill", function(d){ return getColorForRating(d.imdbRating); })
         .on("mouseover", function(d) {
-          div.transition()
-          .duration(10)
-          .style("opacity", .9);
+          div.style("opacity", .9);
 
           var season = d.season_episode.split('.')[0];
           var episode = d.season_episode.split('.')[1];
 
-          div.html("S" + season + "E" + episode + ", " + d.imdbRating + "<br><br> Click to IMDB")
+          div.html("S" + season + "E" + episode + " - " + d.Title +", " + d.imdbRating + "<br><br> Click to show on IMDB")
           .style("left", (d3.event.pageX) + "px")
           .style("top", (d3.event.pageY) + "px");
 
@@ -160,9 +153,7 @@ function render(data) {
                            (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
         })
         .on("mouseout", function(d) {
-          div.transition()
-          .duration(10)
-          .style("opacity", 0);
+          div.style("opacity", 0);
         })
         .on("click", function(d){
           var url = "http://imdb.com/title/" + d.imdbID;
