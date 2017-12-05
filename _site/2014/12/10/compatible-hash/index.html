@@ -31,21 +31,21 @@
 <meta property="og:title" content="Generating compatible SHA512 Hash between Java and JavaScript using CryptoJS." />
 <meta name="description" content="While working on the development of a secure way for authenticating a remote web application with the Ambient Dynamix Framework, I needed to generate a SHA512 of a salt and token which the web application could transmit to the framework via a dynamically generated QR Code. The Dynamix instance running on the android device can then use this hash to verify the authenticity of any further HTTP requests.Generating SHA512 Hash in JavaScript :The CryptoJS library provides a multitude of cryptography related features and what I needed to use was the SHA512 Hasher.To be able to use the hasher, include:&lt;script type=&quot;text/javascript&quot; src=&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js&quot;&gt;&lt;/script&gt;and then ://replace saltedToken with the relevant data.var hashWordArray = CryptoJS.SHA512(&#39;saltedToken&#39;);This returns the SHA512 Hash in a word array which is an array of 32-bit words. Now, to be able to transfer the hash, I encoded the array into a Base64 String so that I could use the same encoding in Java to generate the hash. There are other options too such as encoding into a Hex String.CryptoJS also provides the encoding feature. To use the encoding methods, include :&lt;script src=&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js&quot; type=&quot;text/javascript&quot;&gt;and then :var base64HashString = hashWordArray.toString(CryptoJS.enc.Base64);Generating SHA512 Hash in Java :Now, to be able to verify the authenticity in Java, for a given String, I should be able to generate the same SHA512 Hash and this can be done using the following code :MessageDigest md = null;String saltedToken = &quot;saltedToken&quot;;try {    md = MessageDigest.getInstance(&quot;SHA-512&quot;);    md.update(saltedToken.getBytes());    byte byteData[] = md.digest();    String base64 = Base64.encodeToString(byteData, Base64.NO_WRAP);} catch (NoSuchAlgorithmException e) {    Log.w(TAG, &quot;Could not load MessageDigest: SHA-512&quot;);    return false;}The important thing to note here is the Base64.NO_WRAP flag which ensures that while encoding, the encoder should omit all line terminators which is exactly what the JS encoder does.Cheers! :D" />
 <meta property="og:description" content="While working on the development of a secure way for authenticating a remote web application with the Ambient Dynamix Framework, I needed to generate a SHA512 of a salt and token which the web application could transmit to the framework via a dynamically generated QR Code. The Dynamix instance running on the android device can then use this hash to verify the authenticity of any further HTTP requests.Generating SHA512 Hash in JavaScript :The CryptoJS library provides a multitude of cryptography related features and what I needed to use was the SHA512 Hasher.To be able to use the hasher, include:&lt;script type=&quot;text/javascript&quot; src=&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js&quot;&gt;&lt;/script&gt;and then ://replace saltedToken with the relevant data.var hashWordArray = CryptoJS.SHA512(&#39;saltedToken&#39;);This returns the SHA512 Hash in a word array which is an array of 32-bit words. Now, to be able to transfer the hash, I encoded the array into a Base64 String so that I could use the same encoding in Java to generate the hash. There are other options too such as encoding into a Hex String.CryptoJS also provides the encoding feature. To use the encoding methods, include :&lt;script src=&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js&quot; type=&quot;text/javascript&quot;&gt;and then :var base64HashString = hashWordArray.toString(CryptoJS.enc.Base64);Generating SHA512 Hash in Java :Now, to be able to verify the authenticity in Java, for a given String, I should be able to generate the same SHA512 Hash and this can be done using the following code :MessageDigest md = null;String saltedToken = &quot;saltedToken&quot;;try {    md = MessageDigest.getInstance(&quot;SHA-512&quot;);    md.update(saltedToken.getBytes());    byte byteData[] = md.digest();    String base64 = Base64.encodeToString(byteData, Base64.NO_WRAP);} catch (NoSuchAlgorithmException e) {    Log.w(TAG, &quot;Could not load MessageDigest: SHA-512&quot;);    return false;}The important thing to note here is the Base64.NO_WRAP flag which ensures that while encoding, the encoder should omit all line terminators which is exactly what the JS encoder does.Cheers! :D" />
-<link rel="canonical" href="http://shivamverma.info/2014/12/10/compatible-hash/" />
-<meta property="og:url" content="http://shivamverma.info/2014/12/10/compatible-hash/" />
+<link rel="canonical" href="http://vshivam.github.io/2014/12/10/compatible-hash/" />
+<meta property="og:url" content="http://vshivam.github.io/2014/12/10/compatible-hash/" />
 <meta property="og:site_name" content="Shivam Verma" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2014-12-10T00:00:00+08:00" />
-<link rel="next" href="http://shivamverma.info/2015/01/07/hide-listitem-android/" title="Hiding a list item from an Android ListView without removing it from the data source." />
-<link rel="prev" href="http://shivamverma.info/2014/04/28/novel-swipe-detect/" title="Detecting up-down, left-right swipe on Android with greater accuracy." />
+<meta property="article:published_time" content="2014-12-10T00:00:00+01:00" />
+<link rel="next" href="http://vshivam.github.io/2015/01/07/hide-listitem-android/" title="Hiding a list item from an Android ListView without removing it from the data source." />
+<link rel="prev" href="http://vshivam.github.io/2014/04/28/novel-swipe-detect/" title="Detecting up-down, left-right swipe on Android with greater accuracy." />
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
     "headline": "Generating compatible SHA512 Hash between Java and JavaScript using CryptoJS.",
-    "datePublished": "2014-12-10T00:00:00+08:00",
+    "datePublished": "2014-12-10T00:00:00+01:00",
     "description": "While working on the development of a secure way for authenticating a remote web application with the Ambient Dynamix Framework, I needed to generate a SHA512 of a salt and token which the web application could transmit to the framework via a dynamically generated QR Code. The Dynamix instance running on the android device can then use this hash to verify the authenticity of any further HTTP requests.Generating SHA512 Hash in JavaScript :The CryptoJS library provides a multitude of cryptography related features and what I needed to use was the SHA512 Hasher.To be able to use the hasher, include:&lt;script type=&quot;text/javascript&quot; src=&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js&quot;&gt;&lt;/script&gt;and then ://replace saltedToken with the relevant data.var hashWordArray = CryptoJS.SHA512(&#39;saltedToken&#39;);This returns the SHA512 Hash in a word array which is an array of 32-bit words. Now, to be able to transfer the hash, I encoded the array into a Base64 String so that I could use the same encoding in Java to generate the hash. There are other options too such as encoding into a Hex String.CryptoJS also provides the encoding feature. To use the encoding methods, include :&lt;script src=&quot;http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js&quot; type=&quot;text/javascript&quot;&gt;and then :var base64HashString = hashWordArray.toString(CryptoJS.enc.Base64);Generating SHA512 Hash in Java :Now, to be able to verify the authenticity in Java, for a given String, I should be able to generate the same SHA512 Hash and this can be done using the following code :MessageDigest md = null;String saltedToken = &quot;saltedToken&quot;;try {    md = MessageDigest.getInstance(&quot;SHA-512&quot;);    md.update(saltedToken.getBytes());    byte byteData[] = md.digest();    String base64 = Base64.encodeToString(byteData, Base64.NO_WRAP);} catch (NoSuchAlgorithmException e) {    Log.w(TAG, &quot;Could not load MessageDigest: SHA-512&quot;);    return false;}The important thing to note here is the Base64.NO_WRAP flag which ensures that while encoding, the encoder should omit all line terminators which is exactly what the JS encoder does.Cheers! :D",
-    "url": "http://shivamverma.info/2014/12/10/compatible-hash/"
+    "url": "http://vshivam.github.io/2014/12/10/compatible-hash/"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -110,7 +110,7 @@
       <header class="masthead">
         <center>
           <h2 class="masthead-title">
-            <a href="http://shivamverma.info">Shivam Verma</a>
+            <a href="http://vshivam.github.io">Shivam Verma</a>
             <br/>
             
               &nbsp;&nbsp;&nbsp;
@@ -133,7 +133,7 @@
       <main>
         <article class="post">
   <h1 class="post-title">Generating compatible SHA512 Hash between Java and JavaScript using CryptoJS.</h1>
-  <time datetime="2014-12-10T00:00:00+08:00" class="post-date">10 Dec 2014</time>
+  <time datetime="2014-12-10T00:00:00+01:00" class="post-date">10 Dec 2014</time>
   <p>While working on the development of a secure way for authenticating a remote web application with the Ambient Dynamix Framework, I needed to generate a SHA512 of a salt and token which the web application could transmit to the framework via a dynamically generated QR Code. The Dynamix instance running on the android device can then use this hash to verify the authenticity of any further HTTP requests.</p>
 
 <hr />
@@ -193,7 +193,7 @@
         <h3>
           <a href="/2016/04/22/github-corner-text/">
             An even fresher 'Fork me on GitHub' callout !
-            <small><time datetime="2016-04-22T00:00:00+08:00">22 Apr 2016</time></small>
+            <small><time datetime="2016-04-22T00:00:00+02:00">22 Apr 2016</time></small>
           </a>
         </h3>
       </li>
@@ -202,7 +202,7 @@
         <h3>
           <a href="/2016/04/20/fossasia-2016/">
             Speaking at FOSSAsia 2016.
-            <small><time datetime="2016-04-20T00:00:00+08:00">20 Apr 2016</time></small>
+            <small><time datetime="2016-04-20T00:00:00+02:00">20 Apr 2016</time></small>
           </a>
         </h3>
       </li>
@@ -211,7 +211,7 @@
         <h3>
           <a href="/2016/03/30/unfollow-all-quora/">
             How to unfollow everyone on Quora, you ask ?
-            <small><time datetime="2016-03-30T00:00:00+08:00">30 Mar 2016</time></small>
+            <small><time datetime="2016-03-30T00:00:00+02:00">30 Mar 2016</time></small>
           </a>
         </h3>
       </li>
@@ -248,7 +248,7 @@
       </center>
           <!--
           &copy; 
-          <time datetime="2017-04-25T16:52:26+08:00">2017</time>. All rights reserved.
+          <time datetime="2017-12-05T12:59:41+01:00">2017</time>. All rights reserved.
           -->
         </small>
       </footer>
